@@ -1,0 +1,22 @@
+{
+  "name": "Si-LKP Kecamatan Waru",
+  "short_name": "Si-LKP Waru",
+  "description": "Sistem Laporan Kinerja Pegawai Kecamatan Waru",
+  "start_url": "/si-lkp-kec-waru/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/si-lkp-kec-waru/logo-ppu.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/si-lkp-kec-waru/logo-ppu.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
