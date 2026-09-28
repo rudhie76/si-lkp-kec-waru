@@ -171,7 +171,11 @@ export default function Page() {
 
     const gsUrl = getGoogleSheetsUrl();
     if (gsUrl) {
-      pushToGoogleSheets(gsUrl, 'saveReport', newReport);
+      pushToGoogleSheets(gsUrl, 'saveReport', newReport).then(res => {
+        if (res && res.status === 'error') {
+          console.error('GS Error:', res.message);
+        }
+      }).catch(err => console.error(err));
     }
   };
 
