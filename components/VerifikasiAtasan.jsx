@@ -4,6 +4,20 @@ import { useState } from 'react';
 import { ShieldCheck, Check, X, Eye, Clock, FileText, User, Calendar, AlertCircle } from 'lucide-react';
 import { canValidate, getVisibleReports, isSuperiorUser } from '../lib/hierarchyHelper';
 
+// Fallback for missing durasiJam
+const getDurasiFallback = (item) => {
+  if (item.durasiJam) return item.durasiJam;
+  if (item.detailKegiatan && item.detailKegiatan.length > 0) {
+    const keg = item.detailKegiatan[0];
+    if (!keg.jamMulai || !keg.jamSelesai) return 0;
+    const [h1, m1] = keg.jamMulai.split(':').map(Number);
+    const [h2, m2] = keg.jamSelesai.split(':').map(Number);
+    let diff = (h2 * 60 + m2) - (h1 * 60 + m1);
+    return Math.max(0, Math.round((diff / 60) * 10) / 10);
+  }
+  return 0;
+};
+
 export default function VerifikasiAtasan({ 
   reports = [], 
   onUpdateStatus, 
