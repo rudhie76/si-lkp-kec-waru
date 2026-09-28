@@ -173,9 +173,15 @@ export default function Page() {
     if (gsUrl) {
       pushToGoogleSheets(gsUrl, 'saveReport', newReport).then(res => {
         if (res && res.status === 'error') {
-          console.error('GS Error:', res.message);
+          alert('GAGAL SIMPAN KE DATABASE: ' + res.message);
+        } else if (!res) {
+          alert('GAGAL TERHUBUNG KE GOOGLE SHEETS! Pastikan URL Web App benar.');
+        } else {
+          // alert('SUKSES SIMPAN KE DATABASE: ' + res.message); // debug only
         }
-      }).catch(err => console.error(err));
+      }).catch(err => {
+        alert('ERROR KONEKSI DATABASE: ' + err.toString());
+      });
     }
   };
 
