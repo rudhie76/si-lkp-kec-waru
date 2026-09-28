@@ -294,6 +294,15 @@ export default function Page() {
           
           {/* Brand Logo & Title */}
           <div className="flex items-center space-x-3">
+            
+            {/* Desktop Toggle Menu Button */}
+            <button 
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className="hidden md:flex p-2 mr-2 bg-olive-800/40 hover:bg-olive-700 text-zinc-200 rounded-lg transition-colors border border-olive-700/60"
+              title="Sembunyikan / Tampilkan Menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
             <div className="w-10 h-12 flex-shrink-0">
               <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-full h-full object-contain drop-shadow" />
             </div>
