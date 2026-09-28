@@ -645,7 +645,7 @@ export default function DashboardView({
           <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-olive-700/60 rounded-3xl p-6 max-w-xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-olive-800 pb-3">
               <div className="flex items-center space-x-2">
-                <img src="/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
+                <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
                 <h3 className="text-sm font-bold text-white">Detail LKH - {selectedReport.namaPegawai}</h3>
               </div>
               <button onClick={() => setSelectedReport(null)} className="text-zinc-400 hover:text-white">

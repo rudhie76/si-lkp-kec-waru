@@ -170,7 +170,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
         <div className="flex justify-center">
           <img 
-            src="/logo-ppu.png" 
+            src="/si-lkp-kec-waru/logo-ppu.png" 
             alt="Logo Penajam Paser Utara" 
             className="w-20 h-24 object-contain drop-shadow-xl hover:scale-105 transition-transform" 
           />

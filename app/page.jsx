@@ -294,7 +294,7 @@ export default function Page() {
           {/* Brand Logo & Title */}
           <div className="flex items-center space-x-3">
             <div className="w-10 h-12 flex-shrink-0">
-              <img src="/logo-ppu.png" alt="Logo PPU" className="w-full h-full object-contain drop-shadow" />
+              <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-full h-full object-contain drop-shadow" />
             </div>
 
             <div>

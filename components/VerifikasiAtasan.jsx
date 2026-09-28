@@ -85,7 +85,7 @@ export default function VerifikasiAtasan({
       {/* HEADER SECTION */}
       <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-olive-700/50 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
-          <img src="/logo-ppu.png" alt="Logo PPU" className="w-10 h-12 object-contain drop-shadow" />
+          <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-10 h-12 object-contain drop-shadow" />
           <div>
             <h1 className="text-xl font-bold text-white flex items-center space-x-2">
               <ShieldCheck className="w-5 h-5 text-amber-400" />
@@ -223,7 +223,7 @@ export default function VerifikasiAtasan({
             
             <div className="flex items-center justify-between border-b border-olive-800 pb-3">
               <div className="flex items-center space-x-2">
-                <img src="/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
+                <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
                 <div>
                   <h3 className="text-base font-bold text-white">Detail Laporan Kinerja ASN</h3>
                   <p className="text-xs text-emerald-400">Pemeriksaan Bukti & Penilaian Atasan Langsung</p>

@@ -288,7 +288,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
         
         {/* KOP SURAT */}
         <div className="border-b-[5px] border-double border-black pb-3 mb-4 flex items-center relative">
-          <img src="/logo-ppu.png" alt="Logo PPU" className="absolute left-2 w-20 h-24 object-contain" />
+          <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="absolute left-2 w-20 h-24 object-contain" />
           <div className="text-center w-full pl-24 pr-4">
             <h1 className="text-xl font-bold uppercase whitespace-nowrap tracking-tight">Pemerintah Kabupaten Penajam Paser Utara</h1>
             <h2 className="text-2xl font-extrabold uppercase tracking-wide">Kecamatan Waru</h2>
