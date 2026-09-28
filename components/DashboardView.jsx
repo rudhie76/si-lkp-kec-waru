@@ -123,38 +123,22 @@ export default function DashboardView({
   const formatShortDate = (dateStr) => {
     if (!dateStr) return 'Hari Ini';
     try {
-      // Clean raw GMT date strings if present
-      let cleanStr = String(dateStr);
-      if (cleanStr.includes('GMT') || cleanStr.includes('Waktu')) {
-        const d = new Date(cleanStr);
-        if (!isNaN(d.getTime())) {
-          const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-          const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-          const dayName = days[d.getDay()];
-          const dd = String(d.getDate()).padStart(2, '0');
-          const mmm = months[d.getMonth()];
-          const yyyy = d.getFullYear();
-          return `${dayName}, ${dd}/${mmm}/${yyyy}`;
-        }
-      }
-
-      const parts = cleanStr.split('-');
-      if (parts.length === 3) {
-        const year = parts[0];
-        const monthIndex = parseInt(parts[1], 10) - 1;
-        const day = parseInt(parts[2], 10);
-        const dateObj = new Date(year, monthIndex, day);
-        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-        
-        const dayName = days[dateObj.getDay()] || 'Hari';
-        const dd = String(day).padStart(2, '0');
-        const mmm = months[monthIndex] || parts[1];
-        return `${dayName}, ${dd}/${mmm}/${year}`;
-      }
-      return cleanStr;
-    } catch (e) {
-      return dateStr;
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return String(dateStr);
+      
+      const year = d.getFullYear();
+      const monthIndex = d.getMonth();
+      const day = d.getDate();
+      
+      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+      
+      const dayName = days[d.getDay()];
+      const dd = String(day).padStart(2, '0');
+      const mmm = months[monthIndex];
+      return `${dayName}, ${dd}/${mmm}/${year}`;
+    } catch(e) {
+      return String(dateStr);
     }
   };
 
