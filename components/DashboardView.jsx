@@ -221,7 +221,7 @@ export default function DashboardView({
       const dayNum = d.getDate();
       
       const dayReports = reports.filter(r => r.tanggal === isoDate && (r.status === 'DIVALIDASI' || r.status === 'PENDING' || r.status === 'Disetujui'));
-      const hours = dayReports.reduce((sum, r) => sum + (parseFloat(r.durasiJam) || 0), 0);
+      const hours = dayReports.reduce((sum, r) => sum + (getDurasiFallback(r)), 0);
 
       dates.push({
         isoDate,
@@ -640,7 +640,7 @@ export default function DashboardView({
 
                       {/* Durasi */}
                       <td className="py-3.5 px-4 text-center whitespace-nowrap font-mono text-gold-400 font-extrabold">
-                        {item.durasiJam} Jam
+                        {getDurasiFallback(item)} Jam
                       </td>
 
                       {/* Status */}
@@ -703,7 +703,7 @@ export default function DashboardView({
               <p><strong>NIP:</strong> {selectedReport.nip}</p>
               <p><strong>Jabatan:</strong> {selectedReport.jabatan}</p>
               <p><strong>Tanggal:</strong> {formatShortDate(selectedReport.tanggal)}</p>
-              <p><strong>Durasi Waktu:</strong> {formatDurationTime(selectedReport)} ({selectedReport.durasiJam} Jam)</p>
+              <p><strong>Durasi Waktu:</strong> {formatDurationTime(selectedReport)} ({getDurasiFallback(selectedReport)} Jam)</p>
               <p><strong>Status Validasi:</strong> <span className="text-emerald-400 font-bold">{selectedReport.status}</span></p>
               {selectedReport.catatanAtasan && <p><strong>Catatan Atasan:</strong> {selectedReport.catatanAtasan}</p>}
               
