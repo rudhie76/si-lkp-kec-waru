@@ -30,6 +30,7 @@ export default function Page() {
   const [users, setUsers] = useState(INITIAL_PEGAWAI);
   const [currentUser, setCurrentUser] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isGSModalOpen, setIsGSModalOpen] = useState(false);
   const [isGSConnected, setIsGSConnected] = useState(false);
   const [witaTime, setWitaTime] = useState('');
@@ -383,7 +384,7 @@ export default function Page() {
         
         {/* SIDEBAR NAVIGATION (DESKTOP & MOBILE DRAWER) */}
         <aside className={`
-          md:w-64 flex-shrink-0 space-y-4 no-print
+          ${isSidebarCollapsed ? 'md:w-0 overflow-hidden md:pl-0 md:pr-0 md:opacity-0 md:border-none' : 'md:w-64 opacity-100'} transition-all duration-300 flex-shrink-0 space-y-4 no-print
           ${isMobileMenuOpen ? 'block' : 'hidden md:block'}
         `}>
           
