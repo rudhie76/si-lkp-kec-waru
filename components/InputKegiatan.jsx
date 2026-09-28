@@ -275,8 +275,7 @@ export default function InputKegiatan({
   // Extract all photos from user's reports for the Gallery
   const galleryPhotos = userOwnReports
     .flatMap(r => r.detailKegiatan ? r.detailKegiatan.flatMap(k => [k.fotoUrl, k.fotoUrl2]) : [r.lampiranUrl])
-    .filter(url => url && url.startsWith('data:image'))
-    .slice(0, 6);
+    .filter(url => url && url.startsWith('data:image'));
 
   const categories = [
     'Administrasi', 'Rapat/Undangan', 'Monitoring Lapangan', 'Koordinasi', 'Sosialisasi', 'Kegiatan Lainnya'
@@ -693,7 +692,7 @@ export default function InputKegiatan({
                 <p className="text-xs">Belum ada foto kegiatan.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-2 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar">
                 {galleryPhotos.map((img, i) => (
                   <div key={i} className="aspect-square rounded-xl overflow-hidden border border-olive-700 bg-black">
                     <img src={img} alt="Galeri" className="w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer" />
