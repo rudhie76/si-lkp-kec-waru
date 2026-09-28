@@ -204,6 +204,7 @@ export default function InputKegiatan({
       jamSelesai: formData.jamSelesai,
       kategori: formData.kategori,
       deskripsi: formData.deskripsi,
+      durasiJam: durasi,
       volume: formData.volume,
       satuan: formData.satuan,
       statusHasil: formData.statusHasil,
@@ -802,7 +803,7 @@ export default function InputKegiatan({
                         <div className="text-[10px] text-zinc-500">{firstKeg.satuan || 'Berkas'}</div>
                       </td>
                       <td className="py-4 px-4 text-center font-mono font-bold text-amber-400">
-                        {item.durasiJam} Jam
+                        {getDurasiFallback(item)} Jam
                       </td>
                       <td className="py-4 px-4 text-center">
                         {item.status === 'DIVALIDASI' && (

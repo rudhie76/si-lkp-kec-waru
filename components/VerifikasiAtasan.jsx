@@ -173,7 +173,7 @@ export default function VerifikasiAtasan({
 
                     {/* Durasi */}
                     <td className="py-3.5 px-4 text-center font-mono text-gold-400 font-bold whitespace-nowrap">
-                      {item.durasiJam} Jam
+                      {getDurasiFallback(item)} Jam
                     </td>
 
                     {/* Status */}
