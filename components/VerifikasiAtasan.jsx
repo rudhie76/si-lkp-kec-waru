@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ShieldCheck, Check, X, Eye, Clock, FileText, User, Calendar, AlertCircle } from 'lucide-react';
 import { canValidate, getVisibleReports, isSuperiorUser } from '../lib/hierarchyHelper';
 
+
 // Fallback for missing durasiJam
 const getDurasiFallback = (item) => {
   if (item.durasiJam) return item.durasiJam;
@@ -17,7 +18,6 @@ const getDurasiFallback = (item) => {
   }
   return 0;
 };
-
 export default function VerifikasiAtasan({ 
   reports = [], 
   onUpdateStatus, 

@@ -2,6 +2,11 @@
 
 import { useState, useRef } from 'react';
 import { 
+  Calendar, Clock, User, AlignLeft, Send, CheckCircle, 
+  Camera, Upload, X, Trash2, Image as ImageIcon, Briefcase, 
+  CheckSquare, Activity, ShieldCheck, Download, Award, Building, Plus, Edit3
+} from 'lucide-react';
+
 
 // Fallback for missing durasiJam
 const getDurasiFallback = (item) => {
@@ -16,11 +21,6 @@ const getDurasiFallback = (item) => {
   }
   return 0;
 };
-  Calendar, Clock, User, AlignLeft, Send, CheckCircle, 
-  Camera, Upload, X, Trash2, Image as ImageIcon, Briefcase, 
-  CheckSquare, Activity, ShieldCheck, Download, Award, Building, Plus, Edit3
-} from 'lucide-react';
-
 export default function InputKegiatan({ 
   onSaveReport, 
   onDeleteReport,
