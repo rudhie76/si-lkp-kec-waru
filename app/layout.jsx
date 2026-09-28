@@ -1,10 +1,17 @@
 import './globals.css';
 
+export const viewport = {
+  themeColor: '#10b981',
+};
+
 export const metadata = {
   title: 'Si-LKP Waru v1.5 - Sistem Laporan Kinerja Pegawai Kecamatan Waru',
   description: 'Aplikasi Laporan Kinerja Pegawai (LKH) Resmi Pemerintah Kecamatan Waru, Kabupaten Penajam Paser Utara.',
   manifest: '/si-lkp-kec-waru/manifest.json',
-  themeColor: '#10b981',
+  icons: {
+    icon: '/si-lkp-kec-waru/logo-ppu.png',
+    apple: '/si-lkp-kec-waru/icon-512.png',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
