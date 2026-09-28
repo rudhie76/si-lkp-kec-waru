@@ -284,7 +284,8 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
       </div>
 
       {/* PRINTABLE AREA */}
-      <div className="print-area bg-white text-black p-8 rounded-xl shadow-lg min-h-[500px] relative" style={{ lineHeight: 1.15 }}>
+      <div className="overflow-x-auto w-full pb-4">
+        <div className="print-area bg-white text-black min-w-[750px] print:min-w-0 mx-auto p-8 rounded-xl shadow-lg min-h-[500px] relative" style={{ lineHeight: 1.15 }}>
         
         {/* KOP SURAT */}
         <div className="border-b-[5px] border-double border-black pb-3 mb-4 flex items-center relative">
@@ -383,8 +384,8 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
                 <th className="border border-black p-2">Uraian / Deskripsi Kegiatan Kerja</th>
                 <th className="border border-black p-2 w-20">Volume & Satuan</th>
                 <th className="border border-black p-2 w-16">Durasi</th>
-                <th className="border border-black p-2 w-28">Foto / File Dukung</th>
-                <th className="border border-black p-2 w-20">Verifikasi Atasan</th>
+                <th className="border border-black p-2 w-28 min-w-[100px]">Foto / File Dukung</th>
+                <th className="border border-black p-2 w-24 min-w-[90px]">Verifikasi Atasan</th>
               </tr>
             </thead>
             <tbody className="align-top">
@@ -498,6 +499,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
             </div>
           </div>
         )}
+      </div>
       </div>
 
       <style jsx global>{`
