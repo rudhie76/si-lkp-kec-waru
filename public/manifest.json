@@ -8,15 +8,10 @@
   "theme_color": "#10b981",
   "icons": [
     {
-      "src": "/si-lkp-kec-waru/logo-ppu.png",
-      "sizes": "192x192",
+      "src": "/si-lkp-kec-waru/icon-512.png",
+      "sizes": "192x192 512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/si-lkp-kec-waru/logo-ppu.png",
-      "sizes": "512x512",
-      "type": "image/png"
     }
   ]
 }

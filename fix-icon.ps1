@@ -1,0 +1,12 @@
+[System.Reflection.Assembly]::LoadWithPartialName('System.Drawing')
+$img = [System.Drawing.Image]::FromFile('public/logo-ppu.png')
+$bmp = New-Object System.Drawing.Bitmap 1024, 1024
+$g = [System.Drawing.Graphics]::FromImage($bmp)
+$g.Clear([System.Drawing.Color]::Transparent)
+$x = [math]::Round((1024 - $img.Width) / 2)
+$y = [math]::Round((1024 - $img.Height) / 2)
+$g.DrawImage($img, $x, $y, $img.Width, $img.Height)
+$bmp.Save('public/icon-512.png', [System.Drawing.Imaging.ImageFormat]::Png)
+$bmp.Dispose()
+$img.Dispose()
+$g.Dispose()
