@@ -306,9 +306,22 @@ export default function DashboardView({
         <div className="relative overflow-hidden bg-white border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-blue-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Divalidasi Atasan</p>
+              <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">LKH Divalidasi</p>
               <h3 className="text-3xl font-extrabold text-blue-600 mt-1">{approvedReports}</h3>
-              <p className="text-xs text-slate-600 mt-1">{((approvedReports / (totalReports || 1)) * 100).toFixed(0)}% dari total laporan</p>
+              {hasSubordinates ? (
+                <div className="flex flex-col gap-1 mt-2 border-t border-blue-200 pt-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">LKH Saya:</span>
+                    <span className="text-blue-600 font-bold">{myApproved}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">LKH Bawahan:</span>
+                    <span className="text-blue-600 font-bold">{subApproved}</span>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-xs text-slate-600 mt-1">{((approvedReports / (totalReports || 1)) * 100).toFixed(0)}% dari total laporan</p>
+              )}
             </div>
             <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <CheckCircle2 className="w-6 h-6" />
@@ -327,7 +340,20 @@ export default function DashboardView({
             <div>
               <p className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Verifikasi PENDING</p>
               <h3 className="text-3xl font-extrabold text-amber-800 mt-1">{pendingReports}</h3>
-              <p className="text-xs text-slate-600 mt-1">Membutuhkan aksi atasan</p>
+              {hasSubordinates ? (
+                <div className="flex flex-col gap-1 mt-2 border-t border-amber-200 pt-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">LKH Saya:</span>
+                    <span className="text-amber-800 font-bold">{myPending}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">Aksi Anda:</span>
+                    <span className="text-amber-800 font-bold">{subPending}</span>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-xs text-slate-600 mt-1">Membutuhkan aksi atasan</p>
+              )}
             </div>
             <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <Clock className="w-6 h-6" />
