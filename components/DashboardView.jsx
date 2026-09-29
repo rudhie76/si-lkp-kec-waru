@@ -113,6 +113,24 @@ export default function DashboardView({
     return acc;
   }, 0);
 
+  const myDurationThisMonth = validReports.filter(r => r.nip === userNip || r.pegawaiId === currentUser?.id).reduce((acc, curr) => {
+    if (!curr.tanggal) return acc;
+    const d = new Date(curr.tanggal);
+    if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
+      return acc + getDurasiFallback(curr);
+    }
+    return acc;
+  }, 0);
+
+  const subDurationThisMonth = validReports.filter(r => r.nip !== userNip && r.pegawaiId !== currentUser?.id).reduce((acc, curr) => {
+    if (!curr.tanggal) return acc;
+    const d = new Date(curr.tanggal);
+    if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
+      return acc + getDurasiFallback(curr);
+    }
+    return acc;
+  }, 0);
+
 
   // Filtered reports for recent activity table
   const filteredReports = reports.filter(item => {
@@ -389,16 +407,29 @@ export default function DashboardView({
             <div>
               <p className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Durasi Jam Kerja</p>
               <h3 className="text-3xl font-extrabold text-amber-700 mt-1">{totalDuration.toFixed(1)} <span className="text-sm font-semibold text-slate-800">Jam</span></h3>
-              <div className="flex flex-col gap-1 mt-2 border-t border-gold-800/30 pt-2">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-500">Bulan Ini:</span>
-                  <span className="text-amber-800 font-bold">{totalDurationThisMonth.toFixed(1)} Jam</span>
+              {hasSubordinates ? (
+                <div className="flex flex-col gap-1 mt-2 border-t border-gold-800/30 pt-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">Bulan Ini (Saya):</span>
+                    <span className="text-amber-800 font-bold">{myDurationThisMonth.toFixed(1)} Jam</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">Bulan Ini (Bwtn):</span>
+                    <span className="text-amber-800 font-bold">{subDurationThisMonth.toFixed(1)} Jam</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-500">Tahun Ini:</span>
-                  <span className="text-amber-800 font-bold">{totalDurationThisYear.toFixed(1)} Jam</span>
+              ) : (
+                <div className="flex flex-col gap-1 mt-2 border-t border-gold-800/30 pt-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">Bulan Ini:</span>
+                    <span className="text-amber-800 font-bold">{totalDurationThisMonth.toFixed(1)} Jam</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">Tahun Ini:</span>
+                    <span className="text-amber-800 font-bold">{totalDurationThisYear.toFixed(1)} Jam</span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <Hourglass className="w-6 h-6" />
