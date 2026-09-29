@@ -14,14 +14,14 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1e14;
+  background: #2a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1b4d36;
+  background: #800000;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a603f;
+  background: #660000;
 }
 
 /* Print Optimization for Formal LKH Document */
@@ -47,56 +47,62 @@
   }
 }
 
-/* Fix text contrast inside Maroon panels */
-.bg-olive-950, .bg-olive-900, .bg-olive-800, .bg-olive-700, .bg-olive-600, .bg-emerald-500, .bg-emerald-600 {
-  color: #FDFBF7 !important;
-}
+/* ----------------------------------------------------- */
+/* FIX CONTRAST FOR CREAM CARDS/PANELS                   */
+/* ----------------------------------------------------- */
 
-/* Force light text on any text utility inside a dark panel */
-.bg-olive-950 [class*="text-zinc-"], 
-.bg-olive-900 [class*="text-zinc-"], 
-.bg-olive-800 [class*="text-zinc-"], 
-.bg-olive-700 [class*="text-zinc-"],
-.bg-olive-600 [class*="text-zinc-"],
-.bg-emerald-500 [class*="text-zinc-"],
-.bg-emerald-600 [class*="text-zinc-"],
-.bg-olive-950 .text-white, 
-.bg-olive-900 .text-white, 
-.bg-olive-800 .text-white, 
-.bg-olive-700 .text-white,
-.bg-olive-600 .text-white,
-.bg-emerald-500 .text-white,
-.bg-emerald-600 .text-white {
-  color: #FDFBF7 !important;
-}
-
-/* Also fix borders inside the dark panels */
-.bg-olive-950 [class*="border-zinc-"], 
-.bg-olive-900 [class*="border-zinc-"], 
-.bg-olive-800 [class*="border-zinc-"], 
-.bg-olive-700 [class*="border-zinc-"] {
-  border-color: rgba(253, 251, 247, 0.2) !important;
-}
-
-/* Fix input backgrounds inside dark panels */
-.bg-olive-950 input, .bg-olive-900 input, .bg-olive-800 input,
-.bg-olive-950 select, .bg-olive-900 select, .bg-olive-800 select,
-.bg-olive-950 textarea, .bg-olive-900 textarea, .bg-olive-800 textarea {
-  background-color: rgba(253, 251, 247, 0.1) !important;
-  color: #FDFBF7 !important;
-  border-color: rgba(253, 251, 247, 0.3) !important;
-}
-
-/* Inputs on the main background */
-input, select, textarea {
-  background-color: #F5F0E1 !important;
+/* Force text inside cream cards (olive panels & zinc-900) to be Maroon */
+[class*="bg-olive-"], [class*="bg-zinc-900"] {
   color: #330000 !important;
-  border-color: #D1C4A5 !important;
 }
 
-/* Explicitly set body background just in case */
-body {
-  background-color: #FDFBF7 !important;
+/* Force all text elements inside cream cards to be Maroon */
+[class*="bg-olive-"] [class*="text-zinc-"], 
+[class*="bg-zinc-900"] [class*="text-zinc-"],
+[class*="bg-olive-"] .text-white, 
+[class*="bg-zinc-900"] .text-white {
+  color: #330000 !important;
 }
-::placeholder { color: #800000 !important; opacity: 0.6; }  
-.bg-olive-950 ::placeholder, .bg-olive-900 ::placeholder, .bg-olive-800 ::placeholder { color: rgba(253, 251, 247, 0.5) !important; opacity: 1; } 
+
+/* Force highlights to be Maroon inside Cream cards */
+[class*="bg-olive-"] [class*="text-emerald-"], 
+[class*="bg-zinc-900"] [class*="text-emerald-"] {
+  color: #800000 !important;
+}
+
+/* Force borders inside cream cards to be Maroon/Gold */
+[class*="bg-olive-"] [class*="border-zinc-"], 
+[class*="bg-zinc-900"] [class*="border-zinc-"] {
+  border-color: rgba(51, 0, 0, 0.2) !important;
+}
+
+/* Exclude Emerald buttons (which are Maroon) so they stay Cream text */
+[class*="bg-emerald-"] {
+  background-color: #800000 !important;
+  color: #fdfbf7 !important;
+}
+[class*="bg-emerald-"] [class*="text-zinc-"],
+[class*="bg-emerald-"] [class*="text-emerald-"],
+[class*="bg-emerald-"] .text-white {
+  color: #fdfbf7 !important;
+}
+
+/* Fix input fields inside cream cards */
+[class*="bg-olive-"] input, [class*="bg-zinc-900"] input,
+[class*="bg-olive-"] select, [class*="bg-zinc-900"] select,
+[class*="bg-olive-"] textarea, [class*="bg-zinc-900"] textarea {
+  background-color: #ffffff !important;
+  color: #330000 !important;
+  border-color: rgba(51, 0, 0, 0.3) !important;
+}
+
+/* Placeholders */
+::placeholder {
+  color: rgba(253, 251, 247, 0.5) !important; /* Cream placeholders for main bg */
+}
+[class*="bg-olive-"] ::placeholder, [class*="bg-zinc-900"] ::placeholder {
+  color: rgba(51, 0, 0, 0.5) !important; /* Maroon placeholders inside cream cards */
+}
+[class*="bg-emerald-"] ::placeholder {
+  color: rgba(253, 251, 247, 0.5) !important;
+}

@@ -8,52 +8,53 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ZINC mapped to CREAM Backgrounds and MAROON Text
+        // ZINC mapped to MAROON Background (950) and CREAM Cards (900)
         zinc: {
-          950: '#FDFBF7', // Main bg: Light Cream
-          900: '#F5F0E1', // Card bg: Cream
-          800: '#E8DFC7', // Borders
-          700: '#D1C4A5',
-          600: '#A39171',
-          500: '#756345',
-          400: '#800000', // text-zinc-400 -> Maroon muted
-          300: '#660000', // text-zinc-300 -> Maroon standard
-          200: '#4D0000', // text-zinc-200 -> Maroon dark
-          100: '#330000', // text-zinc-100 -> Maroon very dark
-          50:  '#1A0000', // text-zinc-50  -> Maroon pitch
+          950: '#2a0a0a', // Main BG: Dark Maroon
+          900: '#fdfbf7', // Card BG: Cream
+          800: '#f5f0e1', // Borders / Inner cards
+          700: '#e8dfc7', 
+          600: '#d1c4a5',
+          500: '#a39171',
+          400: '#c4aa8f', // Muted text on maroon bg
+          300: '#e3ccb3', // Normal text on maroon bg
+          200: '#f5e8d7', // Bright text on maroon bg
+          100: '#fdfbf7', // Headings (Cream)
+          50:  '#ffffff',
         },
-        // OLIVE mapped to MAROON Panels
+        // OLIVE mapped to CREAM Panels
         olive: {
-          50: '#FDFBF7',
-          100: '#F5E6E6',
-          200: '#E6BFBF',
-          300: '#D99999',
-          400: '#CC7373',
-          500: '#B34D4D',
-          600: '#992626',
-          700: '#800000',
-          800: '#5C0000', // bg-olive-800 -> Primary panel (Dark Maroon)
-          900: '#3D0000', // bg-olive-900 -> Secondary panel (Deep Maroon)
-          950: '#240000', // Pitch Maroon
+          50: '#2a0a0a',
+          100: '#3d0a0a',
+          200: '#4a0e0e',
+          300: '#5c1212',
+          400: '#731717',
+          500: '#8c1c1c',
+          600: '#d1c4a5',
+          700: '#e8dfc7', 
+          800: '#fdfbf7', // Primary panels (Cream)
+          900: '#f5f0e1', // Secondary panels (Slightly darker cream)
+          950: '#e8dfc7',
         },
-        // EMERALD mapped to Accents
+        // EMERALD mapped to MAROON Buttons
         emerald: {
-          50: '#FDFBF7',
-          100: '#F7F2E1',
-          200: '#EFE5C4',
-          300: '#E3D29A',
-          400: '#992626', // text-emerald-400 -> Highlight Maroon
-          500: '#800000', // bg-emerald-500 -> Button Maroon
+          50: '#fdfbf7',
+          100: '#f7f2e1',
+          200: '#efe5c4',
+          300: '#e3d29a',
+          400: '#d6bc69', // text-emerald-400 (Gold/Cream highlights)
+          500: '#800000', // bg-emerald-500 (Maroon Button)
           600: '#660000', // Hover Button
-          700: '#4D0000',
+          700: '#4d0000',
           800: '#330000',
-          900: '#1A0000',
-          950: '#0A0000',
+          900: '#1a0000',
+          950: '#0a0000',
         },
+        // AMBER mapped to GOLD
         amber: {
-          400: '#D97706',
-          500: '#B45309',
-          600: '#92400E',
+          400: '#d97706',
+          500: '#b45309',
+          600: '#92400e',
         },
       },
       fontFamily: {
