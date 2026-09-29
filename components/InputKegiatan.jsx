@@ -285,6 +285,11 @@ export default function InputKegiatan({
     if (filterRecapStatus === 'Revisi') return r.status === 'REVISI';
     if (filterRecapStatus === 'Ditolak') return r.status === 'DITOLAK';
     return true;
+  }).sort((a, b) => {
+    const timeA = new Date(a.tanggal || 0).getTime();
+    const timeB = new Date(b.tanggal || 0).getTime();
+    if (timeA !== timeB) return timeB - timeA;
+    return String(b.id || '').localeCompare(String(a.id || ''));
   });
 
   // Extract all photos from user's reports for the Gallery
