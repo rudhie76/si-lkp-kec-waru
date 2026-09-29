@@ -221,9 +221,9 @@ export default function DashboardView({
   };
 
   // 7 Active Days Accumulated Work Duration Calculation
-  const getLast7DaysData = () => {
+  const getLast4DaysData = () => {
     const dates = [];
-    for (let i = 6; i >= 0; i--) {
+    for (let i = 3; i >= 0; i--) {
       const d = new Date();
       d.setDate(d.getDate() - i);
       
@@ -251,7 +251,7 @@ export default function DashboardView({
     return dates;
   };
 
-  const last7Days = getLast7DaysData();
+  const last4Days = getLast4DaysData();
 
   // Category Distribution Calculation
     const categoriesList = [
@@ -474,7 +474,7 @@ export default function DashboardView({
               </div>
               <div>
                 <h3 className="text-sm font-bold text-slate-800">Tren Durasi Jam Kerja Harian</h3>
-                <p className="text-[11px] text-blue-600 font-medium">Akumulasi Jam Kerja Efektif (7 Hari Aktif Terakhir)</p>
+                <p className="text-[11px] text-blue-600 font-medium">Akumulasi Jam Kerja Efektif (4 Hari Aktif Terakhir)</p>
               </div>
             </div>
             <span className="text-[10px] bg-white text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200">
@@ -483,7 +483,7 @@ export default function DashboardView({
           </div>
 
           <div className="space-y-3 pt-2">
-            {last7Days.map((day, idx) => (
+            {last4Days.map((day, idx) => (
               <div key={idx} className="space-y-1 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-slate-700 font-mono">{day.label}</span>
