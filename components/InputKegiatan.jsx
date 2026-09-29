@@ -303,7 +303,7 @@ export default function InputKegiatan({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* LEFT COLUMN: FORM INPUT */}
-        <div className="lg:col-span-2 bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 md:p-8 shadow-xl">
+        <div className="lg:col-span-2 bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 shadow-xl">
           <div className="border-b border-slate-200 pb-4 mb-6 flex justify-between items-start">
             <div>
               <h1 className="text-2xl font-extrabold text-slate-800">
@@ -570,7 +570,7 @@ export default function InputKegiatan({
                 className={`w-full text-slate-800 font-extrabold text-sm py-3.5 rounded-2xl shadow-xl flex items-center justify-center space-x-2 transition-transform hover:-translate-y-0.5 ${
                   editingReportId 
                     ? 'bg-amber-600 hover:bg-amber-500 shadow-amber-900/40' 
-                    : 'bg-blue-600 hover:bg-blue-600 shadow-emerald-900/40'
+                    : 'bg-blue-600 hover:bg-blue-600 shadow-blue-600/20'
                 }`}
               >
                 <Send className="w-5 h-5" />
@@ -585,7 +585,7 @@ export default function InputKegiatan({
         <div className="space-y-6">
           
           {/* PROFIL PENGGAL LKH */}
-          <div className="bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 shadow-xl relative overflow-hidden">
+          <div className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <ShieldCheck className="w-24 h-24" />
             </div>
@@ -634,7 +634,7 @@ export default function InputKegiatan({
 
           {/* KARTU ATASAN PENILAI (Jika ada) */}
           {activeUser?.atasanValidasi && (
-            <div className="bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 shadow-xl relative overflow-hidden">
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
                 <ShieldCheck className="w-24 h-24" />
               </div>
@@ -695,7 +695,7 @@ export default function InputKegiatan({
           )}
 
           {/* GALERI FOTO KEGIATAN */}
-          <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 shadow-xl">
+          <div className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-xl">
             <h3 className="text-sm font-bold text-slate-800 flex items-center space-x-2 mb-4">
               <ImageIcon className="w-4 h-4 text-blue-600" />
               <span>Galeri Bukti Kegiatan</span>
@@ -721,7 +721,7 @@ export default function InputKegiatan({
       </div>
 
       {/* BAGIAN BAWAH: TABEL REKAPITULASI */}
-      <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 shadow-xl mt-8">
+      <div className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-xl mt-8">
         
         {/* Header Tabel & Filters */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-slate-200 pb-5">
@@ -764,7 +764,7 @@ export default function InputKegiatan({
                 <th className="py-4 px-4 text-right">AKSI</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-olive-800/60 text-slate-600 font-medium">
+            <tbody className="divide-y divide-slate-200 text-slate-600 font-medium">
               {filteredUserReports.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="py-12 text-center text-slate-400">

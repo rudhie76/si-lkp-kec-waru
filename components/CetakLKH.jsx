@@ -109,7 +109,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
   return (
     <div className="space-y-6">
       {/* FILTER SECTION (HIDDEN ON PRINT) */}
-      <div className="no-print bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-300 rounded-3xl p-6 shadow-xl space-y-4">
+      <div className="no-print bg-white border border-slate-300 rounded-3xl p-6 shadow-xl space-y-4">
         <div className="flex items-center space-x-3 border-b border-slate-200 pb-3">
           <div className="p-2 bg-blue-600/20 text-blue-600 rounded-xl">
             <Printer className="w-5 h-5" />
@@ -288,7 +288,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
         ) : (
           <table className="w-full border-collapse border border-black text-sm mb-10">
             <thead>
-              <tr className="bg-emerald-50 text-center">
+              <tr className="bg-blue-50 text-center">
                 <th className="border border-black p-2 w-10">No</th>
                 <th className="border border-black p-2 w-28">Waktu Pelaksanaan</th>
                 <th className="border border-black p-2">Uraian / Deskripsi Kegiatan Kerja</th>
@@ -317,7 +317,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
                     <td className="border border-black p-2 text-center align-top">{index + 1}</td>
                     <td className="border border-black p-2 align-top">
                       <div className="flex flex-col space-y-1.5 justify-center h-full text-left">
-                        <div className="flex items-center space-x-1.5 text-emerald-700 font-bold text-[11px] whitespace-nowrap">
+                        <div className="flex items-center space-x-1.5 text-blue-700 font-bold text-[11px] whitespace-nowrap">
                           <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
                           <span>{formatToCustomDate(r.tanggal)}</span>
                         </div>
@@ -359,14 +359,14 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
                 );
               })}
               {/* ROW TOTAL JAM KERJA */}
-              <tr className="bg-emerald-50 font-bold">
+              <tr className="bg-blue-50 font-bold">
                 <td colSpan={4} className="border border-black p-2 text-right">
                   Jumlah Jam Kerja Terakumulasi:
                 </td>
                 <td className="border border-black p-2 text-center">
                   {totalJamKerja} Jam
                 </td>
-                <td colSpan={2} className="border border-black p-2 text-center text-emerald-800 font-bold">{penilaianAkhir && `Penilaian: ${penilaianAkhir}`}</td>
+                <td colSpan={2} className="border border-black p-2 text-center text-blue-800 font-bold">{penilaianAkhir && `Penilaian: ${penilaianAkhir}`}</td>
               </tr>
             </tbody>
           </table>

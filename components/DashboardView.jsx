@@ -255,7 +255,7 @@ export default function DashboardView({
 
   // Category Distribution Calculation
   const categoriesList = [
-    { cat: 'Pelayanan Publik', color: 'bg-emerald-400', textColor: 'text-blue-600' },
+    { cat: 'Pelayanan Publik', color: 'bg-blue-400', textColor: 'text-blue-600' },
     { cat: 'Administrasi', color: 'bg-cyan-400', textColor: 'text-cyan-400' },
     { cat: 'Rapat & Koordinasi', color: 'bg-amber-500', textColor: 'text-amber-700' },
     { cat: 'Monitoring Lapangan', color: 'bg-amber-400', textColor: 'text-amber-700' },
@@ -282,7 +282,7 @@ export default function DashboardView({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Card 1: Total Laporan */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-olive-900 to-zinc-950 border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-emerald-400 transition-all duration-300">
+        <div className="relative overflow-hidden bg-white border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-blue-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Total Laporan LKH</p>
@@ -297,7 +297,7 @@ export default function DashboardView({
         </div>
 
         {/* Card 2: Divalidasi Atasan */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-olive-900 to-zinc-950 border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-emerald-400 transition-all duration-300">
+        <div className="relative overflow-hidden bg-white border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-blue-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Divalidasi Atasan</p>
@@ -312,7 +312,7 @@ export default function DashboardView({
         </div>
 
         {/* Card 3: Verifikasi PENDING */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-amber-950/90 via-olive-900 to-zinc-950 border border-amber-500/50 rounded-2xl p-5 shadow-xl group hover:border-amber-400 transition-all duration-300">
+        <div className="relative overflow-hidden bg-white border border-amber-500/50 rounded-2xl p-5 shadow-xl group hover:border-amber-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Verifikasi PENDING</p>
@@ -327,7 +327,7 @@ export default function DashboardView({
         </div>
 
         {/* Card 4: Durasi Jam Kerja */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-amber-950/90 via-olive-900 to-zinc-950 border border-gold-500/50 rounded-2xl p-5 shadow-xl group hover:border-gold-400 transition-all duration-300">
+        <div className="relative overflow-hidden bg-white border border-gold-500/50 rounded-2xl p-5 shadow-xl group hover:border-gold-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Durasi Jam Kerja</p>
@@ -356,7 +356,7 @@ export default function DashboardView({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* CARD 1: FOTO DIRI PEGAWAI LOGGED IN */}
-        <div className="bg-gradient-to-br from-olive-900 via-olive-950 to-zinc-950 border border-blue-600/40 rounded-3xl p-6 shadow-xl relative overflow-hidden space-y-4">
+        <div className="bg-white border border-blue-600/40 rounded-3xl p-6 shadow-xl relative overflow-hidden space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <span className="text-xs font-extrabold uppercase tracking-wider text-blue-600 flex items-center space-x-2">
               <User className="w-4 h-4 text-blue-600" />
@@ -368,13 +368,13 @@ export default function DashboardView({
           </div>
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-5 text-xs">
-            <div className="w-24 h-28 rounded-2xl overflow-hidden border-2 border-emerald-400 bg-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-950/60 relative">
+            <div className="w-24 h-28 rounded-2xl overflow-hidden border-2 border-blue-400 bg-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-600/20 relative">
               {activeUser.fotoProfil ? (
                 <img src={activeUser.fotoProfil} alt="Foto Diri" className="w-full h-full object-cover" />
               ) : (
                 <User className="w-12 h-12 text-slate-400" />
               )}
-              <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-blue-600 border-2 border-zinc-950 rounded-full" />
+              <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-blue-600 border-2 border-white rounded-full" />
             </div>
 
             <div className="space-y-1.5 text-center sm:text-left flex-1">
@@ -404,7 +404,7 @@ export default function DashboardView({
 
         {/* CARD 2: FOTO DIRI ATASAN VALIDASI PENILAI */}
         {validatingSuperior ? (
-          <div className="bg-gradient-to-br from-olive-900 via-olive-950 to-zinc-950 border border-amber-500/40 rounded-3xl p-6 shadow-xl relative overflow-hidden space-y-4">
+          <div className="bg-white border border-amber-500/40 rounded-3xl p-6 shadow-xl relative overflow-hidden space-y-4">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <span className="text-xs font-extrabold uppercase tracking-wider text-amber-700 flex items-center space-x-2">
                 <ShieldCheck className="w-4 h-4 text-amber-700" />
@@ -422,7 +422,7 @@ export default function DashboardView({
                 ) : (
                   <User className="w-12 h-12 text-slate-400" />
                 )}
-                <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-amber-500 border-2 border-zinc-950 rounded-full" />
+                <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-amber-500 border-2 border-white rounded-full" />
               </div>
 
               <div className="space-y-1.5 text-center sm:text-left flex-1">
@@ -450,7 +450,7 @@ export default function DashboardView({
             </div>
           </div>
         ) : (
-          <div className="bg-gradient-to-br from-olive-900 via-olive-950 to-zinc-950 border border-slate-300 rounded-3xl p-6 shadow-xl relative overflow-hidden flex flex-col items-center justify-center text-center opacity-80">
+          <div className="bg-white border border-slate-300 rounded-3xl p-6 shadow-xl relative overflow-hidden flex flex-col items-center justify-center text-center opacity-80">
             <div className="w-20 h-20 bg-slate-100/30 rounded-full flex items-center justify-center mb-4">
               <ShieldCheck className="w-10 h-10 text-blue-600" />
             </div>
@@ -467,7 +467,7 @@ export default function DashboardView({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* WIDGET KIRI: TREN DURASI JAM KERJA HARIAN (7 HARI AKTIF TERAKHIR) */}
-        <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-blue-600/20 text-blue-600 rounded-xl border border-blue-600/30">
@@ -502,7 +502,7 @@ export default function DashboardView({
         </div>
 
         {/* WIDGET KANAN: DISTRIBUSI KATEGORI KEGIATAN */}
-        <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-cyan-500/20 text-cyan-400 rounded-xl border border-cyan-500/30">
@@ -536,7 +536,7 @@ export default function DashboardView({
       </div>
 
       {/* TABEL AKTIVITAS TERBARU (DISINGKAT FORMAT: HARI, DD/MMM/YYYY; DURASI WAKTU 00:00 - 00:00 & TOMBOL EDIT/HAPUS) */}
-      <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
+      <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
         
         {/* Header & Controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
@@ -569,7 +569,7 @@ export default function DashboardView({
               placeholder="🔍 Cari nama pegawai, NIP, uraian pekerjaan..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+              className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
             />
           </div>
 
@@ -601,7 +601,7 @@ export default function DashboardView({
                 <th className="py-3.5 px-4 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-olive-800/40 text-slate-700">
+            <tbody className="divide-y divide-slate-200 text-slate-700">
               {filteredReports.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="py-8 text-center text-slate-500">
@@ -706,7 +706,7 @@ export default function DashboardView({
       {/* MODAL 1: DETAIL LKH */}
       {selectedReport && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 max-w-xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white border border-slate-200/60 rounded-3xl p-6 max-w-xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center space-x-2">
                 <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
@@ -773,7 +773,7 @@ export default function DashboardView({
       {/* MODAL 2: EDIT LAPORAN LKH */}
       {editingReport && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <form onSubmit={handleSaveEditSubmit} className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 max-w-xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
+          <form onSubmit={handleSaveEditSubmit} className="bg-white border border-slate-200/60 rounded-3xl p-6 max-w-xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
             
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center space-x-2">

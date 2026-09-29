@@ -199,7 +199,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               <Database className="w-4 h-4 text-blue-600" />
               <span>🔗 Pengaturan Database Google Sheets</span>
               {isGSConnected ? (
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Google Sheets Terhubung" />
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" title="Google Sheets Terhubung" />
               ) : (
                 <span className="text-[10px] bg-amber-500/20 text-amber-800 px-1.5 py-0.5 rounded-md border border-amber-500/40">Belum Terhubung</span>
               )}
@@ -210,7 +210,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
 
       {/* FORM CARD CONTAINER */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <div className="bg-gradient-to-b from-olive-900 via-olive-950 to-zinc-950 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-emerald-950/50 space-y-6">
+        <div className="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-blue-600/20 space-y-6">
           
           {/* TAB SWITCHER */}
           <div className="flex bg-white/90 p-1 rounded-2xl border border-slate-200">
@@ -219,7 +219,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               onClick={() => { setActiveTab('login'); setLoginError(''); setRegError(''); }}
               className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'login'
-                  ? 'bg-blue-600 text-white shadow-lg shadow-emerald-900/40'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -232,7 +232,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               onClick={() => { setActiveTab('register'); setLoginError(''); setRegError(''); }}
               className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'register'
-                  ? 'bg-blue-600 text-white shadow-lg shadow-emerald-900/40'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -262,7 +262,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Masukkan NIP atau Nama Lengkap"
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600 transition-colors"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors"
                   />
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Masukkan Password"
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-10 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600 transition-colors"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-10 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-colors"
                   />
                   <button
                     type="button"
@@ -352,7 +352,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Contoh: Andi Hasmainti, S.IP."
                     value={regData.name}
                     onChange={(e) => setRegData({ ...regData, name: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -365,7 +365,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: 19981212 201101 2 001"
                   value={regData.nip}
                   onChange={(e) => setRegData({ ...regData, nip: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600 font-mono"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600 font-mono"
                 />
               </div>
 
@@ -379,7 +379,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Contoh: 08123456789"
                     value={regData.noWa}
                     onChange={(e) => setRegData({ ...regData, noWa: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -392,7 +392,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: emailku@domain.com"
                   value={regData.email}
                   onChange={(e) => setRegData({ ...regData, email: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -404,7 +404,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: Pengelola Pelayanan / Kasi / Sekcam / Camat"
                   value={regData.jabatan}
                   onChange={(e) => setRegData({ ...regData, jabatan: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -415,7 +415,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: Penata Muda / IIIa, Pembina / IVa"
                   value={regData.pangkatGolongan}
                   onChange={(e) => setRegData({ ...regData, pangkatGolongan: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -426,7 +426,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: Kecamatan Waru"
                   value={regData.unitKerja}
                   onChange={(e) => setRegData({ ...regData, unitKerja: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -548,7 +548,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Buat Password Akun"
                     value={regData.password}
                     onChange={(e) => setRegData({ ...regData, password: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>

@@ -112,7 +112,7 @@ export default function VerifikasiAtasan({
     <div className="space-y-6">
       
       {/* HEADER SECTION */}
-      <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
           <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-10 h-12 object-contain drop-shadow" />
           <div>
@@ -143,7 +143,7 @@ export default function VerifikasiAtasan({
       </div>
 
       {/* TABLE REPORTS */}
-      <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <h2 className="text-sm font-bold text-slate-800 flex items-center space-x-2">
             <span>Daftar Laporan Masuk Bawahan Langsung ({filteredReports.length} Data)</span>
@@ -162,7 +162,7 @@ export default function VerifikasiAtasan({
                 <th className="py-3 px-4 text-right">Tindakan Validasi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-olive-800/40 text-slate-700">
+            <tbody className="divide-y divide-slate-200 text-slate-700">
               {filteredReports.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="py-8 text-center text-slate-500">
@@ -254,7 +254,7 @@ export default function VerifikasiAtasan({
       {/* DETAIL & VALIDASI MODAL */}
       {selectedReport && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 max-w-2xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white border border-slate-200/60 rounded-3xl p-6 max-w-2xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
             
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center space-x-2">

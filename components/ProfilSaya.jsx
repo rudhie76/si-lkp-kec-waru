@@ -25,14 +25,14 @@ export default function ProfilSaya({ currentUser, onUpdateProfile, users = [] })
       )}
 
       {/* HEADER BANNER */}
-      <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-slate-200 rounded-3xl p-8 shadow-2xl flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 text-center md:text-left relative overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-2xl flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 text-center md:text-left relative overflow-hidden">
         
         {/* Abstract Background Design */}
         <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative group flex-shrink-0">
-          <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-600 bg-white flex items-center justify-center shadow-xl shadow-emerald-900/50">
+          <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-600 bg-white flex items-center justify-center shadow-xl shadow-blue-600/20">
             {currentUser?.fotoProfil ? (
               <img src={currentUser.fotoProfil} alt="Foto Profil" className="w-full h-full object-cover" />
             ) : (
@@ -69,7 +69,7 @@ export default function ProfilSaya({ currentUser, onUpdateProfile, users = [] })
           <div className="pt-4 flex justify-center md:justify-start">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-blue-600 hover:bg-blue-600 text-white font-bold text-sm px-6 py-2.5 rounded-full transition-all shadow-lg shadow-emerald-900/50 flex items-center space-x-2 hover:scale-105"
+              className="bg-blue-600 hover:bg-blue-600 text-white font-bold text-sm px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 flex items-center space-x-2 hover:scale-105"
             >
               <Edit3 className="w-4 h-4" />
               <span>Edit Profil Pegawai</span>
@@ -79,7 +79,7 @@ export default function ProfilSaya({ currentUser, onUpdateProfile, users = [] })
       </div>
 
       {/* BIODATA LENGKAP - READ ONLY SECTION */}
-      <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-3xl p-8 shadow-xl">
+      <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-xl">
         <h2 className="text-lg font-bold text-slate-800 flex items-center space-x-2 border-b border-slate-200 pb-4 mb-6">
           <User className="w-5 h-5 text-blue-600" />
           <span>Informasi Biodata Pegawai</span>
@@ -315,7 +315,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-      <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl w-full max-w-3xl shadow-2xl relative my-auto">
+      <div className="bg-white border border-slate-200/60 rounded-3xl w-full max-w-3xl shadow-2xl relative my-auto">
         
         {/* HEADER MODAL */}
         <div className="flex items-center justify-between p-6 border-b border-slate-200">
@@ -538,7 +538,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
           )}
 
           {/* ATASAN PENILAI LANGSUNG */}
-          <div className="bg-emerald-950/30 border border-emerald-900/50 rounded-2xl p-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4">
             <h3 className="text-blue-600 font-bold text-[10px] uppercase tracking-widest mb-1">ATASAN PENILAI LANGSUNG (VALIDATOR LKH)</h3>
             <p className="text-[10px] text-slate-500 mb-3 leading-tight">Pilih Pegawai yang berwenang memeriksa dan menyetujui Laporan Kerja Harian (LKH) Anda.</p>
             
@@ -595,7 +595,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
             <button
               type="submit"
               disabled={isLoading}
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-600 text-white text-xs font-bold shadow-lg shadow-emerald-900/50 flex items-center space-x-2 transition-transform hover:scale-105"
+              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-600 text-white text-xs font-bold shadow-lg shadow-blue-600/20 flex items-center space-x-2 transition-transform hover:scale-105"
             >
               <Save className="w-4 h-4" />
               <span>{isLoading ? 'Menyimpan...' : 'Simpan Perubahan'}</span>

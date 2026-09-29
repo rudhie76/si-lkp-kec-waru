@@ -51,7 +51,7 @@ export default function PengingatWA({ pegawaiList }) {
     <div className="max-w-4xl mx-auto space-y-6">
       
       {/* Title Header */}
-      <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-2">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-2">
         <div className="flex items-center space-x-4">
           <div className="p-3 bg-blue-600/20 text-blue-600 border border-blue-600/30 rounded-xl">
             <MessageSquare className="w-6 h-6" />
@@ -67,7 +67,7 @@ export default function PengingatWA({ pegawaiList }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
         
         {/* Form Controls */}
-        <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
           
           <div>
             <label className="block text-slate-600 font-semibold mb-1.5 flex items-center space-x-1.5">
@@ -108,7 +108,7 @@ export default function PengingatWA({ pegawaiList }) {
                   name="template"
                   checked={templateType === 'REMINDER'}
                   onChange={() => setTemplateType('REMINDER')}
-                  className="accent-emerald-500"
+                  className="accent-blue-600"
                 />
                 <span className="text-slate-700">Pengingat Belum Input LKH Harian</span>
               </label>
@@ -119,7 +119,7 @@ export default function PengingatWA({ pegawaiList }) {
                   name="template"
                   checked={templateType === 'APPROVED'}
                   onChange={() => setTemplateType('APPROVED')}
-                  className="accent-emerald-500"
+                  className="accent-blue-600"
                 />
                 <span className="text-slate-700">Pemberitahuan LKH Disetujui</span>
               </label>
@@ -130,7 +130,7 @@ export default function PengingatWA({ pegawaiList }) {
                   name="template"
                   checked={templateType === 'REVISION'}
                   onChange={() => setTemplateType('REVISION')}
-                  className="accent-emerald-500"
+                  className="accent-blue-600"
                 />
                 <span className="text-slate-700">Teguran Catatan Revisi LKH</span>
               </label>
@@ -140,7 +140,7 @@ export default function PengingatWA({ pegawaiList }) {
         </div>
 
         {/* Message Preview Box */}
-        <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
           <div>
             <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-3">
               <h3 className="font-bold text-slate-800 flex items-center space-x-2">

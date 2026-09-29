@@ -296,10 +296,10 @@ export default function Page() {
     ));
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-zinc-100 selection:bg-blue-600 selection:text-white font-sans">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 selection:bg-blue-600 selection:text-white font-sans">
       
       {/* TOPBAR HEADER */}
-      <header className="sticky top-0 z-40 bg-gradient-to-r from-olive-950 via-olive-900 to-zinc-950 border-b border-slate-200 shadow-2xl backdrop-blur-md">
+      <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-2xl backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Brand Logo & Title */}
@@ -363,13 +363,13 @@ export default function Page() {
                   <User className="w-4 h-4 text-blue-600" />
                 )}
                 {/* Active Status Dot */}
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-blue-600 border border-zinc-950 rounded-full" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-blue-600 border border-white rounded-full" />
               </button>
 
               <div className="cursor-pointer" onClick={() => setActiveTab('profil')}>
                 <div className="flex items-center space-x-1">
                   <span className="font-bold text-slate-800 block text-[11px] leading-none truncate max-w-[130px]">{currentUser.name}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 </div>
                 <span className="text-[10px] text-blue-600 font-medium">({currentUser.role})</span>
               </div>
@@ -407,7 +407,7 @@ export default function Page() {
           ${isMobileMenuOpen ? 'block' : 'hidden md:block'}
         `}>
           
-          <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-2xl p-4 shadow-xl space-y-4 sticky top-28">
+          <div className="bg-white shadow-sm border border-slate-200 rounded-2xl p-4 space-y-4 sticky top-28">
             
             {/* GROUP 1: MENU UTAMA */}
             <div className="space-y-1">
@@ -417,7 +417,7 @@ export default function Page() {
                 onClick={() => { setActiveTab('dashboard'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'dashboard'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
@@ -429,7 +429,7 @@ export default function Page() {
                 onClick={() => { setActiveTab('profil'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'profil'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
@@ -441,7 +441,7 @@ export default function Page() {
                 onClick={() => { setActiveTab('input'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'input'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
@@ -460,7 +460,7 @@ export default function Page() {
                   onClick={() => { setActiveTab('verify'); setIsMobileMenuOpen(false); }}
                   className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     activeTab === 'verify'
-                      ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                      ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                       : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
@@ -473,7 +473,7 @@ export default function Page() {
                 onClick={() => { setActiveTab('cetak'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'cetak'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
@@ -485,7 +485,7 @@ export default function Page() {
                 onClick={() => { setActiveTab('rekap'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'rekap'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
@@ -502,7 +502,7 @@ export default function Page() {
                 onClick={() => { setActiveTab('wa'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'wa'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
@@ -526,7 +526,7 @@ export default function Page() {
                   onClick={() => { setActiveTab('pegawai'); setIsMobileMenuOpen(false); }}
                   className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     activeTab === 'pegawai'
-                      ? 'bg-blue-600 text-white font-bold shadow-lg shadow-emerald-900/40'
+                      ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
                       : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
@@ -538,7 +538,7 @@ export default function Page() {
 
             {/* POINT 1: ALUR PELAPORAN LKH (DITEMPATKAN DI BAWAH KOLOM MENU SIDEBAR) */}
             <div className="pt-3 border-t border-slate-200 space-y-2">
-              <div className="bg-gradient-to-b from-olive-950 to-zinc-950 border border-slate-200 p-3 rounded-xl space-y-2 text-xs">
+              <div className="bg-white border border-slate-200 p-3 rounded-xl space-y-2 text-xs">
                 <div className="flex items-center space-x-2 border-b border-slate-200 pb-2">
                   <span className="text-sm">🚀</span>
                   <div>

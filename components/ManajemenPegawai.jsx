@@ -97,7 +97,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
     <div className="space-y-6">
       
       {/* Title Header */}
-      <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-4">
           <div className="p-3 bg-blue-600/20 text-blue-600 border border-blue-600/30 rounded-xl">
             <Users className="w-6 h-6" />
@@ -120,7 +120,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
       </div>
 
       {/* Main Table */}
-      <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
         
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <h2 className="text-base font-bold text-slate-800">Daftar Akun Pegawai Terdaftar ({users.length})</h2>
@@ -138,7 +138,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                 <th className="py-3 px-4 text-right">Aksi Kelola</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-olive-800/40 text-slate-700">
+            <tbody className="divide-y divide-slate-200 text-slate-700">
               {users.map(u => {
                 const isUserAdmin = u.role === 'Admin';
                 return (

@@ -171,7 +171,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
       <div className="no-print space-y-4">
         
         {/* Header Bar */}
-        <div className="bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-300 rounded-3xl p-6 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-4">
+        <div className="bg-white border border-slate-300 rounded-3xl p-6 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-4 w-full lg:w-1/2">
             <div className="p-3 bg-slate-100 text-blue-600 rounded-xl border border-slate-200">
               <FileText className="w-6 h-6" />
@@ -344,7 +344,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
           <h4 className="font-bold text-[13px] mb-2 uppercase">I. Ringkasan Kinerja Berdasarkan Kategori Tugas</h4>
           <table className="w-full border-collapse border border-black text-[13px]">
             <thead>
-              <tr className="bg-emerald-50">
+              <tr className="bg-blue-50">
                 <th className="border border-black p-2 w-12 text-center">No</th>
                 <th className="border border-black p-2 text-left">Kategori Kegiatan</th>
                 <th className="border border-black p-2 w-32 text-center">Jumlah Kegiatan</th>
@@ -378,7 +378,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
           <h4 className="font-bold text-[13px] mb-2 uppercase">II. Rincian Pelaksanaan Kegiatan Harian</h4>
           <table className="w-full border-collapse border border-black text-[12px]">
             <thead>
-              <tr className="bg-emerald-50 text-center">
+              <tr className="bg-blue-50 text-center">
                 <th className="border border-black p-2 w-8">No</th>
                 <th className="border border-black p-2 w-40">Waktu Pelaksanaan</th>
                 <th className="border border-black p-2">Uraian / Deskripsi Kegiatan Kerja</th>
@@ -410,7 +410,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
                       <td className="border border-black p-2 text-center align-top font-bold text-xs">
                           {isDisetujui ? (
                             <span className="flex items-center justify-center space-x-1 font-bold text-xs">
-                              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                              <CheckCircle2 className="w-3 h-3 text-blue-600" />
                               <span>Disetujui</span>
                             </span>
                           ) : (
@@ -419,7 +419,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
                         </td>
                       <td className="border border-black p-2 align-top">
                         <div className="flex flex-col space-y-1.5 justify-center h-full text-left">
-                          <div className="flex items-center space-x-1.5 font-bold text-emerald-800 text-[11px] whitespace-nowrap">
+                          <div className="flex items-center space-x-1.5 font-bold text-blue-800 text-[11px] whitespace-nowrap">
                             <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
                             <span>{formatToCustomDate(r.tanggal)}</span>
                           </div>
@@ -449,7 +449,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
                       </td>
                       <td className="border border-black p-2 text-center align-top">
                         <span className="flex items-center justify-center space-x-1 font-bold text-xs">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                          <CheckCircle2 className="w-3 h-3 text-blue-600" />
                           <span>Disetujui</span>
                         </span>
                       </td>
@@ -458,12 +458,12 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
                 })
               )}
               {approvedReports.length > 0 && (
-                <tr className="font-bold bg-emerald-50">
+                <tr className="font-bold bg-blue-50">
                   <td colSpan={4} className="border border-black p-2 text-right">Jumlah Jam Kerja Terakumulasi:</td>
                   <td className="border border-black p-2 text-center">{totalHours} Jam</td>
                   <td colSpan={2} className="border border-black p-2 text-center text-[11px]">
                       Penilaian Akhir:<br/>
-                      <span className="text-sm font-extrabold text-emerald-800">{finalMonthRating}</span>
+                      <span className="text-sm font-extrabold text-blue-800">{finalMonthRating}</span>
                     </td>
                 </tr>
               )}
