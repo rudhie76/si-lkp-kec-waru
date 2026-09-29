@@ -301,7 +301,20 @@ export default function DashboardView({
             <div>
               <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Total Laporan LKH</p>
               <h3 className="text-3xl font-extrabold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors">{totalReports}</h3>
-              <p className="text-xs text-slate-600 mt-1">Seluruh kegiatan terdata</p>
+              {hasSubordinates ? (
+                <div className="flex flex-col gap-1 mt-2 border-t border-blue-200 pt-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">LKH Saya:</span>
+                    <span className="text-blue-600 font-bold">{myReports.length}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-500">LKH Bawahan:</span>
+                    <span className="text-blue-600 font-bold">{subordinateReports.length}</span>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-xs text-slate-600 mt-1">Seluruh kegiatan terdata</p>
+              )}
             </div>
             <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <FileText className="w-6 h-6" />
