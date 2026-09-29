@@ -213,7 +213,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
         <div className="bg-gradient-to-b from-olive-900 via-olive-950 to-zinc-950 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-emerald-950/50 space-y-6">
           
           {/* TAB SWITCHER */}
-          <div className="flex bg-white/90 p-1 rounded-2xl border border-olive-800/80">
+          <div className="flex bg-white/90 p-1 rounded-2xl border border-slate-200">
             <button
               type="button"
               onClick={() => { setActiveTab('login'); setLoginError(''); setRegError(''); }}

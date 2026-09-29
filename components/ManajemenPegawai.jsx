@@ -122,15 +122,15 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
       {/* Main Table */}
       <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
         
-        <div className="flex items-center justify-between border-b border-olive-800/80 pb-3">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <h2 className="text-base font-bold text-slate-800">Daftar Akun Pegawai Terdaftar ({users.length})</h2>
-          <span className="text-xs text-slate-500">Pengelola Aktif: <strong className="text-gold-400">{currentUser?.name} ({currentUser?.role})</strong></span>
+          <span className="text-xs text-slate-500">Pengelola Aktif: <strong className="text-amber-700">{currentUser?.name} ({currentUser?.role})</strong></span>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-olive-800/80">
+        <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-white shadow-sm border border-slate-200 text-slate-600 font-semibold border-b border-olive-800">
+              <tr className="bg-white shadow-sm border border-slate-200 text-slate-600 font-semibold border-b border-slate-200">
                 <th className="py-3 px-4">Nama Pegawai & NIP</th>
                 <th className="py-3 px-4">Jabatan & Pangkat</th>
                 <th className="py-3 px-4">Unit Kerja & Atasan</th>
@@ -150,7 +150,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     </td>
                     <td className="py-3.5 px-4 text-slate-600 whitespace-nowrap">
                       <div className="font-semibold text-slate-800">{u.jabatan}</div>
-                      <div className="text-[11px] text-gold-400">{u.pangkatGolongan || '-'}</div>
+                      <div className="text-[11px] text-amber-700">{u.pangkatGolongan || '-'}</div>
                     </td>
                     <td className="py-3.5 px-4 text-slate-600 whitespace-nowrap">
                       <div>{u.unitKerja || '-'}</div>
@@ -158,7 +158,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     </td>
                     <td className="py-3.5 px-4 text-center whitespace-nowrap">
                       {isUserAdmin ? (
-                        <span className="inline-flex items-center space-x-1 bg-gold-500/15 border border-gold-500/30 text-gold-400 text-[10px] font-bold px-2.5 py-1 rounded-full">
+                        <span className="inline-flex items-center space-x-1 bg-amber-100 border border-amber-300 text-amber-700 text-[10px] font-bold px-2.5 py-1 rounded-full">
                           <ShieldCheck className="w-3.5 h-3.5" />
                           <span>Admin (Atasan)</span>
                         </span>

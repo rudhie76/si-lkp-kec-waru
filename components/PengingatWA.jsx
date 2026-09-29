@@ -102,7 +102,7 @@ export default function PengingatWA({ pegawaiList }) {
           <div>
             <label className="block text-slate-600 font-semibold mb-1.5">Pilih Template Pesan:</label>
             <div className="space-y-2">
-              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-olive-800/80 cursor-pointer hover:border-red-800/50">
+              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-red-800/50">
                 <input
                   type="radio"
                   name="template"
@@ -113,7 +113,7 @@ export default function PengingatWA({ pegawaiList }) {
                 <span className="text-slate-700">Pengingat Belum Input LKH Harian</span>
               </label>
 
-              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-olive-800/80 cursor-pointer hover:border-red-800/50">
+              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-red-800/50">
                 <input
                   type="radio"
                   name="template"
@@ -124,7 +124,7 @@ export default function PengingatWA({ pegawaiList }) {
                 <span className="text-slate-700">Pemberitahuan LKH Disetujui</span>
               </label>
 
-              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-olive-800/80 cursor-pointer hover:border-red-800/50">
+              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-red-800/50">
                 <input
                   type="radio"
                   name="template"
@@ -142,7 +142,7 @@ export default function PengingatWA({ pegawaiList }) {
         {/* Message Preview Box */}
         <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
           <div>
-            <div className="flex items-center justify-between border-b border-olive-800/80 pb-3 mb-3">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-3">
               <h3 className="font-bold text-slate-800 flex items-center space-x-2">
                 <span>Pratinjau Teks WhatsApp</span>
               </h3>

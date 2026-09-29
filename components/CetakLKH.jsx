@@ -110,7 +110,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
     <div className="space-y-6">
       {/* FILTER SECTION (HIDDEN ON PRINT) */}
       <div className="no-print bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-300 rounded-3xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center space-x-3 border-b border-olive-800/80 pb-3">
+        <div className="flex items-center space-x-3 border-b border-slate-200 pb-3">
           <div className="p-2 bg-red-800/20 text-red-800 rounded-xl">
             <Printer className="w-5 h-5" />
           </div>
@@ -153,7 +153,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
           </div>
         </div>
 
-        <div className="pt-2 flex justify-between items-center border-t border-olive-800/80 mt-2">
+        <div className="pt-2 flex justify-between items-center border-t border-slate-200 mt-2">
           
           <div className="flex flex-col">
             <label className="flex items-center space-x-2 text-slate-600 text-xs cursor-pointer hover:text-red-800 transition-colors">

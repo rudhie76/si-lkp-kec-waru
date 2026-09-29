@@ -80,7 +80,7 @@ export default function ProfilSaya({ currentUser, onUpdateProfile, users = [] })
 
       {/* BIODATA LENGKAP - READ ONLY SECTION */}
       <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-3xl p-8 shadow-xl">
-        <h2 className="text-lg font-bold text-slate-800 flex items-center space-x-2 border-b border-olive-800/80 pb-4 mb-6">
+        <h2 className="text-lg font-bold text-slate-800 flex items-center space-x-2 border-b border-slate-200 pb-4 mb-6">
           <User className="w-5 h-5 text-red-800" />
           <span>Informasi Biodata Pegawai</span>
         </h2>
@@ -138,7 +138,7 @@ export default function ProfilSaya({ currentUser, onUpdateProfile, users = [] })
 
           <div className="space-y-1 md:col-span-2">
             <span className="text-slate-500 text-xs uppercase font-bold tracking-wider">Peran Struktur & Validasi</span>
-            <div className="bg-slate-50 border border-olive-800/80 rounded-xl p-4 mt-1">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-1">
               <div className="font-bold text-slate-800 mb-2">{currentUser?.peranStruktur || '-'}</div>
               <div className="text-xs text-slate-500 flex items-center space-x-2">
                 <ShieldCheck className="w-4 h-4 text-amber-700" />
@@ -318,7 +318,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
       <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl w-full max-w-3xl shadow-2xl relative my-auto">
         
         {/* HEADER MODAL */}
-        <div className="flex items-center justify-between p-6 border-b border-olive-800/80">
+        <div className="flex items-center justify-between p-6 border-b border-slate-200">
           <div>
             <h2 className="text-xl font-extrabold text-slate-800">Edit Profil Pegawai</h2>
             <p className="text-[11px] text-red-800 mt-1">Pembaruan biodata, pangkat, jabatan, dan peran struktural Anda.</p>
@@ -336,7 +336,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
           {/* FOTO PROFIL SECTION */}
           <div className="flex flex-col items-center justify-center -mt-2">
             <div className="relative group">
-              <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-olive-800 bg-white flex items-center justify-center shadow-xl">
+              <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-slate-200 bg-white flex items-center justify-center shadow-xl">
                 {formData.fotoProfil ? (
                   <img src={formData.fotoProfil} alt="Foto Profil" className="w-full h-full object-cover" />
                 ) : (
@@ -346,7 +346,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="absolute bottom-0 right-0 p-2.5 bg-rose-600 hover:bg-red-800 text-slate-800 rounded-full border-2 border-olive-950 shadow-lg transition-transform hover:scale-110"
+                className="absolute bottom-0 right-0 p-2.5 bg-rose-600 hover:bg-red-800 text-slate-800 rounded-full border-2 border-slate-300 shadow-lg transition-transform hover:scale-110"
                 title="Unggah Foto Profil Baru"
               >
                 <Camera className="w-4 h-4" />
@@ -584,7 +584,7 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
           </div>
 
           {/* FOOTER ACTIONS */}
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-olive-800/80">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}

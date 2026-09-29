@@ -299,7 +299,7 @@ export default function Page() {
     <div className="min-h-screen flex flex-col bg-slate-50 text-zinc-100 selection:bg-red-800 selection:text-white font-sans">
       
       {/* TOPBAR HEADER */}
-      <header className="sticky top-0 z-40 bg-gradient-to-r from-olive-950 via-olive-900 to-zinc-950 border-b border-olive-800/80 shadow-2xl backdrop-blur-md">
+      <header className="sticky top-0 z-40 bg-gradient-to-r from-olive-950 via-olive-900 to-zinc-950 border-b border-slate-200 shadow-2xl backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Brand Logo & Title */}
@@ -334,7 +334,7 @@ export default function Page() {
           <div className="hidden md:flex items-center space-x-3 text-xs">
             
             {/* WITA Clock */}
-            <div className="bg-white shadow-sm border border-slate-200 border border-olive-800/80 px-3 py-1.5 rounded-xl text-slate-600 font-mono text-[11px] flex items-center space-x-1.5 shadow-inner">
+            <div className="bg-white shadow-sm border border-slate-200 border border-slate-200 px-3 py-1.5 rounded-xl text-slate-600 font-mono text-[11px] flex items-center space-x-1.5 shadow-inner">
               <span>{witaTime || '📅 WITA'}</span>
             </div>
 
@@ -537,9 +537,9 @@ export default function Page() {
             </div>
 
             {/* POINT 1: ALUR PELAPORAN LKH (DITEMPATKAN DI BAWAH KOLOM MENU SIDEBAR) */}
-            <div className="pt-3 border-t border-olive-800/80 space-y-2">
-              <div className="bg-gradient-to-b from-olive-950 to-zinc-950 border border-olive-800/80 p-3 rounded-xl space-y-2 text-xs">
-                <div className="flex items-center space-x-2 border-b border-olive-800/80 pb-2">
+            <div className="pt-3 border-t border-slate-200 space-y-2">
+              <div className="bg-gradient-to-b from-olive-950 to-zinc-950 border border-slate-200 p-3 rounded-xl space-y-2 text-xs">
+                <div className="flex items-center space-x-2 border-b border-slate-200 pb-2">
                   <span className="text-sm">🚀</span>
                   <div>
                     <h4 className="font-bold text-slate-800 text-[11px]">Alur Pelaporan LKH</h4>
@@ -563,8 +563,8 @@ export default function Page() {
             </div>
 
             {/* INFO USER DI BAWAH SIDEBAR */}
-            <div className="pt-2 border-t border-olive-800/80">
-              <div className="bg-white shadow-sm border border-slate-200/90 border border-olive-800/80 p-3 rounded-xl text-[11px] space-y-1.5 shadow-inner">
+            <div className="pt-2 border-t border-slate-200">
+              <div className="bg-white shadow-sm border border-slate-200/90 border border-slate-200 p-3 rounded-xl text-[11px] space-y-1.5 shadow-inner">
                 <div className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Info User Logged In:</div>
                 <div className="flex items-center space-x-2">
                   <div className="w-7 h-7 rounded-lg overflow-hidden bg-slate-100 border border-red-800/40 flex items-center justify-center flex-shrink-0">

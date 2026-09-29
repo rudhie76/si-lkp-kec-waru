@@ -83,7 +83,7 @@ export default function GoogleSheetsModal({ isOpen, onClose, onDataSynced, onUse
         </button>
 
         {/* Title */}
-        <div className="flex items-center space-x-3 border-b border-olive-800 pb-3">
+        <div className="flex items-center space-x-3 border-b border-slate-200 pb-3">
           <div className="p-2.5 bg-red-800/20 text-red-800 rounded-xl border border-red-800/30">
             <Database className="w-5 h-5" />
           </div>
@@ -124,7 +124,7 @@ export default function GoogleSheetsModal({ isOpen, onClose, onDataSynced, onUse
         </div>
 
         {/* Setup Instructions */}
-        <div className="bg-white/90 border border-olive-800/80 rounded-xl p-3.5 space-y-2 text-[11px] text-slate-600">
+        <div className="bg-white/90 border border-slate-200 rounded-xl p-3.5 space-y-2 text-[11px] text-slate-600">
           <div className="font-semibold text-red-800 flex items-center space-x-1">
             <Code className="w-3.5 h-3.5" />
             <span>Panduan Pasang Kode Google Apps Script:</span>

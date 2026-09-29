@@ -304,7 +304,7 @@ export default function InputKegiatan({
         
         {/* LEFT COLUMN: FORM INPUT */}
         <div className="lg:col-span-2 bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 md:p-8 shadow-xl">
-          <div className="border-b border-olive-800/80 pb-4 mb-6 flex justify-between items-start">
+          <div className="border-b border-slate-200 pb-4 mb-6 flex justify-between items-start">
             <div>
               <h1 className="text-2xl font-extrabold text-slate-800">
                 {editingReportId ? 'Mode Edit Akun LKH' : 'Input Kegiatan Harian ASN'}
@@ -606,7 +606,7 @@ export default function InputKegiatan({
                 <p className="text-red-800 font-mono text-xs font-bold mt-0.5">NIP. {activeUser?.nip || '123456789'}</p>
               </div>
 
-              <div className="w-full space-y-2.5 text-left bg-white/60 p-4 rounded-2xl border border-olive-800/80">
+              <div className="w-full space-y-2.5 text-left bg-white/60 p-4 rounded-2xl border border-slate-200">
                 <div className="flex items-start space-x-2.5">
                   <Briefcase className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" />
                   <div>
@@ -663,7 +663,7 @@ export default function InputKegiatan({
                       </div>
                       
                       {atasanObj && (
-                        <div className="w-full space-y-2 text-left bg-white/60 p-3 rounded-xl border border-olive-800/80 mt-2">
+                        <div className="w-full space-y-2 text-left bg-white/60 p-3 rounded-xl border border-slate-200 mt-2">
                           <div className="flex items-start space-x-2">
                             <Briefcase className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
                             <div>
@@ -702,7 +702,7 @@ export default function InputKegiatan({
             </h3>
             
             {galleryPhotos.length === 0 ? (
-              <div className="py-8 text-center text-slate-400 border border-dashed border-olive-800 rounded-2xl bg-white/30">
+              <div className="py-8 text-center text-slate-400 border border-dashed border-slate-200 rounded-2xl bg-white/30">
                 <ImageIcon className="w-8 h-8 mx-auto mb-2 opacity-30" />
                 <p className="text-xs">Belum ada foto kegiatan.</p>
               </div>
@@ -724,7 +724,7 @@ export default function InputKegiatan({
       <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 shadow-xl mt-8">
         
         {/* Header Tabel & Filters */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-olive-800/80 pb-5">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-slate-200 pb-5">
           <div>
             <h2 className="text-lg font-extrabold text-slate-800 flex items-center space-x-2">
               <Activity className="w-5 h-5 text-red-800" />
@@ -741,7 +741,7 @@ export default function InputKegiatan({
                 className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all border ${
                   filterRecapStatus === status
                     ? 'bg-red-800 border-red-800 text-white shadow-md'
-                    : 'bg-slate-50 border-olive-800 text-slate-500 hover:text-slate-800 hover:bg-slate-100'
+                    : 'bg-slate-50 border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-100'
                 }`}
               >
                 {status}

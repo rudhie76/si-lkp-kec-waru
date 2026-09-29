@@ -133,7 +133,7 @@ export default function VerifikasiAtasan({
               className={`px-3 py-2 rounded-xl font-bold transition-all ${
                 filterStatus === st
                   ? 'bg-red-800 text-white shadow-lg'
-                  : 'bg-white/90 text-slate-500 hover:text-slate-800 border border-olive-800/80'
+                  : 'bg-white/90 text-slate-500 hover:text-slate-800 border border-slate-200'
               }`}
             >
               {st}
@@ -144,16 +144,16 @@ export default function VerifikasiAtasan({
 
       {/* TABLE REPORTS */}
       <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center justify-between border-b border-olive-800/80 pb-3">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <h2 className="text-sm font-bold text-slate-800 flex items-center space-x-2">
             <span>Daftar Laporan Masuk Bawahan Langsung ({filteredReports.length} Data)</span>
           </h2>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-olive-800/80">
+        <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-white shadow-sm border border-slate-200 text-slate-600 font-semibold border-b border-olive-800">
+              <tr className="bg-white shadow-sm border border-slate-200 text-slate-600 font-semibold border-b border-slate-200">
                 <th className="py-3 px-4">Nama Pegawai & NIP</th>
                 <th className="py-3 px-4">Tanggal</th>
                 <th className="py-3 px-4">Rincian Kegiatan Kerja</th>
@@ -207,7 +207,7 @@ export default function VerifikasiAtasan({
                     </td>
 
                     {/* Durasi */}
-                    <td className="py-3.5 px-4 text-center font-mono text-gold-400 font-bold whitespace-nowrap">
+                    <td className="py-3.5 px-4 text-center font-mono text-amber-700 font-bold whitespace-nowrap">
                       {getDurasiFallback(item)} Jam
                     </td>
 
@@ -256,7 +256,7 @@ export default function VerifikasiAtasan({
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 max-w-2xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
             
-            <div className="flex items-center justify-between border-b border-olive-800 pb-3">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center space-x-2">
                 <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
                 <div>
@@ -270,7 +270,7 @@ export default function VerifikasiAtasan({
             </div>
 
             {/* Identitas ASN */}
-            <div className="bg-white shadow-sm border border-slate-200 border border-olive-800/80 p-4 rounded-2xl grid grid-cols-2 gap-3 text-xs">
+            <div className="bg-white shadow-sm border border-slate-200 border border-slate-200 p-4 rounded-2xl grid grid-cols-2 gap-3 text-xs">
               <div>
                 <span className="text-slate-500 block">Nama Pegawai:</span>
                 <span className="font-bold text-slate-800 text-sm">{selectedReport.namaPegawai}</span>
@@ -285,7 +285,7 @@ export default function VerifikasiAtasan({
               </div>
               <div>
                 <span className="text-slate-500 block">Tanggal Laporan:</span>
-                <span className="text-gold-400 font-bold">{selectedReport.tanggal}</span>
+                <span className="text-amber-700 font-bold">{selectedReport.tanggal}</span>
               </div>
             </div>
 
@@ -295,7 +295,7 @@ export default function VerifikasiAtasan({
               
               {selectedReport.detailKegiatan && Array.isArray(selectedReport.detailKegiatan) ? (
                 selectedReport.detailKegiatan.map((keg, idx) => (
-                  <div key={idx} className="bg-white/90 border border-olive-800/80 p-3 rounded-xl space-y-2">
+                  <div key={idx} className="bg-white/90 border border-slate-200 p-3 rounded-xl space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-red-800">[{keg.kategori}] Waktu: {keg.jamMulai} - {keg.jamSelesai}</span>
                       <span className="text-slate-500 font-bold">{keg.volume} {keg.satuan}</span>
@@ -318,7 +318,7 @@ export default function VerifikasiAtasan({
                   </div>
                 ))
               ) : (
-                <div className="bg-white/90 border border-olive-800/80 p-3 rounded-xl">
+                <div className="bg-white/90 border border-slate-200 p-3 rounded-xl">
                   <p className="text-slate-700 whitespace-pre-wrap">{selectedReport.deskripsi}</p>
                   
                   {(selectedReport.lampiranUrl || selectedReport.fotoUrl2) && (
@@ -351,7 +351,7 @@ export default function VerifikasiAtasan({
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-end space-x-3 pt-3 border-t border-olive-800">
+            <div className="flex items-center justify-end space-x-3 pt-3 border-t border-slate-200">
               <button
                 type="button"
                 onClick={() => handleReject(selectedReport)}
