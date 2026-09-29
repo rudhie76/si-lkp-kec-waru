@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Printer, Calendar, Search, Filter, Clock } from 'lucide-react';
 
 export default function CetakLKH({ reports, pegawaiList, activeUser }) {
-  const [filterDate, setFilterDate] = useState(new Date().toISOString().slice(0, 10));
+  const [filterDate, setFilterDate] = useState(new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10));
   const [selectedPegawai, setSelectedPegawai] = useState(activeUser?.id || '');
 
   const targetPegawai = pegawaiList.find(p => String(p.id) === String(selectedPegawai)) || activeUser;
@@ -391,7 +391,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
             {/* KANAN */}
             <div className="text-center w-72 flex flex-col justify-between" style={{ minHeight: '180px' }}>
               <div>
-                <p className="mb-1">Waru, {formatToCustomDate(new Date().toISOString().slice(0, 10))}</p>
+                <p className="mb-1">Waru, {formatToCustomDate(new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10))}</p>
                 <p className="font-bold">PEGAWAI NEGERI SIPIL YANG DINILAI</p>
                 <p>{targetPegawai?.jabatan}</p>
               </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Printer, Calendar, Clock, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], activeUser = null }) {
-  const [selectedMonth, setSelectedMonth] = useState(new Date().toISOString().slice(0, 7));
+  const [selectedMonth, setSelectedMonth] = useState(new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 7));
   const [selectedPegawai, setSelectedPegawai] = useState(activeUser?.id || '');
   const [includePending, setIncludePending] = useState(false);
 
@@ -488,7 +488,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
             
             <div className="text-center w-72 flex flex-col justify-between" style={{ minHeight: '180px' }}>
               <div>
-                <p className="mb-1">Waru, {formatToCustomDate(new Date().toISOString().slice(0, 10))}</p>
+                <p className="mb-1">Waru, {formatToCustomDate(new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10))}</p>
                 <p className="font-bold uppercase">PEGAWAI NEGERI SIPIL YANG DINILAI</p>
                 <p className="mt-0.5">{targetPegawai?.jabatan}</p>
               </div>
