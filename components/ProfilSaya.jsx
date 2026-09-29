@@ -199,9 +199,9 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
 
   // Dynamically extract possible superiors from users array
   const superiorList = useMemo(() => {
-    // Only Camat, Sekcam, Kasi, Kasubag can be validators
     return users.filter(u => {
       const p = u.peranStruktur || '';
+      if (p.includes('Staf') || p.includes('JFT') || p.includes('JFU')) return false;
       return p.includes('Camat') || p.includes('Sekcam') || p.includes('Kasi') || p.includes('Kasubag');
     }).map(u => `${u.name} (${u.jabatan || 'Atasan'})`);
   }, [users]);
