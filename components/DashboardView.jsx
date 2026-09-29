@@ -117,6 +117,9 @@ export default function DashboardView({
     const matchesKategori = filterKategori === 'ALL' || (item.kategori && item.kategori === filterKategori);
 
     return matchesSearch && matchesStatus && matchesKategori;
+  }).sort((a, b) => {
+    if (a.id && b.id) return b.id - a.id;
+    return new Date(b.tanggal || 0).getTime() - new Date(a.tanggal || 0).getTime();
   });
 
   // Short & Clean Date Formatting Helper: [Hari], [dd]/[MMM]/[yyyy]
