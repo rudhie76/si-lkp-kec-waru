@@ -46,3 +46,57 @@
     color: #000000 !important;
   }
 }
+
+/* Fix text contrast inside Maroon panels */
+.bg-olive-950, .bg-olive-900, .bg-olive-800, .bg-olive-700, .bg-olive-600, .bg-emerald-500, .bg-emerald-600 {
+  color: #FDFBF7 !important;
+}
+
+/* Force light text on any text utility inside a dark panel */
+.bg-olive-950 [class*="text-zinc-"], 
+.bg-olive-900 [class*="text-zinc-"], 
+.bg-olive-800 [class*="text-zinc-"], 
+.bg-olive-700 [class*="text-zinc-"],
+.bg-olive-600 [class*="text-zinc-"],
+.bg-emerald-500 [class*="text-zinc-"],
+.bg-emerald-600 [class*="text-zinc-"],
+.bg-olive-950 .text-white, 
+.bg-olive-900 .text-white, 
+.bg-olive-800 .text-white, 
+.bg-olive-700 .text-white,
+.bg-olive-600 .text-white,
+.bg-emerald-500 .text-white,
+.bg-emerald-600 .text-white {
+  color: #FDFBF7 !important;
+}
+
+/* Also fix borders inside the dark panels */
+.bg-olive-950 [class*="border-zinc-"], 
+.bg-olive-900 [class*="border-zinc-"], 
+.bg-olive-800 [class*="border-zinc-"], 
+.bg-olive-700 [class*="border-zinc-"] {
+  border-color: rgba(253, 251, 247, 0.2) !important;
+}
+
+/* Fix input backgrounds inside dark panels */
+.bg-olive-950 input, .bg-olive-900 input, .bg-olive-800 input,
+.bg-olive-950 select, .bg-olive-900 select, .bg-olive-800 select,
+.bg-olive-950 textarea, .bg-olive-900 textarea, .bg-olive-800 textarea {
+  background-color: rgba(253, 251, 247, 0.1) !important;
+  color: #FDFBF7 !important;
+  border-color: rgba(253, 251, 247, 0.3) !important;
+}
+
+/* Inputs on the main background */
+input, select, textarea {
+  background-color: #F5F0E1 !important;
+  color: #330000 !important;
+  border-color: #D1C4A5 !important;
+}
+
+/* Explicitly set body background just in case */
+body {
+  background-color: #FDFBF7 !important;
+}
+::placeholder { color: #800000 !important; opacity: 0.6; }  
+.bg-olive-950 ::placeholder, .bg-olive-900 ::placeholder, .bg-olive-800 ::placeholder { color: rgba(253, 251, 247, 0.5) !important; opacity: 1; } 

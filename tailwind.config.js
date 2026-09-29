@@ -8,60 +8,53 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ZINC mapped to Dark Maroon for Backgrounds, Cream for Text
+        // ZINC mapped to CREAM Backgrounds and MAROON Text
         zinc: {
-          950: '#1a0505', // bg-zinc-950 -> Very Dark Maroon BG
-          900: '#2b0a0a', // bg-zinc-900 -> Dark Maroon Card
-          800: '#421212', // border-zinc-800 -> Maroon Borders
-          700: '#591a1a', 
-          600: '#702222',
-          500: '#872a2a',
-          400: '#c4aa8f', // text-zinc-400 -> Muted Cream
-          300: '#e3ccb3', // text-zinc-300 -> Standard Cream
-          200: '#f5e8d7', // text-zinc-200 -> Bright Cream
-          100: '#fdfbf7', // text-zinc-100 -> Very Bright Cream
-          50:  '#ffffff',
+          950: '#FDFBF7', // Main bg: Light Cream
+          900: '#F5F0E1', // Card bg: Cream
+          800: '#E8DFC7', // Borders
+          700: '#D1C4A5',
+          600: '#A39171',
+          500: '#756345',
+          400: '#800000', // text-zinc-400 -> Maroon muted
+          300: '#660000', // text-zinc-300 -> Maroon standard
+          200: '#4D0000', // text-zinc-200 -> Maroon dark
+          100: '#330000', // text-zinc-100 -> Maroon very dark
+          50:  '#1A0000', // text-zinc-50  -> Maroon pitch
         },
-        // OLIVE mapped to Solid Maroon Scale (Panels, Badges)
+        // OLIVE mapped to MAROON Panels
         olive: {
-          50: '#f5e6e6',
-          100: '#e6bfbf',
-          200: '#d99999',
-          300: '#cc7373',
-          400: '#b34d4d',
-          500: '#992626',
-          600: '#800000', 
-          700: '#660000',
-          800: '#4d0000', // bg-olive-800 -> Primary Panels (Deep Maroon)
-          900: '#330000', // bg-olive-900 -> Secondary Panels (Pitch Maroon)
-          950: '#1a0000',
+          50: '#FDFBF7',
+          100: '#F5E6E6',
+          200: '#E6BFBF',
+          300: '#D99999',
+          400: '#CC7373',
+          500: '#B34D4D',
+          600: '#992626',
+          700: '#800000',
+          800: '#5C0000', // bg-olive-800 -> Primary panel (Dark Maroon)
+          900: '#3D0000', // bg-olive-900 -> Secondary panel (Deep Maroon)
+          950: '#240000', // Pitch Maroon
         },
-        // EMERALD mapped to Cream/Gold (Text/Icons) & Bright Maroon (Buttons)
+        // EMERALD mapped to Accents
         emerald: {
-          50: '#fcfbf7',
-          100: '#f7f2e1',
-          200: '#efe5c4',
-          300: '#e3d29a',
-          400: '#d6bc69', // text-emerald-400 -> Cream/Gold Text Highlight
-          500: '#8c1111', // bg-emerald-500 -> Bright Maroon Button
-          600: '#6e0d0d', // bg-emerald-600 -> Maroon Button Hover
-          700: '#4d0000',
+          50: '#FDFBF7',
+          100: '#F7F2E1',
+          200: '#EFE5C4',
+          300: '#E3D29A',
+          400: '#992626', // text-emerald-400 -> Highlight Maroon
+          500: '#800000', // bg-emerald-500 -> Button Maroon
+          600: '#660000', // Hover Button
+          700: '#4D0000',
           800: '#330000',
-          900: '#1a0000',
-          950: '#0a0000',
+          900: '#1A0000',
+          950: '#0A0000',
         },
-        // AMBER mapped to warm Cream
         amber: {
-          400: '#e6c885',
-          500: '#d1ab52',
-          600: '#b8923a',
+          400: '#D97706',
+          500: '#B45309',
+          600: '#92400E',
         },
-        gold: {
-          400: '#e3c68a',
-          500: '#ccaa5e',
-          600: '#b39042',
-          700: '#99762e',
-        }
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
