@@ -260,10 +260,13 @@ export default function DashboardView({
 
   // Category Distribution Calculation
     const categoriesList = [
-    { cat: 'Administrasi (Pelayanan Publik)', color: 'bg-blue-400', textColor: 'text-blue-600' },
-    { cat: 'Undangan (Rapat & Koordinasi)', color: 'bg-cyan-400', textColor: 'text-cyan-600' },
-    { cat: 'Monitoring & Evaluasi', color: 'bg-amber-400', textColor: 'text-amber-600' },
-    { cat: 'Tugas Kedinasan Lainnya', color: 'bg-rose-400', textColor: 'text-rose-600' },
+    { cat: 'Pelayanan Publik', color: 'bg-blue-400', textColor: 'text-blue-600' },
+    { cat: 'Rapat', color: 'bg-amber-400', textColor: 'text-amber-600' },
+    { cat: 'Koordinasi', color: 'bg-cyan-400', textColor: 'text-cyan-600' },
+    { cat: 'Monev', color: 'bg-teal-400', textColor: 'text-teal-600' },
+    { cat: 'Dinas LD', color: 'bg-purple-400', textColor: 'text-purple-600' },
+    { cat: 'Giat WFH', color: 'bg-rose-400', textColor: 'text-rose-600' },
+    { cat: 'Kegiatan Lainnya', color: 'bg-slate-400', textColor: 'text-slate-600' },
   ];
 
   const categoryDistribution = categoriesList.map(item => {

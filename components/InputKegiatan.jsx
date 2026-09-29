@@ -36,7 +36,7 @@ export default function InputKegiatan({
     tanggal: today,
     jamMulai: '08:00',
     jamSelesai: '10:00',
-    kategori: 'Administrasi (Pelayanan Publik)',
+    kategori: 'Pelayanan Publik',
     deskripsi: '',
     volume: 1,
     satuan: 'Berkas',
@@ -171,7 +171,7 @@ export default function InputKegiatan({
       tanggal: formatToYYYYMMDD(report.tanggal),
       jamMulai: firstKeg.jamMulai || '08:00',
       jamSelesai: firstKeg.jamSelesai || '10:00',
-      kategori: firstKeg.kategori || report.deskripsi?.split(':')[0] || 'Administrasi (Pelayanan Publik)',
+      kategori: firstKeg.kategori || report.deskripsi?.split(':')[0] || 'Pelayanan Publik',
       deskripsi: firstKeg.deskripsi || report.deskripsi || '',
       volume: firstKeg.volume || 1,
       satuan: firstKeg.satuan || 'Berkas',
@@ -188,7 +188,7 @@ export default function InputKegiatan({
       tanggal: today,
       jamMulai: '08:00',
       jamSelesai: '10:00',
-      kategori: 'Administrasi (Pelayanan Publik)',
+      kategori: 'Pelayanan Publik',
       deskripsi: '',
       volume: 1,
       satuan: 'Berkas',
@@ -293,7 +293,7 @@ export default function InputKegiatan({
     .filter(url => url && url.startsWith('data:image'));
 
   const categories = [
-    'Administrasi (Pelayanan Publik)', 'Undangan (Rapat & Koordinasi)', 'Monitoring & Evaluasi', 'Tugas Kedinasan Lainnya'
+    'Pelayanan Publik', 'Rapat', 'Koordinasi', 'Monev', 'Dinas LD', 'Giat WFH', 'Kegiatan Lainnya'
   ];
 
   return (
