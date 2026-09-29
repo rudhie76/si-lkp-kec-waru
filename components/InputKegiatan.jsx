@@ -293,7 +293,7 @@ export default function InputKegiatan({
     .filter(url => url && url.startsWith('data:image'));
 
   const categories = [
-    'Pelayanan Publik', 'Rapat', 'Koordinasi', 'Monev', 'Dinas LD', 'Giat WFH', 'Kegiatan Lainnya'
+    'Pelayanan Publik', 'Rapat', 'Koordinasi', 'Monev', 'Dinas LD', 'Kegiatan Lainnya'
   ];
 
   return (

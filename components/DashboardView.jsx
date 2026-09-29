@@ -265,7 +265,6 @@ export default function DashboardView({
     { cat: 'Koordinasi', color: 'bg-cyan-400', textColor: 'text-cyan-600' },
     { cat: 'Monev', color: 'bg-teal-400', textColor: 'text-teal-600' },
     { cat: 'Dinas LD', color: 'bg-purple-400', textColor: 'text-purple-600' },
-    { cat: 'Giat WFH', color: 'bg-rose-400', textColor: 'text-rose-600' },
     { cat: 'Kegiatan Lainnya', color: 'bg-slate-400', textColor: 'text-slate-600' },
   ];
 
