@@ -61,6 +61,13 @@ export default function InputKegiatan({
   // Compression helper
   const compressImageFile = (file, maxWidth = 800, maxHeight = 800, quality = 0.75) => {
     return new Promise((resolve, reject) => {
+      if (file.type === 'application/pdf') {
+        const reader = new FileReader();
+        reader.onload = (event) => resolve(event.target.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+        return;
+      }
       const reader = new FileReader();
       reader.onload = (event) => {
         const img = new Image();
@@ -514,7 +521,7 @@ export default function InputKegiatan({
             <div>
               <label className="block text-slate-600 font-bold mb-1.5 uppercase text-[10px] tracking-wider flex justify-between">
                 <span>Foto / File Bukti Dukung (Opsional)</span>
-                <span className="text-slate-400">{formData.fotoUrls.length} / 2 Foto</span>
+                <span className="text-slate-400">{formData.fotoUrls.length} / 2 File</span>
               </label>
               
               <div 
@@ -523,7 +530,7 @@ export default function InputKegiatan({
               >
                 <input 
                   type="file" 
-                  accept="image/png, image/jpeg, image/jpg" 
+                  accept="image/*,application/pdf" 
                   multiple 
                   className="hidden" 
                   ref={fileInputRef}
@@ -535,15 +542,22 @@ export default function InputKegiatan({
                     <div className="bg-slate-100 p-3 rounded-full mb-3 text-blue-600">
                       <Upload className="w-6 h-6" />
                     </div>
-                    <p className="text-slate-600 font-bold text-xs text-center">Seret & taruh foto ke sini, atau klik untuk unggah (Maks. 2 Foto)</p>
-                    <p className="text-slate-400 text-[10px] font-medium mt-1">Format: JPG, PNG, JPEG (maks 5MB).</p>
+                    <p className="text-slate-600 font-bold text-xs text-center">Seret & taruh foto/PDF ke sini, atau klik untuk unggah (Maks. 2 File)</p>
+                    <p className="text-slate-400 text-[10px] font-medium mt-1">Format: JPG, PNG, JPEG, PDF (maks 5MB).</p>
                   </>
                 ) : (
                   <div className="flex flex-wrap gap-4 w-full justify-center">
                     {formData.fotoUrls.map((foto, idx) => (
                       <div key={idx} className="relative flex flex-col items-center gap-2 group" onClick={(e) => e.stopPropagation()}>
                         <div className="relative w-24 h-24 rounded-xl overflow-hidden border-2 border-blue-600/50">
-                          <img src={foto.url} alt={`Bukti ${idx+1}`} className="w-full h-full object-cover" />
+                          {foto.url.includes('application/pdf') || foto.name.endsWith('.pdf') ? (
+                              <div className="w-full h-full flex flex-col items-center justify-center bg-rose-50 text-rose-500">
+                                <FileText className="w-8 h-8" />
+                                <span className="text-[8px] font-bold mt-1">PDF</span>
+                              </div>
+                            ) : (
+                              <img src={foto.url} alt={`Bukti ${idx+1}`} className="w-full h-full object-cover" />
+                            )}
                           <button 
                             type="button"
                             onClick={(e) => { e.stopPropagation(); removePhoto(idx); }}
