@@ -254,12 +254,11 @@ export default function DashboardView({
   const last7Days = getLast7DaysData();
 
   // Category Distribution Calculation
-  const categoriesList = [
-    { cat: 'Pelayanan Publik', color: 'bg-blue-400', textColor: 'text-blue-600' },
-    { cat: 'Administrasi', color: 'bg-cyan-400', textColor: 'text-cyan-400' },
-    { cat: 'Rapat & Koordinasi', color: 'bg-amber-500', textColor: 'text-amber-700' },
-    { cat: 'Monitoring Lapangan', color: 'bg-amber-400', textColor: 'text-amber-700' },
-    { cat: 'Tugas Kedinasan Lainnya', color: 'bg-rose-400', textColor: 'text-blue-600' },
+    const categoriesList = [
+    { cat: 'Administrasi (Pelayanan Publik)', color: 'bg-blue-400', textColor: 'text-blue-600' },
+    { cat: 'Undangan (Rapat & Koordinasi)', color: 'bg-cyan-400', textColor: 'text-cyan-600' },
+    { cat: 'Monitoring & Evaluasi', color: 'bg-amber-400', textColor: 'text-amber-600' },
+    { cat: 'Tugas Kedinasan Lainnya', color: 'bg-rose-400', textColor: 'text-rose-600' },
   ];
 
   const categoryDistribution = categoriesList.map(item => {
