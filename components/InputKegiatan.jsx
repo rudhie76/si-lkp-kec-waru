@@ -28,7 +28,12 @@ export default function InputKegiatan({
   reports = [],
   pegawaiList = []
 }) {
-  const today = new Date().toISOString().split('T')[0];
+  const getLocalYYYYMMDD = () => {
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().split('T')[0];
+  };
+  const today = getLocalYYYYMMDD();
 
   const fileInputRef = useRef(null);
   
@@ -246,7 +251,7 @@ export default function InputKegiatan({
     const isCamat = checkIsCamat(reportOwner);
 
     const newReport = {
-      id: editingReportId || `LKH-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: editingReportId || `LKH-${today.replace(/-/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`,
       tanggal: formData.tanggal,
       pegawaiId: reportOwner.id,
       namaPegawai: reportOwner.name,
