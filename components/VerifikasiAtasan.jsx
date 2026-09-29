@@ -53,6 +53,18 @@ export default function VerifikasiAtasan({
   const filteredReports = visibleReports.filter(r => {
     if (filterStatus === 'ALL') return true;
     return r.status === filterStatus;
+  }).sort((a, b) => {
+    const timeA = new Date(a.tanggal || 0).getTime();
+    const timeB = new Date(b.tanggal || 0).getTime();
+    if (timeA !== timeB) return timeB - timeA;
+    return String(b.id || '').localeCompare(String(a.id || ''));
+  });
+
+  const validatedReportsList = visibleReports.filter(r => r.status === 'DIVALIDASI').sort((a, b) => {
+    const timeA = new Date(a.tanggal || 0).getTime();
+    const timeB = new Date(b.tanggal || 0).getTime();
+    if (timeA !== timeB) return timeB - timeA;
+    return String(b.id || '').localeCompare(String(a.id || ''));
   });
 
   const handleApprove = (report) => {
@@ -239,6 +251,103 @@ export default function VerifikasiAtasan({
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Detail & Validasi</span>
+                        </button>
+                      </div>
+                    </td>
+
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* TABLE RIWAYAT DIVALIDASI */}
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+          <h2 className="text-sm font-bold text-slate-800 flex items-center space-x-2">
+            <span>Riwayat Laporan Bawahan yang Sudah Divalidasi ({validatedReportsList.length} Data)</span>
+          </h2>
+        </div>
+
+        <div className="overflow-x-auto rounded-xl border border-slate-200">
+          <table className="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr className="bg-white shadow-sm border border-slate-200 text-slate-600 font-semibold border-b border-slate-200">
+                <th className="py-3 px-4">Nama Pegawai & NIP</th>
+                <th className="py-3 px-4">Tanggal</th>
+                <th className="py-3 px-4">Rincian Kegiatan Kerja</th>
+                <th className="py-3 px-4 text-center">Durasi Total</th>
+                <th className="py-3 px-4">Status</th>
+                <th className="py-3 px-4 text-right">Aksi</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 text-slate-700">
+              {validatedReportsList.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-8 text-center text-slate-500">
+                    Belum ada riwayat laporan yang divalidasi.
+                  </td>
+                </tr>
+              ) : (
+                validatedReportsList.map(item => (
+                  <tr key={item.id} className="hover:bg-slate-100/30 transition-colors">
+                    
+                    {/* Pegawai */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
+                      <div className="font-bold text-blue-600">{item.namaPegawai}</div>
+                      <div className="text-[11px] text-slate-500 font-mono">NIP. {item.nip}</div>
+                      <div className="text-[10px] text-slate-400">{item.jabatan}</div>
+                    </td>
+
+                    {/* Tanggal */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
+                      <div className="font-bold text-blue-600">{formatTanggal(item.tanggal)}</div>
+                      {item.detailKegiatan && item.detailKegiatan[0] && (
+                        <div className="text-[11px] text-slate-500 mt-0.5 font-mono">
+                          <Clock className="w-3 h-3 inline-block mr-1 opacity-70" />
+                          {item.detailKegiatan[0].jamMulai} - {item.detailKegiatan[0].jamSelesai}
+                        </div>
+                      )}
+                    </td>
+
+                    {/* Rincian Kegiatan */}
+                    <td className="py-3.5 px-4 max-w-md">
+                      {item.detailKegiatan && Array.isArray(item.detailKegiatan) ? (
+                        <ul className="list-disc list-inside space-y-1 text-slate-600">
+                          {item.detailKegiatan.map((k, idx) => (
+                            <li key={idx}>
+                              <span className="font-semibold text-blue-600">[{k.kategori}]</span> {k.deskripsi} ({k.volume} {k.satuan})
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <span>{item.deskripsi}</span>
+                      )}
+                    </td>
+
+                    {/* Durasi */}
+                    <td className="py-3.5 px-4 text-center font-mono text-amber-700 font-bold whitespace-nowrap">
+                      {getDurasiFallback(item)} Jam
+                    </td>
+
+                    {/* Status */}
+                    <td className="py-3.5 px-4 whitespace-nowrap">
+                      <span className="bg-blue-600/20 text-blue-600 border border-blue-600/40 px-2.5 py-1 rounded-full font-bold">
+                        ✓ DIVALIDASI
+                      </span>
+                    </td>
+
+                    {/* Action Buttons */}
+                    <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                      <div className="flex items-center justify-end space-x-2">
+                        <button
+                          onClick={() => { setSelectedReport(item); setCatatanText(item.catatanAtasan || ''); }}
+                          className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 border border-blue-600/40 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Lihat Detail</span>
                         </button>
                       </div>
                     </td>
