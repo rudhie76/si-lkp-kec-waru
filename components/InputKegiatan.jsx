@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { 
-  Calendar, Clock, User, AlignLeft, Send, CheckCircle, 
+  Calendar, Clock, User, AlignLeft, Send, CheckCircle, FileText, FileText, 
   Camera, Upload, X, Trash2, Image as ImageIcon, Briefcase, 
   CheckSquare, Activity, ShieldCheck, Download, Award, Building, Plus, Edit3
 } from 'lucide-react';
