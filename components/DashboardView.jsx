@@ -118,8 +118,10 @@ export default function DashboardView({
 
     return matchesSearch && matchesStatus && matchesKategori;
   }).sort((a, b) => {
-    if (a.id && b.id) return b.id - a.id;
-    return new Date(b.tanggal || 0).getTime() - new Date(a.tanggal || 0).getTime();
+    const timeA = new Date(a.tanggal || 0).getTime();
+    const timeB = new Date(b.tanggal || 0).getTime();
+    if (timeA !== timeB) return timeB - timeA;
+    return String(b.id || '').localeCompare(String(a.id || ''));
   });
 
   // Short & Clean Date Formatting Helper: [Hari], [dd]/[MMM]/[yyyy]
