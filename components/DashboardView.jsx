@@ -318,7 +318,11 @@ export default function DashboardView({
         </div>
 
         {/* Card 3: Verifikasi PENDING */}
-        <div className="relative overflow-hidden bg-white border border-amber-500/50 rounded-2xl p-5 shadow-xl group hover:border-amber-400 transition-all duration-300">
+        <div 
+          onClick={onNavigateToVerify}
+          className="relative overflow-hidden bg-white border border-amber-500/50 rounded-2xl p-5 shadow-xl group hover:border-amber-400 hover:shadow-amber-500/30 hover:-translate-y-1 cursor-pointer transition-all duration-300"
+          title="Klik untuk menuju halaman Verifikasi Atasan"
+        >
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Verifikasi PENDING</p>
