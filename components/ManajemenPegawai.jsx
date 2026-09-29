@@ -99,19 +99,19 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
       {/* Title Header */}
       <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-4">
-          <div className="p-3 bg-red-800/20 text-red-800 border border-red-800/30 rounded-xl">
+          <div className="p-3 bg-blue-600/20 text-blue-600 border border-blue-600/30 rounded-xl">
             <Users className="w-6 h-6" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-slate-800">Manajemen Data Pegawai Kecamatan Waru</h1>
-            <p className="text-xs text-red-800/80">Kelola akun, Pangkat/Golongan, Unit Kerja, dan Atasan Validasi</p>
+            <p className="text-xs text-blue-600/80">Kelola akun, Pangkat/Golongan, Unit Kerja, dan Atasan Validasi</p>
           </div>
         </div>
 
         {isAdmin && (
           <button
             onClick={openAddModal}
-            className="bg-red-800 hover:bg-red-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg flex items-center space-x-2"
+            className="bg-blue-600 hover:bg-blue-600 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg flex items-center space-x-2"
           >
             <UserPlus className="w-4 h-4" />
             <span>+ Tambah Pegawai Baru</span>
@@ -144,7 +144,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                 return (
                   <tr key={u.id} className="hover:bg-slate-100/30 transition-colors">
                     <td className="py-3.5 px-4 font-semibold whitespace-nowrap">
-                      <div className="text-red-700">{u.name}</div>
+                      <div className="text-blue-600">{u.name}</div>
                       <div className="text-[11px] text-slate-500 font-mono">NIP. {u.nip}</div>
                       <div className="text-[10px] text-slate-400">{u.noWa || u.email}</div>
                     </td>
@@ -163,7 +163,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                           <span>Admin (Atasan)</span>
                         </span>
                       ) : (
-                        <span className="inline-flex items-center space-x-1 bg-red-800/15 border border-red-800/30 text-red-800 text-[10px] font-bold px-2.5 py-1 rounded-full">
+                        <span className="inline-flex items-center space-x-1 bg-blue-600/15 border border-blue-600/30 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full">
                           <User className="w-3.5 h-3.5" />
                           <span>Pegawai Biasa</span>
                         </span>
@@ -181,7 +181,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                           </button>
                           <button
                             onClick={() => handleDelete(u)}
-                            className="p-1.5 rounded-lg bg-rose-600/80 hover:bg-red-800 text-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg bg-rose-600/80 hover:bg-blue-600 text-slate-800 transition-colors"
                             title="Hapus Pegawai"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -224,7 +224,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Sri Wahyuni, S.Sos"
-                  className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   required
                 />
               </div>
@@ -237,7 +237,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     value={formData.nip}
                     onChange={(e) => setFormData({ ...formData, nip: e.target.value })}
                     placeholder="19910823..."
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 font-mono focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 font-mono focus:outline-none focus:border-blue-600"
                     required
                   />
                 </div>
@@ -249,7 +249,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     value={formData.noWa}
                     onChange={(e) => setFormData({ ...formData, noWa: e.target.value })}
                     placeholder="0852xxxxxxxx"
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -262,7 +262,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="nama@waru.ppu.go.id"
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
@@ -273,7 +273,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     placeholder="Sandi baru..."
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -285,7 +285,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                   value={formData.jabatan}
                   onChange={(e) => setFormData({ ...formData, jabatan: e.target.value })}
                   placeholder="Pengelola Administrasi Kepegawaian"
-                  className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -297,7 +297,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     value={formData.pangkatGolongan}
                     onChange={(e) => setFormData({ ...formData, pangkatGolongan: e.target.value })}
                     placeholder="Penata Muda / IIIa"
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
@@ -308,7 +308,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                     value={formData.unitKerja}
                     onChange={(e) => setFormData({ ...formData, unitKerja: e.target.value })}
                     placeholder="Sub Bagian Umum & Kepegawaian"
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                   <select
                     value={formData.peranStruktur}
                     onChange={(e) => setFormData({ ...formData, peranStruktur: e.target.value })}
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="Staf Pelaksana / JFT / JFU">Staf Pelaksana / JFT / JFU</option>
                     <option value="Kepala Seksi (Kasi) / Kasubag">Kepala Seksi (Kasi) / Kasubag</option>
@@ -333,7 +333,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                   <select
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                   >
                     <option value="Pegawai">Pegawai Biasa (User)</option>
                     <option value="Admin">Admin (Atasan / Camat)</option>
@@ -346,7 +346,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                 <select
                   value={formData.atasanValidasi}
                   onChange={(e) => setFormData({ ...formData, atasanValidasi: e.target.value })}
-                  className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800 font-semibold"
+                  className="w-full bg-white border border-slate-200 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600 font-semibold"
                 >
                   <option value="Rudiansyah, SE (Plt. Sekcam/Kasi. PM)">Rudiansyah, SE (Plt. Sekcam/Kasi. PM)</option>
                   <option value="Ahmad Fauzi, S.STP (Camat Waru)">Ahmad Fauzi, S.STP (Camat Waru)</option>
@@ -364,7 +364,7 @@ export default function ManajemenPegawai({ users, onAddUser, onEditUser, onDelet
                 </button>
                 <button
                   type="submit"
-                  className="bg-red-800 hover:bg-red-800 text-white px-5 py-2 rounded-xl text-xs font-bold"
+                  className="bg-blue-600 hover:bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold"
                 >
                   {editMode ? 'Perbarui Data' : 'Simpan Pegawai'}
                 </button>

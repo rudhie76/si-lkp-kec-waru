@@ -111,7 +111,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
       {/* FILTER SECTION (HIDDEN ON PRINT) */}
       <div className="no-print bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-300 rounded-3xl p-6 shadow-xl space-y-4">
         <div className="flex items-center space-x-3 border-b border-slate-200 pb-3">
-          <div className="p-2 bg-red-800/20 text-red-800 rounded-xl">
+          <div className="p-2 bg-blue-600/20 text-blue-600 rounded-xl">
             <Printer className="w-5 h-5" />
           </div>
           <div>
@@ -124,13 +124,13 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
           <div>
             <label className="block text-xs font-semibold text-slate-600 mb-1">Pilih Tanggal</label>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-red-800 pointer-events-none" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-600 pointer-events-none" />
               <input 
                 type="date" 
                 value={filterDate}
                 onChange={e => setFilterDate(e.target.value)}
                 style={{ colorScheme: 'dark' }}
-                className="w-full bg-white border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-red-800 focus:outline-none cursor-pointer"
+                className="w-full bg-white border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-blue-600 focus:outline-none cursor-pointer"
               />
             </div>
           </div>
@@ -156,12 +156,12 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
         <div className="pt-2 flex justify-between items-center border-t border-slate-200 mt-2">
           
           <div className="flex flex-col">
-            <label className="flex items-center space-x-2 text-slate-600 text-xs cursor-pointer hover:text-red-800 transition-colors">
+            <label className="flex items-center space-x-2 text-slate-600 text-xs cursor-pointer hover:text-blue-600 transition-colors">
               <input 
                 type="checkbox" 
                 checked={includePending}
                 onChange={e => setIncludePending(e.target.checked)}
-                className="rounded border-slate-200 text-red-800 focus:ring-red-800/30"
+                className="rounded border-slate-200 text-blue-600 focus:ring-blue-600/30"
               />
               <span>Tampilkan juga laporan PENDING (Khusus Pratinjau)</span>
             </label>
@@ -171,7 +171,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
               </span>
             )}
             {includePending && (
-              <span className="text-red-800 text-[10px] mt-1 font-bold">
+              <span className="text-blue-600 text-[10px] mt-1 font-bold">
                 Mencetak dengan status PENDING tidak direkomendasikan untuk dokumen resmi.
               </span>
             )}
@@ -180,7 +180,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
           <button 
             onClick={handlePrint}
             disabled={filteredReports.length === 0}
-            className="px-6 py-2.5 bg-red-800 hover:bg-red-800 disabled:bg-slate-200 disabled:text-slate-500 text-white font-bold rounded-xl flex items-center space-x-2 transition-colors"
+            className="px-6 py-2.5 bg-blue-600 hover:bg-blue-600 disabled:bg-slate-200 disabled:text-slate-500 text-white font-bold rounded-xl flex items-center space-x-2 transition-colors"
           >
             <Printer className="w-4 h-4" />
             <span>Cetak PDF / Print</span>

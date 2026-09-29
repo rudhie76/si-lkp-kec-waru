@@ -120,7 +120,7 @@ export default function VerifikasiAtasan({
               <ShieldCheck className="w-5 h-5 text-amber-700" />
               <span>Modul Validasi Atasan Langsung</span>
             </h1>
-            <p className="text-xs text-red-800/80">Peninjauan dan Pengesahan LKH Bawahan Berdasarkan Hirarki Struktural Kecamatan Waru</p>
+            <p className="text-xs text-blue-600/80">Peninjauan dan Pengesahan LKH Bawahan Berdasarkan Hirarki Struktural Kecamatan Waru</p>
           </div>
         </div>
 
@@ -132,7 +132,7 @@ export default function VerifikasiAtasan({
               onClick={() => setFilterStatus(st)}
               className={`px-3 py-2 rounded-xl font-bold transition-all ${
                 filterStatus === st
-                  ? 'bg-red-800 text-white shadow-lg'
+                  ? 'bg-blue-600 text-white shadow-lg'
                   : 'bg-white/90 text-slate-500 hover:text-slate-800 border border-slate-200'
               }`}
             >
@@ -175,14 +175,14 @@ export default function VerifikasiAtasan({
                     
                     {/* Pegawai */}
                     <td className="py-3.5 px-4 whitespace-nowrap">
-                      <div className="font-bold text-red-700">{item.namaPegawai}</div>
+                      <div className="font-bold text-blue-600">{item.namaPegawai}</div>
                       <div className="text-[11px] text-slate-500 font-mono">NIP. {item.nip}</div>
                       <div className="text-[10px] text-slate-400">{item.jabatan}</div>
                     </td>
 
                     {/* Tanggal */}
                     <td className="py-3.5 px-4 whitespace-nowrap">
-                      <div className="font-bold text-red-700">{formatTanggal(item.tanggal)}</div>
+                      <div className="font-bold text-blue-600">{formatTanggal(item.tanggal)}</div>
                       {item.detailKegiatan && item.detailKegiatan[0] && (
                         <div className="text-[11px] text-slate-500 mt-0.5 font-mono">
                           <Clock className="w-3 h-3 inline-block mr-1 opacity-70" />
@@ -197,7 +197,7 @@ export default function VerifikasiAtasan({
                         <ul className="list-disc list-inside space-y-1 text-slate-600">
                           {item.detailKegiatan.map((k, idx) => (
                             <li key={idx}>
-                              <span className="font-semibold text-red-800">[{k.kategori}]</span> {k.deskripsi} ({k.volume} {k.satuan})
+                              <span className="font-semibold text-blue-600">[{k.kategori}]</span> {k.deskripsi} ({k.volume} {k.satuan})
                             </li>
                           ))}
                         </ul>
@@ -214,7 +214,7 @@ export default function VerifikasiAtasan({
                     {/* Status */}
                     <td className="py-3.5 px-4 whitespace-nowrap">
                       {item.status === 'DIVALIDASI' && (
-                        <span className="bg-red-800/20 text-red-700 border border-red-800/40 px-2.5 py-1 rounded-full font-bold">
+                        <span className="bg-blue-600/20 text-blue-600 border border-blue-600/40 px-2.5 py-1 rounded-full font-bold">
                           ✓ DIVALIDASI
                         </span>
                       )}
@@ -224,7 +224,7 @@ export default function VerifikasiAtasan({
                         </span>
                       )}
                       {item.status === 'DITOLAK' && (
-                        <span className="bg-red-800/20 text-red-800 border border-rose-500/40 px-2.5 py-1 rounded-full font-bold">
+                        <span className="bg-blue-600/20 text-blue-600 border border-rose-500/40 px-2.5 py-1 rounded-full font-bold">
                           ✕ DITOLAK
                         </span>
                       )}
@@ -235,7 +235,7 @@ export default function VerifikasiAtasan({
                       <div className="flex items-center justify-end space-x-2">
                         <button
                           onClick={() => { setSelectedReport(item); setCatatanText(item.catatanAtasan || ''); }}
-                          className="bg-red-800/20 hover:bg-red-800/30 text-red-700 border border-red-800/40 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1"
+                          className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-600 border border-blue-600/40 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center space-x-1"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Detail & Validasi</span>
@@ -261,7 +261,7 @@ export default function VerifikasiAtasan({
                 <img src="/si-lkp-kec-waru/logo-ppu.png" alt="Logo PPU" className="w-8 h-10 object-contain" />
                 <div>
                   <h3 className="text-base font-bold text-slate-800">Detail Laporan Kinerja ASN</h3>
-                  <p className="text-xs text-red-800">Pemeriksaan Bukti & Penilaian Atasan Langsung</p>
+                  <p className="text-xs text-blue-600">Pemeriksaan Bukti & Penilaian Atasan Langsung</p>
                 </div>
               </div>
               <button onClick={() => setSelectedReport(null)} className="text-slate-500 hover:text-slate-800">
@@ -277,7 +277,7 @@ export default function VerifikasiAtasan({
               </div>
               <div>
                 <span className="text-slate-500 block">NIP:</span>
-                <span className="font-mono text-red-700 font-bold">{selectedReport.nip}</span>
+                <span className="font-mono text-blue-600 font-bold">{selectedReport.nip}</span>
               </div>
               <div>
                 <span className="text-slate-500 block">Jabatan:</span>
@@ -297,7 +297,7 @@ export default function VerifikasiAtasan({
                 selectedReport.detailKegiatan.map((keg, idx) => (
                   <div key={idx} className="bg-white/90 border border-slate-200 p-3 rounded-xl space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-red-800">[{keg.kategori}] Waktu: {keg.jamMulai} - {keg.jamSelesai}</span>
+                      <span className="font-bold text-blue-600">[{keg.kategori}] Waktu: {keg.jamMulai} - {keg.jamSelesai}</span>
                       <span className="text-slate-500 font-bold">{keg.volume} {keg.satuan}</span>
                     </div>
                     <p className="text-slate-700 leading-relaxed whitespace-pre-wrap">{keg.deskripsi}</p>
@@ -346,7 +346,7 @@ export default function VerifikasiAtasan({
                 placeholder="Tuliskan catatan apresiasi atau perbaikan jika menolak..."
                 value={catatanText}
                 onChange={(e) => setCatatanText(e.target.value)}
-                className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-red-800"
+                className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-blue-600"
               />
             </div>
 
@@ -355,7 +355,7 @@ export default function VerifikasiAtasan({
               <button
                 type="button"
                 onClick={() => handleReject(selectedReport)}
-                className="bg-rose-600 hover:bg-red-800 text-slate-800 font-bold text-xs px-4 py-2.5 rounded-xl transition-all flex items-center space-x-1.5"
+                className="bg-rose-600 hover:bg-blue-600 text-slate-800 font-bold text-xs px-4 py-2.5 rounded-xl transition-all flex items-center space-x-1.5"
               >
                 <X className="w-4 h-4" />
                 <span>Tolak Laporan (Beri Catatan)</span>
@@ -364,7 +364,7 @@ export default function VerifikasiAtasan({
               <button
                 type="button"
                 onClick={() => handleApprove(selectedReport)}
-                className="bg-red-800 hover:bg-red-900 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg flex items-center space-x-1.5"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg flex items-center space-x-1.5"
               >
                 <Check className="w-4 h-4" />
                 <span>Setujui (DIVALIDASI)</span>

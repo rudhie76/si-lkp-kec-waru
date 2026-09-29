@@ -53,12 +53,12 @@ export default function PengingatWA({ pegawaiList }) {
       {/* Title Header */}
       <div className="bg-gradient-to-r from-olive-900 via-olive-800 to-olive-950 border border-slate-200 rounded-2xl p-6 shadow-xl space-y-2">
         <div className="flex items-center space-x-4">
-          <div className="p-3 bg-red-800/20 text-red-800 border border-red-800/30 rounded-xl">
+          <div className="p-3 bg-blue-600/20 text-blue-600 border border-blue-600/30 rounded-xl">
             <MessageSquare className="w-6 h-6" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-slate-800">Generator Pengingat Notifikasi WhatsApp</h1>
-            <p className="text-xs text-red-800/80">Kirim notifikasi pesan otomatis ke WhatsApp pegawai Kecamatan Waru</p>
+            <p className="text-xs text-blue-600/80">Kirim notifikasi pesan otomatis ke WhatsApp pegawai Kecamatan Waru</p>
           </div>
         </div>
       </div>
@@ -71,13 +71,13 @@ export default function PengingatWA({ pegawaiList }) {
           
           <div>
             <label className="block text-slate-600 font-semibold mb-1.5 flex items-center space-x-1.5">
-              <User className="w-3.5 h-3.5 text-red-800" />
+              <User className="w-3.5 h-3.5 text-blue-600" />
               <span>Pilih Pegawai Penerima:</span>
             </label>
             <select
               value={selectedPegawaiId}
               onChange={(e) => setSelectedPegawaiId(e.target.value)}
-              className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-red-800"
+              className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-blue-600"
             >
               {pegawaiList.map(p => (
                 <option key={p.id} value={p.id}>{p.name} ({p.jabatan})</option>
@@ -87,7 +87,7 @@ export default function PengingatWA({ pegawaiList }) {
 
           <div>
             <label className="block text-slate-600 font-semibold mb-1.5 flex items-center space-x-1.5">
-              <Phone className="w-3.5 h-3.5 text-red-800" />
+              <Phone className="w-3.5 h-3.5 text-blue-600" />
               <span>Nomor WhatsApp (Awali 628...):</span>
             </label>
             <input
@@ -95,14 +95,14 @@ export default function PengingatWA({ pegawaiList }) {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="6281234567890"
-              className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-red-800 font-mono"
+              className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-blue-600 font-mono"
             />
           </div>
 
           <div>
             <label className="block text-slate-600 font-semibold mb-1.5">Pilih Template Pesan:</label>
             <div className="space-y-2">
-              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-red-800/50">
+              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-blue-600/50">
                 <input
                   type="radio"
                   name="template"
@@ -113,7 +113,7 @@ export default function PengingatWA({ pegawaiList }) {
                 <span className="text-slate-700">Pengingat Belum Input LKH Harian</span>
               </label>
 
-              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-red-800/50">
+              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-blue-600/50">
                 <input
                   type="radio"
                   name="template"
@@ -124,7 +124,7 @@ export default function PengingatWA({ pegawaiList }) {
                 <span className="text-slate-700">Pemberitahuan LKH Disetujui</span>
               </label>
 
-              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-red-800/50">
+              <label className="flex items-center space-x-2 bg-white border border-slate-200 p-2.5 rounded-xl border border-slate-200 cursor-pointer hover:border-blue-600/50">
                 <input
                   type="radio"
                   name="template"
@@ -148,7 +148,7 @@ export default function PengingatWA({ pegawaiList }) {
               </h3>
               <button
                 onClick={handleCopyText}
-                className="text-red-800 hover:text-red-700 flex items-center space-x-1"
+                className="text-blue-600 hover:text-blue-600 flex items-center space-x-1"
               >
                 <Copy className="w-3.5 h-3.5" />
                 <span>{copied ? 'Tersalin!' : 'Salin Teks'}</span>
@@ -163,7 +163,7 @@ export default function PengingatWA({ pegawaiList }) {
           <div className="pt-2">
             <button
               onClick={handleSendWA}
-              className="w-full bg-red-800 hover:bg-red-800 text-white font-bold text-xs py-3 rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2"
+              className="w-full bg-blue-600 hover:bg-blue-600 text-white font-bold text-xs py-3 rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2"
             >
               <Send className="w-4 h-4" />
               <span>Buka & Kirim Langsung via WhatsApp Web / App</span>

@@ -173,7 +173,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
         {/* Header Bar */}
         <div className="bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-300 rounded-3xl p-6 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-4 w-full lg:w-1/2">
-            <div className="p-3 bg-slate-100 text-red-800 rounded-xl border border-slate-200">
+            <div className="p-3 bg-slate-100 text-blue-600 rounded-xl border border-slate-200">
               <FileText className="w-6 h-6" />
             </div>
             <div>
@@ -187,7 +187,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
               value={selectedPegawai}
               onChange={e => setSelectedPegawai(e.target.value)}
               disabled={activeUser?.role === 'ASN / Staf'}
-              className="w-full sm:w-56 bg-white border border-slate-200 border border-slate-200/60 rounded-xl p-2.5 text-slate-800 text-sm disabled:opacity-50 appearance-none focus:ring-2 focus:ring-red-800 focus:outline-none"
+              className="w-full sm:w-56 bg-white border border-slate-200 border border-slate-200/60 rounded-xl p-2.5 text-slate-800 text-sm disabled:opacity-50 appearance-none focus:ring-2 focus:ring-blue-600 focus:outline-none"
             >
               {activeUser?.role === 'ASN / Staf' ? (
                 <option value={activeUser?.id}>{activeUser?.name}</option>
@@ -202,7 +202,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
               value={selectedMonth}
               onChange={e => setSelectedMonth(e.target.value)}
               style={{ colorScheme: 'dark' }}
-              className="w-full sm:w-48 bg-white border border-slate-200 border border-slate-200/60 rounded-xl p-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-red-800 focus:outline-none cursor-pointer"
+              className="w-full sm:w-48 bg-white border border-slate-200 border border-slate-200/60 rounded-xl p-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-blue-600 focus:outline-none cursor-pointer"
             />
             <button 
               onClick={handlePrint}
@@ -217,12 +217,12 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
 
         {/* Pending Toggle & Helper */}
         <div className="pt-1 flex flex-col px-2">
-          <label className="flex items-center space-x-2 text-slate-500 text-xs cursor-pointer hover:text-red-800 transition-colors w-fit">
+          <label className="flex items-center space-x-2 text-slate-500 text-xs cursor-pointer hover:text-blue-600 transition-colors w-fit">
             <input 
               type="checkbox" 
               checked={includePending}
               onChange={e => setIncludePending(e.target.checked)}
-              className="rounded border-slate-200 text-red-800 focus:ring-red-800/30"
+              className="rounded border-slate-200 text-blue-600 focus:ring-blue-600/30"
             />
             <span>Tampilkan juga laporan PENDING (Khusus Pratinjau)</span>
           </label>

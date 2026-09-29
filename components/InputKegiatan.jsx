@@ -341,7 +341,7 @@ export default function InputKegiatan({
             const isUserCamat = checkIsCamat(activeUser);
             
             return (
-              <div className="bg-red-800/20 border border-red-800/40 text-red-700 p-4 rounded-xl mb-6 flex items-center space-x-3 shadow-lg">
+              <div className="bg-blue-600/20 border border-blue-600/40 text-blue-600 p-4 rounded-xl mb-6 flex items-center space-x-3 shadow-lg">
                 <CheckCircle className="w-5 h-5 flex-shrink-0" />
                 <span className="font-bold">
                   {isUserCamat
@@ -363,7 +363,7 @@ export default function InputKegiatan({
                     onClick={() => {
                       try { document.getElementById('inputTanggal').showPicker(); } catch(e) {}
                     }}
-                    className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-red-800 cursor-pointer z-10" 
+                    className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-blue-600 cursor-pointer z-10" 
                   />
                   <input
                     id="inputTanggal"
@@ -371,20 +371,20 @@ export default function InputKegiatan({
                     required
                     value={formData.tanggal}
                     onChange={(e) => setFormData({ ...formData, tanggal: e.target.value })}
-                    className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full"
+                    className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600 cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full"
                   />
                 </div>
               </div>
               <div>
                 <label className="block text-slate-600 font-bold mb-1.5 uppercase text-[10px] tracking-wider">Waktu Mulai</label>
                 <div className="relative">
-                  <Clock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-red-800 pointer-events-none" />
+                  <Clock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-blue-600 pointer-events-none" />
                   <input
                     type="time"
                     required
                     value={formData.jamMulai}
                     onChange={(e) => setFormData({ ...formData, jamMulai: e.target.value })}
-                    className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 font-mono cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full"
+                    className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600 font-mono cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full"
                   />
                 </div>
               </div>
@@ -397,7 +397,7 @@ export default function InputKegiatan({
                     required
                     value={formData.jamSelesai}
                     onChange={(e) => setFormData({ ...formData, jamSelesai: e.target.value })}
-                    className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 font-mono cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full"
+                    className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600 font-mono cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full"
                   />
                 </div>
               </div>
@@ -411,7 +411,7 @@ export default function InputKegiatan({
                   <label key={cat} className={`
                     cursor-pointer border rounded-xl p-3 flex flex-col items-center justify-center text-center space-y-2 transition-all
                     ${formData.kategori === cat 
-                      ? 'bg-red-800/20 border-red-800 text-red-700 shadow-md shadow-sm' 
+                      ? 'bg-blue-600/20 border-blue-600 text-blue-600 shadow-md shadow-sm' 
                       : 'bg-slate-50 border-slate-300 text-slate-500 hover:bg-slate-100 hover:border-slate-300'
                     }
                   `}>
@@ -441,7 +441,7 @@ export default function InputKegiatan({
                   setFormData({ ...formData, deskripsi: e.target.value });
                   if (validationError) setValidationError('');
                 }}
-                className={`w-full bg-white border border-slate-200 border ${validationError ? 'border-rose-500' : 'border-slate-200/60'} rounded-xl p-4 text-slate-800 focus:outline-none focus:border-red-800 transition-colors resize-y`}
+                className={`w-full bg-white border border-slate-200 border ${validationError ? 'border-rose-500' : 'border-slate-200/60'} rounded-xl p-4 text-slate-800 focus:outline-none focus:border-blue-600 transition-colors resize-y`}
               />
               {validationError ? (
                 <p className="text-[11px] text-rose-500 font-bold mt-1.5">{validationError}</p>
@@ -462,7 +462,7 @@ export default function InputKegiatan({
                   required
                   value={formData.volume}
                   onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
-                  className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                 />
               </div>
               <div>
@@ -470,7 +470,7 @@ export default function InputKegiatan({
                 <select
                   value={formData.satuan}
                   onChange={(e) => setFormData({ ...formData, satuan: e.target.value })}
-                  className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 cursor-pointer"
+                  className="w-full bg-white border border-slate-200 border border-slate-200/60 rounded-xl px-4 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600 cursor-pointer"
                 >
                   <option value="Berkas">Berkas</option>
                   <option value="Kegiatan">Kegiatan</option>
@@ -486,7 +486,7 @@ export default function InputKegiatan({
                     <label key={st} className={`
                       flex-1 text-center py-1.5 text-[11px] font-bold cursor-pointer rounded-lg transition-colors
                       ${formData.statusHasil === st 
-                        ? (st === 'Selesai' ? 'bg-red-800 text-white' : st === 'Proses' ? 'bg-amber-500 text-zinc-900' : 'bg-red-800 text-white')
+                        ? (st === 'Selesai' ? 'bg-blue-600 text-white' : st === 'Proses' ? 'bg-amber-500 text-zinc-900' : 'bg-blue-600 text-white')
                         : 'text-slate-500 hover:bg-slate-100'
                       }
                     `}>
@@ -513,7 +513,7 @@ export default function InputKegiatan({
               </label>
               
               <div 
-                className="w-full border-2 border-dashed border-slate-200 hover:border-red-800 bg-white/40 hover:bg-white/70 rounded-2xl p-6 transition-all flex flex-col items-center justify-center cursor-pointer relative"
+                className="w-full border-2 border-dashed border-slate-200 hover:border-blue-600 bg-white/40 hover:bg-white/70 rounded-2xl p-6 transition-all flex flex-col items-center justify-center cursor-pointer relative"
                 onClick={() => fileInputRef.current?.click()}
               >
                 <input 
@@ -527,7 +527,7 @@ export default function InputKegiatan({
                 
                 {formData.fotoUrls.length === 0 ? (
                   <>
-                    <div className="bg-slate-100 p-3 rounded-full mb-3 text-red-800">
+                    <div className="bg-slate-100 p-3 rounded-full mb-3 text-blue-600">
                       <Upload className="w-6 h-6" />
                     </div>
                     <p className="text-slate-600 font-bold text-xs text-center">Seret & taruh foto ke sini, atau klik untuk unggah (Maks. 2 Foto)</p>
@@ -537,12 +537,12 @@ export default function InputKegiatan({
                   <div className="flex flex-wrap gap-4 w-full justify-center">
                     {formData.fotoUrls.map((foto, idx) => (
                       <div key={idx} className="relative flex flex-col items-center gap-2 group" onClick={(e) => e.stopPropagation()}>
-                        <div className="relative w-24 h-24 rounded-xl overflow-hidden border-2 border-red-800/50">
+                        <div className="relative w-24 h-24 rounded-xl overflow-hidden border-2 border-blue-600/50">
                           <img src={foto.url} alt={`Bukti ${idx+1}`} className="w-full h-full object-cover" />
                           <button 
                             type="button"
                             onClick={(e) => { e.stopPropagation(); removePhoto(idx); }}
-                            className="absolute top-1 right-1 bg-rose-600/90 text-slate-800 p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-md hover:bg-red-800"
+                            className="absolute top-1 right-1 bg-rose-600/90 text-slate-800 p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-md hover:bg-blue-600"
                           >
                             <X className="w-3 h-3" />
                           </button>
@@ -554,7 +554,7 @@ export default function InputKegiatan({
                       </div>
                     ))}
                     {formData.fotoUrls.length < 2 && (
-                      <div className="w-24 h-24 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 hover:text-red-800 hover:border-red-800 transition-colors">
+                      <div className="w-24 h-24 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:border-blue-600 transition-colors">
                         <Plus className="w-6 h-6" />
                       </div>
                     )}
@@ -570,7 +570,7 @@ export default function InputKegiatan({
                 className={`w-full text-slate-800 font-extrabold text-sm py-3.5 rounded-2xl shadow-xl flex items-center justify-center space-x-2 transition-transform hover:-translate-y-0.5 ${
                   editingReportId 
                     ? 'bg-amber-600 hover:bg-amber-500 shadow-amber-900/40' 
-                    : 'bg-red-800 hover:bg-red-800 shadow-emerald-900/40'
+                    : 'bg-blue-600 hover:bg-blue-600 shadow-emerald-900/40'
                 }`}
               >
                 <Send className="w-5 h-5" />
@@ -591,7 +591,7 @@ export default function InputKegiatan({
             </div>
             
             <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-              <div className="w-20 h-20 rounded-full border-4 border-red-800/50 bg-white overflow-hidden shadow-lg">
+              <div className="w-20 h-20 rounded-full border-4 border-blue-600/50 bg-white overflow-hidden shadow-lg">
                 {activeUser?.fotoProfil ? (
                   <img src={activeUser.fotoProfil} alt="Profil" className="w-full h-full object-cover" />
                 ) : (
@@ -603,7 +603,7 @@ export default function InputKegiatan({
               
               <div>
                 <h3 className="text-lg font-extrabold text-slate-800 leading-tight">{activeUser?.name || 'Nama Pegawai'}</h3>
-                <p className="text-red-800 font-mono text-xs font-bold mt-0.5">NIP. {activeUser?.nip || '123456789'}</p>
+                <p className="text-blue-600 font-mono text-xs font-bold mt-0.5">NIP. {activeUser?.nip || '123456789'}</p>
               </div>
 
               <div className="w-full space-y-2.5 text-left bg-white/60 p-4 rounded-2xl border border-slate-200">
@@ -644,7 +644,7 @@ export default function InputKegiatan({
                   const atasanObj = pegawaiList.find(p => activeUser.atasanValidasi.includes(p.name));
                   return (
                     <>
-                      <div className="w-16 h-16 rounded-full border-2 border-red-800/50 bg-white overflow-hidden shadow-lg">
+                      <div className="w-16 h-16 rounded-full border-2 border-blue-600/50 bg-white overflow-hidden shadow-lg">
                         {atasanObj?.fotoProfil ? (
                           <img src={atasanObj.fotoProfil} alt="Profil Atasan" className="w-full h-full object-cover" />
                         ) : (
@@ -656,8 +656,8 @@ export default function InputKegiatan({
                       
                       <div>
                         <h3 className="text-sm font-extrabold text-slate-800 leading-tight">{atasanObj?.name || activeUser.atasanValidasi}</h3>
-                        {atasanObj?.nip && <p className="text-red-800 font-mono text-[10px] font-bold mt-0.5">NIP. {atasanObj.nip}</p>}
-                        <div className="mt-1 inline-block bg-red-800/20 border border-red-800/40 text-red-700 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">
+                        {atasanObj?.nip && <p className="text-blue-600 font-mono text-[10px] font-bold mt-0.5">NIP. {atasanObj.nip}</p>}
+                        <div className="mt-1 inline-block bg-blue-600/20 border border-blue-600/40 text-blue-600 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">
                           Atasan Penilai Langsung
                         </div>
                       </div>
@@ -697,7 +697,7 @@ export default function InputKegiatan({
           {/* GALERI FOTO KEGIATAN */}
           <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-3xl p-6 shadow-xl">
             <h3 className="text-sm font-bold text-slate-800 flex items-center space-x-2 mb-4">
-              <ImageIcon className="w-4 h-4 text-red-800" />
+              <ImageIcon className="w-4 h-4 text-blue-600" />
               <span>Galeri Bukti Kegiatan</span>
             </h3>
             
@@ -727,7 +727,7 @@ export default function InputKegiatan({
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-slate-200 pb-5">
           <div>
             <h2 className="text-lg font-extrabold text-slate-800 flex items-center space-x-2">
-              <Activity className="w-5 h-5 text-red-800" />
+              <Activity className="w-5 h-5 text-blue-600" />
               <span>Rekapan Kegiatan yang Sudah Diinput</span>
             </h2>
             <p className="text-xs text-slate-500 mt-1">Daftar laporan kegiatan harian Anda. Anda dapat mengedit atau menghapus laporan.</p>
@@ -740,7 +740,7 @@ export default function InputKegiatan({
                 onClick={() => setFilterRecapStatus(status)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all border ${
                   filterRecapStatus === status
-                    ? 'bg-red-800 border-red-800 text-white shadow-md'
+                    ? 'bg-blue-600 border-blue-600 text-white shadow-md'
                     : 'bg-slate-50 border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-100'
                 }`}
               >
@@ -754,7 +754,7 @@ export default function InputKegiatan({
         <div className="overflow-x-auto rounded-2xl border border-slate-200/60 shadow-inner bg-slate-50/50">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-slate-50 text-red-700 font-extrabold uppercase tracking-wider text-[10px] border-b border-slate-200">
+              <tr className="bg-slate-50 text-blue-600 font-extrabold uppercase tracking-wider text-[10px] border-b border-slate-200">
                 <th className="py-4 px-4">TANGGAL & WAKTU</th>
                 <th className="py-4 px-4">KATEGORI</th>
                 <th className="py-4 px-4 min-w-[200px]">DESKRIPSI KEGIATAN</th>
@@ -779,7 +779,7 @@ export default function InputKegiatan({
                     <tr key={item.id} className="hover:bg-slate-50 border border-slate-200 transition-colors group">
                       <td className="py-4 px-4 whitespace-nowrap">
                         <div className="flex flex-col space-y-1.5">
-                          <div className="flex items-center space-x-1.5 text-red-800 font-extrabold text-xs">
+                          <div className="flex items-center space-x-1.5 text-blue-600 font-extrabold text-xs">
                             <Calendar className="w-4 h-4" />
                             <span>{formatToCustomDate(item.tanggal)}</span>
                           </div>
@@ -801,12 +801,12 @@ export default function InputKegiatan({
                         {/* Expandable links if photos exist */}
                         <div className="mt-2 flex flex-wrap gap-2">
                           {(firstKeg.fotoUrl || item.lampiranUrl) && (
-                            <a href={firstKeg.fotoUrl || item.lampiranUrl} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-red-800 hover:text-red-700 flex items-center space-x-1">
+                            <a href={firstKeg.fotoUrl || item.lampiranUrl} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-blue-600 hover:text-blue-600 flex items-center space-x-1">
                               <ImageIcon className="w-3 h-3" /> <span>Bukti Dukung 1</span>
                             </a>
                           )}
                           {firstKeg.fotoUrl2 && (
-                            <a href={firstKeg.fotoUrl2} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-red-800 hover:text-red-700 flex items-center space-x-1">
+                            <a href={firstKeg.fotoUrl2} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-blue-600 hover:text-blue-600 flex items-center space-x-1">
                               <ImageIcon className="w-3 h-3" /> <span>Bukti Dukung 2</span>
                             </a>
                           )}
@@ -821,7 +821,7 @@ export default function InputKegiatan({
                       </td>
                       <td className="py-4 px-4 text-center">
                         {item.status === 'DIVALIDASI' && (
-                          <span className="bg-red-800/20 text-red-800 border border-red-800/40 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase">Disetujui</span>
+                          <span className="bg-blue-600/20 text-blue-600 border border-blue-600/40 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase">Disetujui</span>
                         )}
                         {item.status === 'PENDING' && (
                           <span className="bg-amber-500/20 text-amber-700 border border-amber-500/40 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase">Pending</span>
@@ -830,12 +830,12 @@ export default function InputKegiatan({
                           <span className="bg-blue-500/20 text-blue-400 border border-blue-500/40 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase">Revisi</span>
                         )}
                         {item.status === 'DITOLAK' && (
-                          <span className="bg-red-800/20 text-red-800 border border-rose-500/40 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase">Ditolak</span>
+                          <span className="bg-blue-600/20 text-blue-600 border border-rose-500/40 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase">Ditolak</span>
                         )}
                       </td>
                       <td className="py-4 px-4 text-right whitespace-nowrap">
                         <div className="flex justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                          <button onClick={() => handleEditClick(item)} className="p-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-red-800 hover:text-white transition-colors" title="Edit Laporan">
+                          <button onClick={() => handleEditClick(item)} className="p-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition-colors" title="Edit Laporan">
                             <Edit3 className="w-3.5 h-3.5" />
                           </button>
                           <button onClick={() => onDeleteReport(item.id)} className="p-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-rose-600 hover:text-slate-800 transition-colors" title="Hapus Laporan">

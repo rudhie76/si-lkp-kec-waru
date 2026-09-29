@@ -164,7 +164,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans selection:bg-red-800 selection:text-white">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans selection:bg-blue-600 selection:text-white">
       
       {/* BRANDING HEADER WITH OFFICIAL LOGO PPU */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
@@ -178,9 +178,9 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
         
         <div>
           <h2 className="text-2xl font-extrabold text-slate-800 tracking-wide">
-            Si-LKP Waru <span className="text-xs bg-red-800/20 text-red-700 border border-red-800/40 px-2 py-0.5 rounded-full font-mono">v1.5</span>
+            Si-LKP Waru <span className="text-xs bg-blue-600/20 text-blue-600 border border-blue-600/40 px-2 py-0.5 rounded-full font-mono">v1.5</span>
           </h2>
-          <p className="text-xs text-red-800 font-semibold tracking-wider uppercase mt-1">
+          <p className="text-xs text-blue-600 font-semibold tracking-wider uppercase mt-1">
             PEMERINTAH KABUPATEN PENAJAM PASER UTARA
           </p>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -194,9 +194,9 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
             <button 
               type="button"
               onClick={onOpenGSModal}
-              className="bg-red-800/15 hover:bg-red-800/25 border border-red-800/40 text-red-700 px-3.5 py-1.5 rounded-2xl text-xs font-semibold flex items-center space-x-2 transition-all shadow-md"
+              className="bg-blue-600/15 hover:bg-blue-600/25 border border-blue-600/40 text-blue-600 px-3.5 py-1.5 rounded-2xl text-xs font-semibold flex items-center space-x-2 transition-all shadow-md"
             >
-              <Database className="w-4 h-4 text-red-800" />
+              <Database className="w-4 h-4 text-blue-600" />
               <span>🔗 Pengaturan Database Google Sheets</span>
               {isGSConnected ? (
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Google Sheets Terhubung" />
@@ -219,7 +219,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               onClick={() => { setActiveTab('login'); setLoginError(''); setRegError(''); }}
               className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'login'
-                  ? 'bg-red-800 text-white shadow-lg shadow-emerald-900/40'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-emerald-900/40'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -232,7 +232,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               onClick={() => { setActiveTab('register'); setLoginError(''); setRegError(''); }}
               className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'register'
-                  ? 'bg-red-800 text-white shadow-lg shadow-emerald-900/40'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-emerald-900/40'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -246,7 +246,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
             <form onSubmit={handleLoginSubmit} className="space-y-4 text-xs">
               
               {loginError && (
-                <div className="bg-red-800/10 border border-rose-500/40 text-red-800 p-3 rounded-xl flex items-center space-x-2 text-xs">
+                <div className="bg-blue-600/10 border border-rose-500/40 text-blue-600 p-3 rounded-xl flex items-center space-x-2 text-xs">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{loginError}</span>
                 </div>
@@ -262,7 +262,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Masukkan NIP atau Nama Lengkap"
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800 transition-colors"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600 transition-colors"
                   />
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Masukkan Password"
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-10 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800 transition-colors"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-10 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600 transition-colors"
                   />
                   <button
                     type="button"
@@ -291,7 +291,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-red-800 hover:bg-red-900 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-sm text-xs flex items-center justify-center space-x-2 mt-2"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-sm text-xs flex items-center justify-center space-x-2 mt-2"
               >
                 {isLoading ? (
                   <span>Memproses Login...</span>
@@ -311,14 +311,14 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
             <form onSubmit={handleRegisterSubmit} className="space-y-4 text-xs">
               
               {regError && (
-                <div className="bg-red-800/10 border border-rose-500/40 text-red-800 p-3 rounded-xl flex items-center space-x-2 text-xs">
+                <div className="bg-blue-600/10 border border-rose-500/40 text-blue-600 p-3 rounded-xl flex items-center space-x-2 text-xs">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{regError}</span>
                 </div>
               )}
 
               {regSuccess && (
-                <div className="bg-red-800/15 border border-red-800/40 text-red-700 p-3 rounded-xl flex items-center space-x-2 text-xs">
+                <div className="bg-blue-600/15 border border-blue-600/40 text-blue-600 p-3 rounded-xl flex items-center space-x-2 text-xs">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" />
                   <span>Pendaftaran Berhasil! Mengalihkan ke halaman login...</span>
                 </div>
@@ -327,11 +327,11 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               {/* FOTO PROFIL UPLOAD */}
               <div className="flex flex-col items-center mb-6">
                 <label className="relative cursor-pointer group">
-                  <div className="w-24 h-24 rounded-full border-2 border-dashed border-slate-200/60 bg-slate-50 flex items-center justify-center overflow-hidden transition-all group-hover:border-red-800">
+                  <div className="w-24 h-24 rounded-full border-2 border-dashed border-slate-200/60 bg-slate-50 flex items-center justify-center overflow-hidden transition-all group-hover:border-blue-600">
                     {regData.fotoProfil ? (
                       <img src={regData.fotoProfil} alt="Preview" className="w-full h-full object-cover" />
                     ) : (
-                      <User className="w-8 h-8 text-slate-400 group-hover:text-red-800 transition-colors" />
+                      <User className="w-8 h-8 text-slate-400 group-hover:text-blue-600 transition-colors" />
                     )}
                   </div>
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
@@ -352,7 +352,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Contoh: Andi Hasmainti, S.IP."
                     value={regData.name}
                     onChange={(e) => setRegData({ ...regData, name: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -365,7 +365,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: 19981212 201101 2 001"
                   value={regData.nip}
                   onChange={(e) => setRegData({ ...regData, nip: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800 font-mono"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600 font-mono"
                 />
               </div>
 
@@ -379,7 +379,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Contoh: 08123456789"
                     value={regData.noWa}
                     onChange={(e) => setRegData({ ...regData, noWa: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -392,7 +392,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: emailku@domain.com"
                   value={regData.email}
                   onChange={(e) => setRegData({ ...regData, email: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -404,7 +404,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: Pengelola Pelayanan / Kasi / Sekcam / Camat"
                   value={regData.jabatan}
                   onChange={(e) => setRegData({ ...regData, jabatan: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -415,7 +415,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: Penata Muda / IIIa, Pembina / IVa"
                   value={regData.pangkatGolongan}
                   onChange={(e) => setRegData({ ...regData, pangkatGolongan: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -426,7 +426,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   placeholder="Contoh: Kecamatan Waru"
                   value={regData.unitKerja}
                   onChange={(e) => setRegData({ ...regData, unitKerja: e.target.value })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -435,7 +435,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                 <select
                   value={regData.peranStruktur}
                   onChange={(e) => setRegData({ ...regData, peranStruktur: e.target.value, showRangkapJabatan: false, rangkapJabatan: [] })}
-                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 cursor-pointer font-medium"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600 cursor-pointer font-medium"
                 >
                   <option value="Staf Pelaksana / JFT / JFU">Staf Pelaksana / JFT / JFU</option>
                   <option value="Kepala Sub Bagian / Kasubag">Kepala Sub Bagian / Kasubag</option>
@@ -451,7 +451,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                         type="checkbox" 
                         checked={regData.showRangkapJabatan}
                         onChange={(e) => setRegData({...regData, showRangkapJabatan: e.target.checked, rangkapJabatan: []})}
-                        className="form-checkbox text-red-800 rounded bg-slate-100 border-slate-200 w-4 h-4"
+                        className="form-checkbox text-blue-600 rounded bg-slate-100 border-slate-200 w-4 h-4"
                       />
                       <span className="text-slate-600 font-bold text-[10px] uppercase tracking-wider">Rangkap Jabatan / Peran Tambahan (Opsional)</span>
                     </label>
@@ -461,11 +461,11 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                         {regData.peranStruktur === 'Staf Pelaksana / JFT / JFU' && (
                           <>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasi (Validator Staf)</span>
                             </label>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasubag (Validator Staf)</span>
                             </label>
                           </>
@@ -473,11 +473,11 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                         {regData.peranStruktur === 'Kepala Sub Bagian / Kasubag' && (
                           <>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
                                 <span>Sekcam (Validator Kasubag)</span>
                             </label>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasi (Validator Staf)</span>
                             </label>
                           </>
@@ -485,11 +485,11 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                         {regData.peranStruktur === 'Kepala Seksi / Kasi' && (
                           <>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
                                 <span>Sekcam (Validator Kasubag)</span>
                             </label>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasubag (Validator Staf)</span>
                             </label>
                           </>
@@ -497,11 +497,11 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                         {regData.peranStruktur === 'Sekretaris Kecamatan / Sekcam' && (
                           <>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasi (Validator Staf)</span>
                             </label>
                             <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
+                                <input type="checkbox" className="form-checkbox text-blue-600 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasubag (Validator Staf)</span>
                             </label>
                           </>
@@ -521,7 +521,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   <select
                     value={regData.atasanValidasi}
                     onChange={(e) => setRegData({ ...regData, atasanValidasi: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 cursor-pointer"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 focus:outline-none focus:border-blue-600 cursor-pointer"
                     required
                   >
                     <option value="">-- Pilih Atasan Langsung --</option>
@@ -548,14 +548,14 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                     placeholder="Buat Password Akun"
                     value={regData.password}
                     onChange={(e) => setRegData({ ...regData, password: e.target.value })}
-                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-red-800 hover:bg-red-900 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-sm text-xs flex items-center justify-center space-x-2 mt-2"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-sm text-xs flex items-center justify-center space-x-2 mt-2"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>Daftarkan Akun Pegawai</span>

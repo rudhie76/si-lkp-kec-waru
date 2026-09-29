@@ -255,11 +255,11 @@ export default function DashboardView({
 
   // Category Distribution Calculation
   const categoriesList = [
-    { cat: 'Pelayanan Publik', color: 'bg-emerald-400', textColor: 'text-red-800' },
+    { cat: 'Pelayanan Publik', color: 'bg-emerald-400', textColor: 'text-blue-600' },
     { cat: 'Administrasi', color: 'bg-cyan-400', textColor: 'text-cyan-400' },
     { cat: 'Rapat & Koordinasi', color: 'bg-amber-500', textColor: 'text-amber-700' },
     { cat: 'Monitoring Lapangan', color: 'bg-amber-400', textColor: 'text-amber-700' },
-    { cat: 'Tugas Kedinasan Lainnya', color: 'bg-rose-400', textColor: 'text-red-800' },
+    { cat: 'Tugas Kedinasan Lainnya', color: 'bg-rose-400', textColor: 'text-blue-600' },
   ];
 
   const categoryDistribution = categoriesList.map(item => {
@@ -282,33 +282,33 @@ export default function DashboardView({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Card 1: Total Laporan */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-olive-900 to-zinc-950 border border-red-800/40 rounded-2xl p-5 shadow-xl group hover:border-emerald-400 transition-all duration-300">
+        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-olive-900 to-zinc-950 border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-emerald-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-bold text-red-800 uppercase tracking-wider">Total Laporan LKH</p>
-              <h3 className="text-3xl font-extrabold text-slate-800 mt-1 group-hover:text-red-700 transition-colors">{totalReports}</h3>
+              <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Total Laporan LKH</p>
+              <h3 className="text-3xl font-extrabold text-slate-800 mt-1 group-hover:text-blue-600 transition-colors">{totalReports}</h3>
               <p className="text-xs text-slate-600 mt-1">Seluruh kegiatan terdata</p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-red-800/20 border border-emerald-400/50 flex items-center justify-center text-red-700 group-hover:scale-110 transition-transform shadow-inner">
+            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <FileText className="w-6 h-6" />
             </div>
           </div>
-          <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-red-800/20 rounded-full blur-xl pointer-events-none" />
+          <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-blue-600/20 rounded-full blur-xl pointer-events-none" />
         </div>
 
         {/* Card 2: Divalidasi Atasan */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-olive-900 to-zinc-950 border border-red-800/40 rounded-2xl p-5 shadow-xl group hover:border-emerald-400 transition-all duration-300">
+        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-olive-900 to-zinc-950 border border-blue-600/40 rounded-2xl p-5 shadow-xl group hover:border-emerald-400 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-bold text-red-800 uppercase tracking-wider">Divalidasi Atasan</p>
-              <h3 className="text-3xl font-extrabold text-red-700 mt-1">{approvedReports}</h3>
+              <p className="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Divalidasi Atasan</p>
+              <h3 className="text-3xl font-extrabold text-blue-600 mt-1">{approvedReports}</h3>
               <p className="text-xs text-slate-600 mt-1">{((approvedReports / (totalReports || 1)) * 100).toFixed(0)}% dari total laporan</p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-red-800/25 border border-emerald-400/60 flex items-center justify-center text-red-700 group-hover:scale-110 transition-transform shadow-inner">
+            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <CheckCircle2 className="w-6 h-6" />
             </div>
           </div>
-          <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-red-800/20 rounded-full blur-xl pointer-events-none" />
+          <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-blue-600/20 rounded-full blur-xl pointer-events-none" />
         </div>
 
         {/* Card 3: Verifikasi PENDING */}
@@ -319,7 +319,7 @@ export default function DashboardView({
               <h3 className="text-3xl font-extrabold text-amber-800 mt-1">{pendingReports}</h3>
               <p className="text-xs text-slate-600 mt-1">Membutuhkan aksi atasan</p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-800 group-hover:scale-110 transition-transform shadow-inner">
+            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <Clock className="w-6 h-6" />
             </div>
           </div>
@@ -343,7 +343,7 @@ export default function DashboardView({
                 </div>
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-700 group-hover:scale-110 transition-transform shadow-inner">
+            <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
               <Hourglass className="w-6 h-6" />
             </div>
           </div>
@@ -356,13 +356,13 @@ export default function DashboardView({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* CARD 1: FOTO DIRI PEGAWAI LOGGED IN */}
-        <div className="bg-gradient-to-br from-olive-900 via-olive-950 to-zinc-950 border border-red-800/40 rounded-3xl p-6 shadow-xl relative overflow-hidden space-y-4">
+        <div className="bg-gradient-to-br from-olive-900 via-olive-950 to-zinc-950 border border-blue-600/40 rounded-3xl p-6 shadow-xl relative overflow-hidden space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-            <span className="text-xs font-extrabold uppercase tracking-wider text-red-800 flex items-center space-x-2">
-              <User className="w-4 h-4 text-red-800" />
+            <span className="text-xs font-extrabold uppercase tracking-wider text-blue-600 flex items-center space-x-2">
+              <User className="w-4 h-4 text-blue-600" />
               <span>Profil Pengisi LKH (ASN Logged In)</span>
             </span>
-            <span className="text-[10px] bg-red-800/20 text-red-700 border border-red-800/40 px-2.5 py-0.5 rounded-full font-bold">
+            <span className="text-[10px] bg-blue-600/20 text-blue-600 border border-blue-600/40 px-2.5 py-0.5 rounded-full font-bold">
               AKUN AKTIF
             </span>
           </div>
@@ -372,9 +372,9 @@ export default function DashboardView({
               {activeUser.fotoProfil ? (
                 <img src={activeUser.fotoProfil} alt="Foto Diri" className="w-full h-full object-cover" />
               ) : (
-                <User className="w-12 h-12 text-red-800" />
+                <User className="w-12 h-12 text-slate-400" />
               )}
-              <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-red-800 border-2 border-zinc-950 rounded-full" />
+              <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-blue-600 border-2 border-zinc-950 rounded-full" />
             </div>
 
             <div className="space-y-1.5 text-center sm:text-left flex-1">
@@ -385,7 +385,7 @@ export default function DashboardView({
 
               <div>
                 <span className="text-[10px] text-slate-500 uppercase block font-semibold">Jabatan:</span>
-                <span className="text-xs font-bold text-red-700">{activeUser.jabatan || 'ASN Pelaksana'}</span>
+                <span className="text-xs font-bold text-blue-600">{activeUser.jabatan || 'ASN Pelaksana'}</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-300">
@@ -420,7 +420,7 @@ export default function DashboardView({
                 {validatingSuperior.fotoProfil ? (
                   <img src={validatingSuperior.fotoProfil} alt="Foto Atasan" className="w-full h-full object-cover" />
                 ) : (
-                  <User className="w-12 h-12 text-amber-700" />
+                  <User className="w-12 h-12 text-slate-400" />
                 )}
                 <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-amber-500 border-2 border-zinc-950 rounded-full" />
               </div>
@@ -452,7 +452,7 @@ export default function DashboardView({
         ) : (
           <div className="bg-gradient-to-br from-olive-900 via-olive-950 to-zinc-950 border border-slate-300 rounded-3xl p-6 shadow-xl relative overflow-hidden flex flex-col items-center justify-center text-center opacity-80">
             <div className="w-20 h-20 bg-slate-100/30 rounded-full flex items-center justify-center mb-4">
-              <ShieldCheck className="w-10 h-10 text-red-800" />
+              <ShieldCheck className="w-10 h-10 text-blue-600" />
             </div>
             <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider mb-2">Atasan Tertinggi</h3>
             <p className="text-xs text-slate-500 font-medium px-4">
@@ -470,12 +470,12 @@ export default function DashboardView({
         <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200 rounded-3xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-red-800/20 text-red-800 rounded-xl border border-red-800/30">
+              <div className="p-2 bg-blue-600/20 text-blue-600 rounded-xl border border-blue-600/30">
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-slate-800">Tren Durasi Jam Kerja Harian</h3>
-                <p className="text-[11px] text-red-800 font-medium">Akumulasi Jam Kerja Efektif (7 Hari Aktif Terakhir)</p>
+                <p className="text-[11px] text-blue-600 font-medium">Akumulasi Jam Kerja Efektif (7 Hari Aktif Terakhir)</p>
               </div>
             </div>
             <span className="text-[10px] bg-white text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200">
@@ -492,7 +492,7 @@ export default function DashboardView({
                 </div>
                 <div className="w-full bg-white rounded-full h-3 overflow-hidden border border-slate-200">
                   <div 
-                    className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-gold-400 h-full rounded-full transition-all duration-500 shadow-md"
+                    className="bg-blue-600 h-full rounded-full transition-all duration-500 shadow-sm"
                     style={{ width: `${day.pct}%` }}
                   />
                 </div>
@@ -543,17 +543,17 @@ export default function DashboardView({
           <div>
             <h2 className="text-base font-bold text-slate-800 flex items-center space-x-2">
               <span>📋 Tabel Aktivitas Terbaru (LKH Diri Sendiri & Bawahan)</span>
-              <span className="text-xs bg-red-800/20 text-red-700 border border-red-800/30 px-2.5 py-0.5 rounded-full font-mono font-bold">
+              <span className="text-xs bg-blue-600/20 text-blue-600 border border-blue-600/30 px-2.5 py-0.5 rounded-full font-mono font-bold">
                 {filteredReports.length} Data
               </span>
             </h2>
-            <p className="text-xs text-red-800/90 font-medium mt-0.5">Laporan LKH terurut berdasarkan hari, tanggal, dan durasi jam kerja.</p>
+            <p className="text-xs text-blue-600/90 font-medium mt-0.5">Laporan LKH terurut berdasarkan hari, tanggal, dan durasi jam kerja.</p>
           </div>
 
           <div className="flex items-center space-x-2">
             <button
               onClick={onNavigateToInput}
-              className="bg-red-800 hover:bg-red-900 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition-all shadow-lg flex items-center space-x-1.5"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition-all shadow-lg flex items-center space-x-1.5"
             >
               <span>+ Tambah LKH</span>
             </button>
@@ -569,7 +569,7 @@ export default function DashboardView({
               placeholder="🔍 Cari nama pegawai, NIP, uraian pekerjaan..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
+              className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-blue-600"
             />
           </div>
 
@@ -577,7 +577,7 @@ export default function DashboardView({
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-red-800 appearance-none cursor-pointer"
+              className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-blue-600 appearance-none cursor-pointer"
             >
               <option value="ALL">Semua Status Validasi ▾</option>
               <option value="DIVALIDASI">DIVALIDASI</option>
@@ -624,8 +624,8 @@ export default function DashboardView({
                       
                       {/* Hari, Tanggal & Durasi Waktu (FORMAT SINGKAT DENGAN KETENTUAN PRESISI) */}
                       <td className="py-3.5 px-4 whitespace-nowrap">
-                        <div className="font-bold text-red-700 flex items-center space-x-1.5">
-                          <Calendar className="w-3.5 h-3.5 text-red-800 flex-shrink-0" />
+                        <div className="font-bold text-blue-600 flex items-center space-x-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
                           <span>{shortDateStr}</span>
                         </div>
                         <div className="text-[11px] text-slate-600 font-mono mt-0.5 flex items-center space-x-1">
@@ -647,7 +647,7 @@ export default function DashboardView({
                           <ul className="list-disc list-inside space-y-1 text-slate-600 text-[11px]">
                             {item.detailKegiatan.map((keg, idx) => (
                               <li key={idx}>
-                                <span className="font-bold text-red-800">[{keg.kategori}]</span> {keg.deskripsi} ({keg.volume} {keg.satuan})
+                                <span className="font-bold text-blue-600">[{keg.kategori}]</span> {keg.deskripsi} ({keg.volume} {keg.satuan})
                               </li>
                             ))}
                           </ul>
@@ -674,7 +674,7 @@ export default function DashboardView({
                           </span>
                         )}
                         {isRejected && (
-                          <span className="bg-red-100 border border-red-300 text-red-800 text-[11px] font-bold px-2.5 py-1 rounded-full">
+                          <span className="bg-red-100 border border-red-300 text-red-600 text-[11px] font-bold px-2.5 py-1 rounded-full">
                             ✕ DITOLAK
                           </span>
                         )}
@@ -722,7 +722,7 @@ export default function DashboardView({
               <p><strong>Jabatan:</strong> {selectedReport.jabatan}</p>
               <p><strong>Tanggal:</strong> {formatShortDate(selectedReport.tanggal)}</p>
               <p><strong>Durasi Waktu:</strong> {formatDurationTime(selectedReport)} ({getDurasiFallback(selectedReport)} Jam)</p>
-              <p><strong>Status Validasi:</strong> <span className="text-red-800 font-bold">{selectedReport.status}</span></p>
+              <p><strong>Status Validasi:</strong> <span className="text-blue-600 font-bold">{selectedReport.status}</span></p>
               {selectedReport.catatanAtasan && <p><strong>Catatan Atasan:</strong> {selectedReport.catatanAtasan}</p>}
               
               <div className="pt-2 space-y-2">
@@ -730,7 +730,7 @@ export default function DashboardView({
                 {selectedReport.detailKegiatan && Array.isArray(selectedReport.detailKegiatan) ? (
                   selectedReport.detailKegiatan.map((keg, idx) => (
                     <div key={idx} className="bg-white p-3 rounded-xl border border-slate-200 space-y-1">
-                      <div className="flex justify-between font-bold text-red-800">
+                      <div className="flex justify-between font-bold text-blue-600">
                         <span>[{keg.kategori}] {keg.jamMulai} - {keg.jamSelesai}</span>
                         <span>{keg.volume} {keg.satuan}</span>
                       </div>
@@ -762,7 +762,7 @@ export default function DashboardView({
             </div>
 
             <div className="text-right pt-2 border-t border-slate-200">
-              <button onClick={() => setSelectedReport(null)} className="px-5 py-2 rounded-xl bg-red-800 text-white font-bold text-xs">
+              <button onClick={() => setSelectedReport(null)} className="px-5 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs">
                 Tutup
               </button>
             </div>
@@ -793,7 +793,7 @@ export default function DashboardView({
                   required
                   value={editingReport.tanggal}
                   onChange={(e) => setEditingReport({ ...editingReport, tanggal: e.target.value })}
-                  className="w-full bg-white border border-slate-200/60 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white border border-slate-200/60 rounded-xl p-2.5 text-slate-800 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -828,7 +828,7 @@ export default function DashboardView({
                   required
                   value={editingReport.deskripsi}
                   onChange={(e) => setEditingReport({ ...editingReport, deskripsi: e.target.value })}
-                  className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-red-800"
+                  className="w-full bg-white border border-slate-200/60 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
@@ -866,7 +866,7 @@ export default function DashboardView({
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-xl bg-red-800 text-white font-bold text-xs shadow-lg"
+                className="px-5 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-lg"
               >
                 Simpan Perubahan LKH
               </button>
