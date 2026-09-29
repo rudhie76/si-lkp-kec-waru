@@ -79,6 +79,14 @@ export default function DashboardView({
   const totalReports = reports.length;
   const approvedReports = reports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;
   const pendingReports = reports.filter(r => r.status === 'PENDING' || r.status === 'Menunggu Verifikasi').length;
+  const userNip = currentUser?.nip || '';
+  const myReports = reports.filter(r => r.nip === userNip || r.pegawaiId === currentUser?.id);
+  const subordinateReports = reports.filter(r => r.nip !== userNip && r.pegawaiId !== currentUser?.id);
+  const hasSubordinates = subordinateReports.length > 0;
+  const myApproved = myReports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;
+  const subApproved = subordinateReports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;
+  const myPending = myReports.filter(r => r.status === 'PENDING' || r.status === 'Menunggu Verifikasi').length;
+  const subPending = subordinateReports.filter(r => r.status === 'PENDING' || r.status === 'Menunggu Verifikasi').length;
   
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
