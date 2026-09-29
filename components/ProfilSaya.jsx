@@ -452,7 +452,11 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
                 <option value="Penata Tk.I / IIId">Penata Tk.I / IIId</option>
                 <option value="Pembina / IVa">Pembina / IVa</option>
                 <option value="Pembina Tk.I / IVb">Pembina Tk.I / IVb</option>
-                <option value="Tenaga Honorer / THL">Tenaga Honorer / THL</option>
+                <option value="PPPK Golongan V">PPPK Golongan V (SMA/Sederajat)</option>
+                <option value="PPPK Golongan VII">PPPK Golongan VII (D3)</option>
+                <option value="PPPK Golongan IX">PPPK Golongan IX (S1/D4)</option>
+                <option value="PPPK Golongan X">PPPK Golongan X (S2/Profesi)</option>
+                <option value="PPPK Golongan XI">PPPK Golongan XI (S3)</option>
               </select>
             </div>
 
