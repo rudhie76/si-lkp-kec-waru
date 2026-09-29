@@ -61,7 +61,7 @@ export default function InputKegiatan({
   // Compression helper
   const compressImageFile = (file, maxWidth = 800, maxHeight = 800, quality = 0.75) => {
     return new Promise((resolve, reject) => {
-      if (file.type === 'application/pdf') {
+      if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
         const reader = new FileReader();
         reader.onload = (event) => resolve(event.target.result);
         reader.onerror = reject;
@@ -550,7 +550,7 @@ export default function InputKegiatan({
                     {formData.fotoUrls.map((foto, idx) => (
                       <div key={idx} className="relative flex flex-col items-center gap-2 group" onClick={(e) => e.stopPropagation()}>
                         <div className="relative w-24 h-24 rounded-xl overflow-hidden border-2 border-blue-600/50">
-                          {foto.url.includes('application/pdf') || foto.name.endsWith('.pdf') ? (
+                          {(foto.url && foto.url.includes('application/pdf')) || (foto.name && foto.name.toLowerCase().endsWith('.pdf')) ? (
                               <div className="w-full h-full flex flex-col items-center justify-center bg-rose-50 text-rose-500">
                                 <FileText className="w-8 h-8" />
                                 <span className="text-[8px] font-bold mt-1">PDF</span>
