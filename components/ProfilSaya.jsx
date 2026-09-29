@@ -457,6 +457,10 @@ function EditProfilModal({ currentUser, onClose, onUpdate, users }) {
                 <option value="PPPK Golongan IX">PPPK Golongan IX (S1/D4)</option>
                 <option value="PPPK Golongan X">PPPK Golongan X (S2/Profesi)</option>
                 <option value="PPPK Golongan XI">PPPK Golongan XI (S3)</option>
+                <option value="PPPK Paruh Waktu">PPPK Paruh Waktu</option>
+                <option value="PJLP">PJLP</option>
+                <option value="PPPK Paruh Waktu">PPPK Paruh Waktu</option>
+                <option value="PJLP">PJLP</option>
               </select>
             </div>
 
