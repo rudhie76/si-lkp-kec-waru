@@ -171,14 +171,14 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
       <div className="no-print space-y-4">
         
         {/* Header Bar */}
-        <div className="bg-gradient-to-br from-olive-900 to-olive-950 border border-olive-800/60 rounded-3xl p-6 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-4">
+        <div className="bg-gradient-to-br from-olive-900 to-olive-950 border border-slate-300 rounded-3xl p-6 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-4 w-full lg:w-1/2">
-            <div className="p-3 bg-olive-800/50 text-emerald-400 rounded-xl border border-olive-700/50">
+            <div className="p-3 bg-slate-100 text-red-800 rounded-xl border border-slate-200">
               <FileText className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-white">Rekapitulasi Bulanan Otomatis</h2>
-              <p className="text-xs text-zinc-400 mt-1">Hasil rekap total tugas, volume pekerjaan, dan verifikasi per bulan</p>
+              <h2 className="text-xl font-bold text-slate-800">Rekapitulasi Bulanan Otomatis</h2>
+              <p className="text-xs text-slate-500 mt-1">Hasil rekap total tugas, volume pekerjaan, dan verifikasi per bulan</p>
             </div>
           </div>
           
@@ -187,7 +187,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
               value={selectedPegawai}
               onChange={e => setSelectedPegawai(e.target.value)}
               disabled={activeUser?.role === 'ASN / Staf'}
-              className="w-full sm:w-56 bg-zinc-900/80 border border-olive-700/60 rounded-xl p-2.5 text-white text-sm disabled:opacity-50 appearance-none focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+              className="w-full sm:w-56 bg-white border border-slate-200 border border-slate-200/60 rounded-xl p-2.5 text-slate-800 text-sm disabled:opacity-50 appearance-none focus:ring-2 focus:ring-red-800 focus:outline-none"
             >
               {activeUser?.role === 'ASN / Staf' ? (
                 <option value={activeUser?.id}>{activeUser?.name}</option>
@@ -202,12 +202,12 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
               value={selectedMonth}
               onChange={e => setSelectedMonth(e.target.value)}
               style={{ colorScheme: 'dark' }}
-              className="w-full sm:w-48 bg-zinc-900/80 border border-olive-700/60 rounded-xl p-2.5 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none cursor-pointer"
+              className="w-full sm:w-48 bg-white border border-slate-200 border border-slate-200/60 rounded-xl p-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-red-800 focus:outline-none cursor-pointer"
             />
             <button 
               onClick={handlePrint}
               disabled={approvedReports.length === 0}
-              className="w-full sm:w-auto px-6 py-2.5 bg-olive-700 hover:bg-olive-600 disabled:bg-zinc-800 text-white font-bold rounded-xl flex items-center justify-center space-x-2 transition-colors border border-olive-500/50 shadow-lg whitespace-nowrap"
+              className="w-full sm:w-auto px-6 py-2.5 bg-slate-200 hover:bg-slate-300 disabled:bg-slate-100 disabled:text-slate-400 text-slate-800 font-bold rounded-xl flex items-center justify-center space-x-2 transition-colors border border-slate-300 shadow-lg whitespace-nowrap"
             >
               <Printer className="w-4 h-4" />
               <span>Cetak PDF / Print</span>
@@ -217,17 +217,17 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
 
         {/* Pending Toggle & Helper */}
         <div className="pt-1 flex flex-col px-2">
-          <label className="flex items-center space-x-2 text-zinc-400 text-xs cursor-pointer hover:text-emerald-400 transition-colors w-fit">
+          <label className="flex items-center space-x-2 text-slate-500 text-xs cursor-pointer hover:text-red-800 transition-colors w-fit">
             <input 
               type="checkbox" 
               checked={includePending}
               onChange={e => setIncludePending(e.target.checked)}
-              className="rounded border-olive-700 text-emerald-500 focus:ring-emerald-500/30"
+              className="rounded border-slate-200 text-red-800 focus:ring-red-800/30"
             />
             <span>Tampilkan juga laporan PENDING (Khusus Pratinjau)</span>
           </label>
           {!includePending && pendingCount > 0 && (
-            <span className="text-amber-400 text-[10px] mt-1 font-bold animate-pulse">
+            <span className="text-amber-700 text-[10px] mt-1 font-bold animate-pulse">
               ⚠️ Ada {pendingCount} laporan Anda di bulan ini yang masih berstatus PENDING (menunggu divalidasi).
             </span>
           )}
@@ -276,7 +276,7 @@ export default function RekapitulasiBulanan({ reports = [], pegawaiList = [], ac
               <p className="text-sm font-black text-gray-900">{progressPct}%</p>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-olive-600 h-2.5 rounded-full" style={{ width: `${progressPct}%` }}></div>
+              <div className="bg-slate-300 h-2.5 rounded-full" style={{ width: `${progressPct}%` }}></div>
             </div>
             <p className="text-[9px] text-gray-500 mt-2 font-medium">Target: {MONTHLY_TARGET_HOURS} jam (22 hari kerja)</p>
           </div>

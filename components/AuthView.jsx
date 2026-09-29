@@ -164,7 +164,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans selection:bg-emerald-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans selection:bg-red-800 selection:text-white">
       
       {/* BRANDING HEADER WITH OFFICIAL LOGO PPU */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
@@ -177,13 +177,13 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
         </div>
         
         <div>
-          <h2 className="text-2xl font-extrabold text-white tracking-wide">
-            Si-LKP Waru <span className="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full font-mono">v1.5</span>
+          <h2 className="text-2xl font-extrabold text-slate-800 tracking-wide">
+            Si-LKP Waru <span className="text-xs bg-red-800/20 text-red-700 border border-red-800/40 px-2 py-0.5 rounded-full font-mono">v1.5</span>
           </h2>
-          <p className="text-xs text-emerald-400 font-semibold tracking-wider uppercase mt-1">
+          <p className="text-xs text-red-800 font-semibold tracking-wider uppercase mt-1">
             PEMERINTAH KABUPATEN PENAJAM PASER UTARA
           </p>
-          <p className="text-xs text-zinc-400 mt-0.5">
+          <p className="text-xs text-slate-500 mt-0.5">
             Portal Resmi Laporan Kinerja Harian ASN Kecamatan Waru
           </p>
         </div>
@@ -194,14 +194,14 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
             <button 
               type="button"
               onClick={onOpenGSModal}
-              className="bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 px-3.5 py-1.5 rounded-2xl text-xs font-semibold flex items-center space-x-2 transition-all shadow-md"
+              className="bg-red-800/15 hover:bg-red-800/25 border border-red-800/40 text-red-700 px-3.5 py-1.5 rounded-2xl text-xs font-semibold flex items-center space-x-2 transition-all shadow-md"
             >
-              <Database className="w-4 h-4 text-emerald-400" />
+              <Database className="w-4 h-4 text-red-800" />
               <span>🔗 Pengaturan Database Google Sheets</span>
               {isGSConnected ? (
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Google Sheets Terhubung" />
               ) : (
-                <span className="text-[10px] bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded-md border border-amber-500/40">Belum Terhubung</span>
+                <span className="text-[10px] bg-amber-500/20 text-amber-800 px-1.5 py-0.5 rounded-md border border-amber-500/40">Belum Terhubung</span>
               )}
             </button>
           </div>
@@ -210,17 +210,17 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
 
       {/* FORM CARD CONTAINER */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <div className="bg-gradient-to-b from-olive-900 via-olive-950 to-zinc-950 border border-olive-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-emerald-950/50 space-y-6">
+        <div className="bg-gradient-to-b from-olive-900 via-olive-950 to-zinc-950 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-emerald-950/50 space-y-6">
           
           {/* TAB SWITCHER */}
-          <div className="flex bg-zinc-900/90 p-1 rounded-2xl border border-olive-800/80">
+          <div className="flex bg-white/90 p-1 rounded-2xl border border-olive-800/80">
             <button
               type="button"
               onClick={() => { setActiveTab('login'); setLoginError(''); setRegError(''); }}
               className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'login'
-                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/40'
-                  : 'text-zinc-400 hover:text-white'
+                  ? 'bg-red-800 text-white shadow-lg shadow-emerald-900/40'
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <LogIn className="w-4 h-4" />
@@ -232,8 +232,8 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               onClick={() => { setActiveTab('register'); setLoginError(''); setRegError(''); }}
               className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                 activeTab === 'register'
-                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/40'
-                  : 'text-zinc-400 hover:text-white'
+                  ? 'bg-red-800 text-white shadow-lg shadow-emerald-900/40'
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
               <UserPlus className="w-4 h-4" />
@@ -246,42 +246,42 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
             <form onSubmit={handleLoginSubmit} className="space-y-4 text-xs">
               
               {loginError && (
-                <div className="bg-rose-500/10 border border-rose-500/40 text-rose-300 p-3 rounded-xl flex items-center space-x-2 text-xs">
+                <div className="bg-red-800/10 border border-rose-500/40 text-red-800 p-3 rounded-xl flex items-center space-x-2 text-xs">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{loginError}</span>
                 </div>
               )}
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">NIP atau Nama Lengkap:</label>
+                <label className="block text-slate-600 font-semibold mb-1">NIP atau Nama Lengkap:</label>
                 <div className="relative">
-                  <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type="text"
                     required
                     placeholder="Masukkan NIP atau Nama Lengkap"
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
-                    className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl pl-9 pr-3 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800 transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Kata Sandi (Password):</label>
+                <label className="block text-slate-600 font-semibold mb-1">Kata Sandi (Password):</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="Masukkan Password"
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
-                    className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl pl-9 pr-10 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-10 py-3 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800 transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-800"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -291,7 +291,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-emerald-500/20 text-xs flex items-center justify-center space-x-2 mt-2"
+                className="w-full bg-red-800 hover:bg-red-900 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-sm text-xs flex items-center justify-center space-x-2 mt-2"
               >
                 {isLoading ? (
                   <span>Memproses Login...</span>
@@ -311,14 +311,14 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
             <form onSubmit={handleRegisterSubmit} className="space-y-4 text-xs">
               
               {regError && (
-                <div className="bg-rose-500/10 border border-rose-500/40 text-rose-300 p-3 rounded-xl flex items-center space-x-2 text-xs">
+                <div className="bg-red-800/10 border border-rose-500/40 text-red-800 p-3 rounded-xl flex items-center space-x-2 text-xs">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{regError}</span>
                 </div>
               )}
 
               {regSuccess && (
-                <div className="bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 p-3 rounded-xl flex items-center space-x-2 text-xs">
+                <div className="bg-red-800/15 border border-red-800/40 text-red-700 p-3 rounded-xl flex items-center space-x-2 text-xs">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" />
                   <span>Pendaftaran Berhasil! Mengalihkan ke halaman login...</span>
                 </div>
@@ -327,115 +327,115 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               {/* FOTO PROFIL UPLOAD */}
               <div className="flex flex-col items-center mb-6">
                 <label className="relative cursor-pointer group">
-                  <div className="w-24 h-24 rounded-full border-2 border-dashed border-olive-700/60 bg-zinc-900/50 flex items-center justify-center overflow-hidden transition-all group-hover:border-emerald-500">
+                  <div className="w-24 h-24 rounded-full border-2 border-dashed border-slate-200/60 bg-slate-50 flex items-center justify-center overflow-hidden transition-all group-hover:border-red-800">
                     {regData.fotoProfil ? (
                       <img src={regData.fotoProfil} alt="Preview" className="w-full h-full object-cover" />
                     ) : (
-                      <User className="w-8 h-8 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
+                      <User className="w-8 h-8 text-slate-400 group-hover:text-red-800 transition-colors" />
                     )}
                   </div>
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
-                    <span className="text-[10px] font-bold text-white uppercase tracking-wide">Pilih Foto</span>
+                    <span className="text-[10px] font-bold text-slate-800 uppercase tracking-wide">Pilih Foto</span>
                   </div>
                   <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
                 </label>
-                <span className="text-[10px] text-zinc-400 mt-2">Foto Profil (Opsional)</span>
+                <span className="text-[10px] text-slate-500 mt-2">Foto Profil (Opsional)</span>
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Nama Lengkap & Gelar:</label>
+                <label className="block text-slate-600 font-semibold mb-1">Nama Lengkap & Gelar:</label>
                 <div className="relative">
-                  <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type="text"
                     required
                     placeholder="Contoh: Andi Hasmainti, S.IP."
                     value={regData.name}
                     onChange={(e) => setRegData({ ...regData, name: e.target.value })}
-                    className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl pl-9 pr-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">NIP (Nomor Induk Pegawai):</label>
+                <label className="block text-slate-600 font-semibold mb-1">NIP (Nomor Induk Pegawai):</label>
                 <input
                   type="text"
                   required
                   placeholder="Contoh: 19981212 201101 2 001"
                   value={regData.nip}
                   onChange={(e) => setRegData({ ...regData, nip: e.target.value })}
-                  className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500 font-mono"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800 font-mono"
                 />
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Nomor WhatsApp (Aktif):</label>
+                <label className="block text-slate-600 font-semibold mb-1">Nomor WhatsApp (Aktif):</label>
                 <div className="relative">
-                  <Phone className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Phone className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type="text"
                     required
                     placeholder="Contoh: 08123456789"
                     value={regData.noWa}
                     onChange={(e) => setRegData({ ...regData, noWa: e.target.value })}
-                    className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl pl-9 pr-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Alamat Email (Akun Google Drive):</label>
+                <label className="block text-slate-600 font-semibold mb-1">Alamat Email (Akun Google Drive):</label>
                 <input
                   type="email"
                   required
                   placeholder="Contoh: emailku@domain.com"
                   value={regData.email}
                   onChange={(e) => setRegData({ ...regData, email: e.target.value })}
-                  className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                 />
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Jabatan Pegawai:</label>
+                <label className="block text-slate-600 font-semibold mb-1">Jabatan Pegawai:</label>
                 <input
                   type="text"
                   required
                   placeholder="Contoh: Pengelola Pelayanan / Kasi / Sekcam / Camat"
                   value={regData.jabatan}
                   onChange={(e) => setRegData({ ...regData, jabatan: e.target.value })}
-                  className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                 />
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Pangkat / Golongan:</label>
+                <label className="block text-slate-600 font-semibold mb-1">Pangkat / Golongan:</label>
                 <input
                   type="text"
                   placeholder="Contoh: Penata Muda / IIIa, Pembina / IVa"
                   value={regData.pangkatGolongan}
                   onChange={(e) => setRegData({ ...regData, pangkatGolongan: e.target.value })}
-                  className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                 />
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Unit Kerja:</label>
+                <label className="block text-slate-600 font-semibold mb-1">Unit Kerja:</label>
                 <input
                   type="text"
                   placeholder="Contoh: Kecamatan Waru"
                   value={regData.unitKerja}
                   onChange={(e) => setRegData({ ...regData, unitKerja: e.target.value })}
-                  className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                 />
               </div>
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Peran Struktur (Hirarki Validasi LKH):</label>
+                <label className="block text-slate-600 font-semibold mb-1">Peran Struktur (Hirarki Validasi LKH):</label>
                 <select
                   value={regData.peranStruktur}
                   onChange={(e) => setRegData({ ...regData, peranStruktur: e.target.value, showRangkapJabatan: false, rangkapJabatan: [] })}
-                  className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500 cursor-pointer font-medium"
+                  className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 cursor-pointer font-medium"
                 >
                   <option value="Staf Pelaksana / JFT / JFU">Staf Pelaksana / JFT / JFU</option>
                   <option value="Kepala Sub Bagian / Kasubag">Kepala Sub Bagian / Kasubag</option>
@@ -445,63 +445,63 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                 </select>
 
                 {regData.peranStruktur !== 'Camat (Tanpa Atasan Validasi)' && (
-                  <div className="mt-4 p-3 border border-olive-700/60 rounded-xl bg-zinc-900/50">
+                  <div className="mt-4 p-3 border border-slate-200/60 rounded-xl bg-slate-50">
                     <label className="flex items-center space-x-2 cursor-pointer mb-2">
                       <input 
                         type="checkbox" 
                         checked={regData.showRangkapJabatan}
                         onChange={(e) => setRegData({...regData, showRangkapJabatan: e.target.checked, rangkapJabatan: []})}
-                        className="form-checkbox text-emerald-500 rounded bg-zinc-800 border-olive-700 w-4 h-4"
+                        className="form-checkbox text-red-800 rounded bg-slate-100 border-slate-200 w-4 h-4"
                       />
-                      <span className="text-zinc-300 font-bold text-[10px] uppercase tracking-wider">Rangkap Jabatan / Peran Tambahan (Opsional)</span>
+                      <span className="text-slate-600 font-bold text-[10px] uppercase tracking-wider">Rangkap Jabatan / Peran Tambahan (Opsional)</span>
                     </label>
 
                     {regData.showRangkapJabatan && (
                       <div className="pl-6 space-y-2 mt-2">
                         {regData.peranStruktur === 'Staf Pelaksana / JFT / JFU' && (
                           <>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasi (Validator Staf)</span>
                             </label>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasubag (Validator Staf)</span>
                             </label>
                           </>
                         )}
                         {regData.peranStruktur === 'Kepala Sub Bagian / Kasubag' && (
                           <>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
                                 <span>Sekcam (Validator Kasubag)</span>
                             </label>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasi (Validator Staf)</span>
                             </label>
                           </>
                         )}
                         {regData.peranStruktur === 'Kepala Seksi / Kasi' && (
                           <>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Sekcam (Validator Kasubag)" checked={regData.rangkapJabatan.includes("Sekcam (Validator Kasubag)")} onChange={handleRangkapChange} />
                                 <span>Sekcam (Validator Kasubag)</span>
                             </label>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasubag (Validator Staf)</span>
                             </label>
                           </>
                         )}
                         {regData.peranStruktur === 'Sekretaris Kecamatan / Sekcam' && (
                           <>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasi (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasi (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasi (Validator Staf)</span>
                             </label>
-                            <label className="flex items-center space-x-2 text-zinc-400 cursor-pointer text-xs">
-                                <input type="checkbox" className="form-checkbox text-emerald-500 rounded bg-zinc-800" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
+                            <label className="flex items-center space-x-2 text-slate-500 cursor-pointer text-xs">
+                                <input type="checkbox" className="form-checkbox text-red-800 rounded bg-slate-100" value="Kasubag (Validator Staf)" checked={regData.rangkapJabatan.includes("Kasubag (Validator Staf)")} onChange={handleRangkapChange} />
                                 <span>Kasubag (Validator Staf)</span>
                             </label>
                           </>
@@ -517,11 +517,11 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
 
               {regData.peranStruktur !== 'Camat (Tanpa Atasan Validasi)' && (
                 <div>
-                  <label className="block text-zinc-300 font-semibold mb-1">Atasan Langsung / Penilai:</label>
+                  <label className="block text-slate-600 font-semibold mb-1">Atasan Langsung / Penilai:</label>
                   <select
                     value={regData.atasanValidasi}
                     onChange={(e) => setRegData({ ...regData, atasanValidasi: e.target.value })}
-                    className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-emerald-500 cursor-pointer"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl px-3 py-2.5 text-slate-800 focus:outline-none focus:border-red-800 cursor-pointer"
                     required
                   >
                     <option value="">-- Pilih Atasan Langsung --</option>
@@ -539,23 +539,23 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
               )}
 
               <div>
-                <label className="block text-zinc-300 font-semibold mb-1">Password:</label>
+                <label className="block text-slate-600 font-semibold mb-1">Password:</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+                  <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                   <input
                     type="password"
                     required
                     placeholder="Buat Password Akun"
                     value={regData.password}
                     onChange={(e) => setRegData({ ...regData, password: e.target.value })}
-                    className="w-full bg-zinc-900/90 border border-olive-700/60 rounded-xl pl-9 pr-3 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-white/90 border border-slate-200/60 rounded-xl pl-9 pr-3 py-2.5 text-slate-800 placeholder-zinc-500 focus:outline-none focus:border-red-800"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-emerald-500/20 text-xs flex items-center justify-center space-x-2 mt-2"
+                className="w-full bg-red-800 hover:bg-red-900 text-white font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-sm text-xs flex items-center justify-center space-x-2 mt-2"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>Daftarkan Akun Pegawai</span>

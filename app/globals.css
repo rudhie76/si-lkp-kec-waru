@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-zinc-950 text-zinc-100 antialiased font-sans selection:bg-emerald-600 selection:text-white;
+    @apply bg-slate-50 text-slate-800 antialiased font-sans selection:bg-red-800 selection:text-white;
   }
 }
 
@@ -14,14 +14,14 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #2a0a0a;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #800000;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #660000;
+  background: #94a3b8;
 }
 
 /* Print Optimization for Formal LKH Document */
@@ -45,64 +45,4 @@
     background: #ffffff !important;
     color: #000000 !important;
   }
-}
-
-/* ----------------------------------------------------- */
-/* FIX CONTRAST FOR CREAM CARDS/PANELS                   */
-/* ----------------------------------------------------- */
-
-/* Force text inside cream cards (olive panels & zinc-900) to be Maroon */
-[class*="bg-olive-"], [class*="bg-zinc-900"] {
-  color: #330000 !important;
-}
-
-/* Force all text elements inside cream cards to be Maroon */
-[class*="bg-olive-"] [class*="text-zinc-"], 
-[class*="bg-zinc-900"] [class*="text-zinc-"],
-[class*="bg-olive-"] .text-white, 
-[class*="bg-zinc-900"] .text-white {
-  color: #330000 !important;
-}
-
-/* Force highlights to be Maroon inside Cream cards */
-[class*="bg-olive-"] [class*="text-emerald-"], 
-[class*="bg-zinc-900"] [class*="text-emerald-"] {
-  color: #800000 !important;
-}
-
-/* Force borders inside cream cards to be Maroon/Gold */
-[class*="bg-olive-"] [class*="border-zinc-"], 
-[class*="bg-zinc-900"] [class*="border-zinc-"] {
-  border-color: rgba(51, 0, 0, 0.2) !important;
-}
-
-/* Exclude Emerald buttons (which are Maroon) so they stay Cream text */
-[class*="bg-emerald-"] {
-  background-color: #800000 !important;
-  color: #fdfbf7 !important;
-}
-[class*="bg-emerald-"] [class*="text-zinc-"],
-[class*="bg-emerald-"] [class*="text-emerald-"],
-[class*="bg-emerald-"] .text-white {
-  color: #fdfbf7 !important;
-}
-
-/* Fix input fields inside cream cards */
-[class*="bg-olive-"] input, [class*="bg-zinc-900"] input,
-[class*="bg-olive-"] select, [class*="bg-zinc-900"] select,
-[class*="bg-olive-"] textarea, [class*="bg-zinc-900"] textarea {
-  background-color: #ffffff !important;
-  color: #330000 !important;
-  border-color: rgba(51, 0, 0, 0.3) !important;
-}
-
-/* Placeholders */
-::placeholder {
-  color: rgba(253, 251, 247, 0.5) !important; /* Cream placeholders for main bg */
-}
-[class*="bg-olive-"] ::placeholder, [class*="bg-zinc-900"] ::placeholder {
-  color: rgba(51, 0, 0, 0.5) !important; /* Maroon placeholders inside cream cards */
-}
-[class*="bg-emerald-"] ::placeholder {
-  color: rgba(253, 251, 247, 0.5) !important;
 }

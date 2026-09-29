@@ -72,37 +72,37 @@ export default function GoogleSheetsModal({ isOpen, onClose, onDataSynced, onUse
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-olive-950 border border-olive-700 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative text-xs space-y-4">
+      <div className="bg-white shadow-sm border border-slate-200 border border-slate-200 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative text-xs space-y-4">
         
         {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-400 hover:text-white p-1 rounded-lg bg-zinc-900"
+          className="absolute top-4 right-4 text-slate-500 hover:text-slate-800 p-1 rounded-lg bg-white"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Title */}
         <div className="flex items-center space-x-3 border-b border-olive-800 pb-3">
-          <div className="p-2.5 bg-emerald-500/20 text-emerald-400 rounded-xl border border-emerald-500/30">
+          <div className="p-2.5 bg-red-800/20 text-red-800 rounded-xl border border-red-800/30">
             <Database className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-white">Integrasi Database Google Sheets</h2>
-            <p className="text-emerald-400/80 text-[11px]">Si-LKP Waru v1.5 API Sync</p>
+            <h2 className="text-base font-bold text-slate-800">Integrasi Database Google Sheets</h2>
+            <p className="text-red-800/80 text-[11px]">Si-LKP Waru v1.5 API Sync</p>
           </div>
         </div>
 
         {/* Status Alert */}
         {status === 'success' && (
-          <div className="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 flex items-center space-x-2">
+          <div className="p-3 rounded-xl bg-red-800/20 border border-red-800/40 text-red-700 flex items-center space-x-2">
             <CheckCircle className="w-4 h-4 flex-shrink-0" />
             <span>{message}</span>
           </div>
         )}
 
         {status === 'error' && (
-          <div className="p-3 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-300 flex items-center space-x-2">
+          <div className="p-3 rounded-xl bg-red-800/20 border border-rose-500/40 text-red-800 flex items-center space-x-2">
             <AlertTriangle className="w-4 h-4 flex-shrink-0" />
             <span>{message}</span>
           </div>
@@ -110,8 +110,8 @@ export default function GoogleSheetsModal({ isOpen, onClose, onDataSynced, onUse
 
         {/* Form URL */}
         <div className="space-y-2">
-          <label className="block text-zinc-300 font-semibold flex items-center space-x-1.5">
-            <LinkIcon className="w-3.5 h-3.5 text-emerald-400" />
+          <label className="block text-slate-600 font-semibold flex items-center space-x-1.5">
+            <LinkIcon className="w-3.5 h-3.5 text-red-800" />
             <span>Google Apps Script Web App URL:</span>
           </label>
           <input
@@ -119,17 +119,17 @@ export default function GoogleSheetsModal({ isOpen, onClose, onDataSynced, onUse
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://script.google.com/macros/s/AKfycb.../exec"
-            className="w-full bg-zinc-900 border border-olive-700 rounded-xl p-3 text-white text-xs font-mono focus:outline-none focus:border-emerald-500"
+            className="w-full bg-white border border-slate-200 rounded-xl p-3 text-slate-800 text-xs font-mono focus:outline-none focus:border-red-800"
           />
         </div>
 
         {/* Setup Instructions */}
-        <div className="bg-zinc-900/90 border border-olive-800/80 rounded-xl p-3.5 space-y-2 text-[11px] text-zinc-300">
-          <div className="font-semibold text-emerald-400 flex items-center space-x-1">
+        <div className="bg-white/90 border border-olive-800/80 rounded-xl p-3.5 space-y-2 text-[11px] text-slate-600">
+          <div className="font-semibold text-red-800 flex items-center space-x-1">
             <Code className="w-3.5 h-3.5" />
             <span>Panduan Pasang Kode Google Apps Script:</span>
           </div>
-          <ol className="list-decimal list-inside space-y-1 text-zinc-400 leading-relaxed">
+          <ol className="list-decimal list-inside space-y-1 text-slate-500 leading-relaxed">
             <li>Buka dokumen Google Sheets Anda.</li>
             <li>Pilih menu <strong>Extensions -&gt; Apps Script</strong>.</li>
             <li>Salin file kode dari folder <code>google-apps-script/Code.gs</code> di aplikasi ini.</li>
@@ -144,24 +144,24 @@ export default function GoogleSheetsModal({ isOpen, onClose, onDataSynced, onUse
           <button
             onClick={handleResetData}
             type="button"
-            className="bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5"
+            className="bg-red-800/10 hover:bg-red-800/20 text-red-800 border border-rose-500/30 px-3 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5"
             title="Hapus / Kosongkan semua data laporan lama dari aplikasi"
           >
-            <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+            <Trash2 className="w-3.5 h-3.5 text-red-800" />
             <span>Kosongkan Data Aplikasi</span>
           </button>
 
           <div className="flex items-center space-x-2">
             <button
               onClick={onClose}
-              className="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-xl text-xs font-semibold"
+              className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2 rounded-xl text-xs font-semibold"
             >
               Batal
             </button>
             <button
               onClick={handleTestAndSave}
               disabled={status === 'testing'}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5"
+              className="bg-red-800 hover:bg-red-800 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5"
             >
               {status === 'testing' ? (
                 <>

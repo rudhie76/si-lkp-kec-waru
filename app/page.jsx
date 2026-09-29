@@ -296,7 +296,7 @@ export default function Page() {
     ));
 
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-950 text-zinc-100 selection:bg-emerald-600 selection:text-white font-sans">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-zinc-100 selection:bg-red-800 selection:text-white font-sans">
       
       {/* TOPBAR HEADER */}
       <header className="sticky top-0 z-40 bg-gradient-to-r from-olive-950 via-olive-900 to-zinc-950 border-b border-olive-800/80 shadow-2xl backdrop-blur-md">
@@ -308,7 +308,7 @@ export default function Page() {
             {/* Desktop Toggle Menu Button */}
             <button 
               onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-              className="hidden md:flex p-2 mr-2 bg-olive-800/40 hover:bg-olive-700 text-zinc-200 rounded-lg transition-colors border border-olive-700/60"
+              className="hidden md:flex p-2 mr-2 bg-slate-100/40 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors border border-slate-200/60"
               title="Sembunyikan / Tampilkan Menu"
             >
               <Menu className="w-5 h-5" />
@@ -319,14 +319,14 @@ export default function Page() {
 
             <div>
               <div className="flex items-center space-x-2">
-                <h1 className="text-lg font-extrabold text-white tracking-wide flex items-center space-x-2">
+                <h1 className="text-lg font-extrabold text-slate-800 tracking-wide flex items-center space-x-2">
                   <span>Si-LKP Waru</span>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm font-semibold">
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-red-800/20 text-red-700 border border-red-800/40 shadow-sm font-semibold">
                     v1.5
                   </span>
                 </h1>
               </div>
-              <p className="text-[11px] text-emerald-400 font-medium tracking-wide">Sistem Laporan Kinerja Pegawai • Kecamatan Waru</p>
+              <p className="text-[11px] text-red-800 font-medium tracking-wide">Sistem Laporan Kinerja Pegawai • Kecamatan Waru</p>
             </div>
           </div>
 
@@ -334,7 +334,7 @@ export default function Page() {
           <div className="hidden md:flex items-center space-x-3 text-xs">
             
             {/* WITA Clock */}
-            <div className="bg-olive-950/80 border border-olive-800/80 px-3 py-1.5 rounded-xl text-zinc-300 font-mono text-[11px] flex items-center space-x-1.5 shadow-inner">
+            <div className="bg-white shadow-sm border border-slate-200 border border-olive-800/80 px-3 py-1.5 rounded-xl text-slate-600 font-mono text-[11px] flex items-center space-x-1.5 shadow-inner">
               <span>{witaTime || '📅 WITA'}</span>
             </div>
 
@@ -342,41 +342,41 @@ export default function Page() {
             {isAdmin && (
 <button 
               onClick={() => setIsGSModalOpen(true)}
-              className="bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 px-3 py-1.5 rounded-xl text-[11px] font-semibold flex items-center space-x-1.5 transition-all shadow-sm"
+              className="bg-red-800/15 hover:bg-red-800/25 border border-red-800/40 text-red-700 px-3 py-1.5 rounded-xl text-[11px] font-semibold flex items-center space-x-1.5 transition-all shadow-sm"
               title="Konfigurasi Integrasi Google Sheets API"
             >
-              <Database className="w-3.5 h-3.5 text-emerald-400" />
+              <Database className="w-3.5 h-3.5 text-red-800" />
               <span>🔗 Sinkronisasi Google Sheets</span>
             </button>
             )}
 
             {/* Active User Avatar Badge & Logout */}
-            <div className="flex items-center space-x-2.5 bg-olive-900/90 border border-olive-700/60 px-3 py-1.5 rounded-xl">
+            <div className="flex items-center space-x-2.5 bg-slate-50/90 border border-slate-200/60 px-3 py-1.5 rounded-xl">
               <button 
                 onClick={() => setActiveTab('profil')} 
-                className="relative w-8 h-8 rounded-lg overflow-hidden border border-emerald-500/50 bg-zinc-800 flex items-center justify-center flex-shrink-0"
+                className="relative w-8 h-8 rounded-lg overflow-hidden border border-red-800/50 bg-slate-100 flex items-center justify-center flex-shrink-0"
                 title="Buka Profil Saya"
               >
                 {currentUser.fotoProfil ? (
                   <img src={currentUser.fotoProfil} alt="Profil" className="w-full h-full object-cover" />
                 ) : (
-                  <User className="w-4 h-4 text-emerald-400" />
+                  <User className="w-4 h-4 text-red-800" />
                 )}
                 {/* Active Status Dot */}
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border border-zinc-950 rounded-full" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-red-800 border border-zinc-950 rounded-full" />
               </button>
 
               <div className="cursor-pointer" onClick={() => setActiveTab('profil')}>
                 <div className="flex items-center space-x-1">
-                  <span className="font-bold text-white block text-[11px] leading-none truncate max-w-[130px]">{currentUser.name}</span>
+                  <span className="font-bold text-slate-800 block text-[11px] leading-none truncate max-w-[130px]">{currentUser.name}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 </div>
-                <span className="text-[10px] text-emerald-300 font-medium">({currentUser.role})</span>
+                <span className="text-[10px] text-red-700 font-medium">({currentUser.role})</span>
               </div>
 
               <button
                 onClick={handleLogout}
-                className="ml-1 p-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500 hover:text-white transition-colors"
+                className="ml-1 p-1.5 rounded-lg bg-red-800/20 text-red-800 hover:bg-red-800 hover:text-slate-800 transition-colors"
                 title="Keluar dari Akun (Logout)"
               >
                 <LogOut className="w-3.5 h-3.5" />
@@ -389,7 +389,7 @@ export default function Page() {
           <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-xl bg-olive-900 text-zinc-200 border border-olive-700 focus:outline-none"
+              className="p-2 rounded-xl bg-slate-50 text-slate-700 border border-slate-200 focus:outline-none"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -407,21 +407,21 @@ export default function Page() {
           ${isMobileMenuOpen ? 'block' : 'hidden md:block'}
         `}>
           
-          <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-olive-700/60 rounded-2xl p-4 shadow-xl space-y-4 sticky top-28">
+          <div className="bg-gradient-to-b from-olive-900 to-olive-950 border border-slate-200/60 rounded-2xl p-4 shadow-xl space-y-4 sticky top-28">
             
             {/* GROUP 1: MENU UTAMA */}
             <div className="space-y-1">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-400/90 px-3 py-1">MENU UTAMA</p>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-800/90 px-3 py-1">MENU UTAMA</p>
               
               <button
                 onClick={() => { setActiveTab('dashboard'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'dashboard'
-                    ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                    : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                    ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <BarChart3 className="w-4 h-4 text-emerald-400" />
+                <BarChart3 className="w-4 h-4 text-red-800" />
                 <span>📊 Dashboard Statistik</span>
               </button>
 
@@ -429,11 +429,11 @@ export default function Page() {
                 onClick={() => { setActiveTab('profil'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'profil'
-                    ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                    : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                    ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <User className="w-4 h-4 text-emerald-300" />
+                <User className="w-4 h-4 text-red-700" />
                 <span>👤 Profil Saya & Foto Diri</span>
               </button>
 
@@ -441,18 +441,18 @@ export default function Page() {
                 onClick={() => { setActiveTab('input'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'input'
-                    ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                    : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                    ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <FilePlus className="w-4 h-4 text-emerald-400" />
+                <FilePlus className="w-4 h-4 text-red-800" />
                 <span>📝 Input Kegiatan (LKH)</span>
               </button>
             </div>
 
             {/* GROUP 2: VALIDASI & LAPORAN */}
-            <div className="space-y-1 pt-2 border-t border-olive-800/60">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-400/90 px-3 py-1">VALIDASI & LAPORAN</p>
+            <div className="space-y-1 pt-2 border-t border-slate-300">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-800/90 px-3 py-1">VALIDASI & LAPORAN</p>
 
               {/* SUPERVISOR / ADMIN MENU: VERIFIKASI ATASAN */}
               {isSupervisorOrAdmin && (
@@ -460,11 +460,11 @@ export default function Page() {
                   onClick={() => { setActiveTab('verify'); setIsMobileMenuOpen(false); }}
                   className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     activeTab === 'verify'
-                      ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                      : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                      ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                      : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
-                  <ShieldCheck className="w-4 h-4 text-amber-400" />
+                  <ShieldCheck className="w-4 h-4 text-amber-700" />
                   <span>⏳ Verifikasi Atasan</span>
                 </button>
               )}
@@ -473,11 +473,11 @@ export default function Page() {
                 onClick={() => { setActiveTab('cetak'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'cetak'
-                    ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                    : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                    ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <Printer className="w-4 h-4 text-zinc-300" />
+                <Printer className="w-4 h-4 text-slate-600" />
                 <span>🖨️ Cetak LKH Harian</span>
               </button>
 
@@ -485,37 +485,37 @@ export default function Page() {
                 onClick={() => { setActiveTab('rekap'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'rekap'
-                    ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                    : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                    ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <LayoutDashboard className="w-4 h-4 text-emerald-400" />
+                <LayoutDashboard className="w-4 h-4 text-red-800" />
                 <span>📈 Rekapitulasi Bulanan</span>
               </button>
             </div>
 
             {/* GROUP 3: PENGATURAN & LAINNYA */}
-            <div className="space-y-1 pt-2 border-t border-olive-800/60">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-400/90 px-3 py-1">PENGATURAN & LAINNYA</p>
+            <div className="space-y-1 pt-2 border-t border-slate-300">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-red-800/90 px-3 py-1">PENGATURAN & LAINNYA</p>
 
               <button
                 onClick={() => { setActiveTab('wa'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'wa'
-                    ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                    : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                    ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <MessageSquare className="w-4 h-4 text-emerald-300" />
+                <MessageSquare className="w-4 h-4 text-red-700" />
                 <span>💬 Pengingat WA</span>
               </button>
 
               {isAdmin && (
 <button
                 onClick={() => { setIsGSModalOpen(true); setIsMobileMenuOpen(false); }}
-                className="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-zinc-300 hover:bg-olive-800/60 hover:text-white transition-all"
+                className="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100/60 hover:text-slate-800 transition-all"
               >
-                <Database className="w-4 h-4 text-emerald-400" />
+                <Database className="w-4 h-4 text-red-800" />
                 <span>⚙️ Pengaturan Sheets API</span>
               </button>
               )}
@@ -526,11 +526,11 @@ export default function Page() {
                   onClick={() => { setActiveTab('pegawai'); setIsMobileMenuOpen(false); }}
                   className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     activeTab === 'pegawai'
-                      ? 'bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-900/40'
-                      : 'text-zinc-300 hover:bg-olive-800/60 hover:text-white'
+                      ? 'bg-red-800 text-white font-bold shadow-lg shadow-emerald-900/40'
+                      : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
-                  <Users className="w-4 h-4 text-amber-400" />
+                  <Users className="w-4 h-4 text-amber-700" />
                   <span>👥 Manajemen Pegawai</span>
                 </button>
               )}
@@ -542,20 +542,20 @@ export default function Page() {
                 <div className="flex items-center space-x-2 border-b border-olive-800/80 pb-2">
                   <span className="text-sm">🚀</span>
                   <div>
-                    <h4 className="font-bold text-white text-[11px]">Alur Pelaporan LKH</h4>
-                    <p className="text-[10px] text-emerald-400">Panduan Operasional v1.5</p>
+                    <h4 className="font-bold text-slate-800 text-[11px]">Alur Pelaporan LKH</h4>
+                    <p className="text-[10px] text-red-800">Panduan Operasional v1.5</p>
                   </div>
                 </div>
 
-                <ol className="space-y-1.5 text-[10px] text-zinc-300 list-decimal list-inside leading-tight">
-                  <li><strong className="text-white">Input LKH:</strong> Pegawai memasukkan rincian kerja & foto kamera HP.</li>
-                  <li><strong className="text-white">Validasi Atasan:</strong> Atasan memeriksa & memberikan status <span className="text-emerald-400">DIVALIDASI</span>.</li>
-                  <li><strong className="text-white">Cetak PDF:</strong> Laporan divalidasi dapat dicetak ke PDF A4 ber-Kop & TTD.</li>
+                <ol className="space-y-1.5 text-[10px] text-slate-600 list-decimal list-inside leading-tight">
+                  <li><strong className="text-slate-800">Input LKH:</strong> Pegawai memasukkan rincian kerja & foto kamera HP.</li>
+                  <li><strong className="text-slate-800">Validasi Atasan:</strong> Atasan memeriksa & memberikan status <span className="text-red-800">DIVALIDASI</span>.</li>
+                  <li><strong className="text-slate-800">Cetak PDF:</strong> Laporan divalidasi dapat dicetak ke PDF A4 ber-Kop & TTD.</li>
                 </ol>
 
                 <button
                   onClick={() => { setActiveTab('input'); setIsMobileMenuOpen(false); }}
-                  className="w-full mt-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-bold py-1.5 rounded-lg text-[10px] flex items-center justify-center space-x-1 transition-all"
+                  className="w-full mt-1 bg-red-800/20 hover:bg-red-800/30 text-red-700 border border-red-800/40 font-bold py-1.5 rounded-lg text-[10px] flex items-center justify-center space-x-1 transition-all"
                 >
                   <span>Input LKH Sekarang ➔</span>
                 </button>
@@ -564,24 +564,24 @@ export default function Page() {
 
             {/* INFO USER DI BAWAH SIDEBAR */}
             <div className="pt-2 border-t border-olive-800/80">
-              <div className="bg-olive-950/90 border border-olive-800/80 p-3 rounded-xl text-[11px] space-y-1.5 shadow-inner">
-                <div className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">Info User Logged In:</div>
+              <div className="bg-white shadow-sm border border-slate-200/90 border border-olive-800/80 p-3 rounded-xl text-[11px] space-y-1.5 shadow-inner">
+                <div className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Info User Logged In:</div>
                 <div className="flex items-center space-x-2">
-                  <div className="w-7 h-7 rounded-lg overflow-hidden bg-zinc-800 border border-emerald-500/40 flex items-center justify-center flex-shrink-0">
+                  <div className="w-7 h-7 rounded-lg overflow-hidden bg-slate-100 border border-red-800/40 flex items-center justify-center flex-shrink-0">
                     {currentUser.fotoProfil ? (
                       <img src={currentUser.fotoProfil} alt="Profil" className="w-full h-full object-cover" />
                     ) : (
-                      <User className="w-4 h-4 text-emerald-400" />
+                      <User className="w-4 h-4 text-red-800" />
                     )}
                   </div>
                   <div className="truncate">
-                    <span className="font-bold text-white block truncate leading-tight">{currentUser.name}</span>
-                    <span className="text-[10px] text-zinc-400 block font-mono">NIP: {currentUser.nip}</span>
+                    <span className="font-bold text-slate-800 block truncate leading-tight">{currentUser.name}</span>
+                    <span className="text-[10px] text-slate-500 block font-mono">NIP: {currentUser.nip}</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-1 border-t border-olive-900 text-[10px]">
-                  <span className="text-zinc-400">Role:</span>
-                  <span className={`font-bold px-2 py-0.5 rounded ${isAdmin ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'}`}>
+                  <span className="text-slate-500">Role:</span>
+                  <span className={`font-bold px-2 py-0.5 rounded ${isAdmin ? 'bg-amber-500/20 text-amber-800 border border-amber-500/30' : 'bg-red-800/20 text-red-700 border border-red-800/30'}`}>
                     {currentUser.role}
                   </span>
                 </div>
@@ -672,10 +672,10 @@ export default function Page() {
       </div>
 
       {/* FOOTER */}
-      <footer className="no-print bg-zinc-950 border-t border-olive-800/60 py-4 text-center text-xs text-zinc-400">
+      <footer className="no-print bg-slate-50 border-t border-slate-300 py-4 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>&copy; 2026 Pemerintah Kecamatan Waru - Kabupaten Penajam Paser Utara</span>
-          <span className="text-emerald-400/80 font-mono">Si-LKP Waru v1.5 • Clean Starting State & Profile Photo</span>
+          <span className="text-red-800/80 font-mono">Si-LKP Waru v1.5 • Clean Starting State & Profile Photo</span>
         </div>
       </footer>
 

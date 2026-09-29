@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         />
         <link rel="apple-touch-icon" href="/si-lkp-kec-waru/icon-512.png" />
       </head>
-      <body className="bg-zinc-950 text-zinc-100 min-h-screen font-sans">
+      <body className="bg-slate-50 text-slate-800 min-h-screen font-sans">
         {children}
       </body>
     </html>
