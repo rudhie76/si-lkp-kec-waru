@@ -160,7 +160,7 @@ export default function Page() {
   };
 
   // Save New or Edit Report Action
-  const handleSaveReport = (newReport) => {
+  const handleSaveReport = async (newReport) => {
     const exists = reports.some(r => r.id === newReport.id);
     const updated = exists 
       ? reports.map(r => r.id === newReport.id ? newReport : r)
@@ -171,17 +171,22 @@ export default function Page() {
 
     const gsUrl = getGoogleSheetsUrl();
     if (gsUrl) {
-      pushToGoogleSheets(gsUrl, 'saveReport', newReport).then(res => {
+      try {
+        if (exists) {
+          // Solusi error Apps Script saat edit: Hapus baris lama, simpan baru
+          await pushToGoogleSheets(gsUrl, 'deleteReport', { id: newReport.id });
+          await new Promise(res => setTimeout(res, 500));
+        }
+        
+        const res = await pushToGoogleSheets(gsUrl, 'saveReport', newReport);
         if (res && res.status === 'error') {
           alert('GAGAL SIMPAN KE DATABASE: ' + res.message);
         } else if (!res) {
           alert('GAGAL TERHUBUNG KE GOOGLE SHEETS! Pastikan URL Web App benar.');
-        } else {
-          // alert('SUKSES SIMPAN KE DATABASE: ' + res.message); // debug only
         }
-      }).catch(err => {
+      } catch (err) {
         alert('ERROR KONEKSI DATABASE: ' + err.toString());
-      });
+      }
     }
   };
 
