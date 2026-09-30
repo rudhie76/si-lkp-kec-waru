@@ -1,4 +1,4 @@
-import { getDriveViewUrl } from '../lib/urlHelper';
+import { getDriveViewUrl, handleMediaClick } from '../lib/urlHelper';
 import React, { useState } from 'react';
 import { Printer, Calendar, Search, Filter, Clock } from 'lucide-react';
 
@@ -342,10 +342,10 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
                     <td className="border border-black p-2 text-center align-top">
                         <div className="flex justify-center gap-1">
                           {keg.fotoUrl && (
-                            <a href={getDriveViewUrl(keg.fotoUrl)} target="_blank" rel="noopener noreferrer"><img src={keg.fotoUrl} className="w-10 h-10 object-cover border border-gray-300 rounded-md" alt="Bukti 1" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} /></a>
+                            <a href={getDriveViewUrl(keg.fotoUrl)} onClick={(e) => handleMediaClick(e, keg.fotoUrl)} target="_blank" rel="noopener noreferrer"><img src={keg.fotoUrl} className="w-10 h-10 object-cover border border-gray-300 rounded-md" alt="Bukti 1" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} /></a>
                           )}
                           {keg.fotoUrl2 && (
-                            <a href={getDriveViewUrl(keg.fotoUrl2)} target="_blank" rel="noopener noreferrer"><img src={keg.fotoUrl2} className="w-10 h-10 object-cover border border-gray-300 rounded-md" alt="Bukti 2" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} /></a>
+                            <a href={getDriveViewUrl(keg.fotoUrl2)} onClick={(e) => handleMediaClick(e, keg.fotoUrl2)} target="_blank" rel="noopener noreferrer"><img src={keg.fotoUrl2} className="w-10 h-10 object-cover border border-gray-300 rounded-md" alt="Bukti 2" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} /></a>
                           )}
                         </div>
                       </td>
