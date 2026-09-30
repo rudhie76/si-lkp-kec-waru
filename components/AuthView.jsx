@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { 
   LogIn, UserPlus, ShieldCheck, Lock, User, Award, Phone, Eye, EyeOff, CheckCircle, AlertCircle, Database 
 } from 'lucide-react';
+import { getRankLevel } from '../lib/hierarchyHelper';
 import { getGoogleSheetsUrl } from '../lib/googleSheets';
 
 export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, onOpenGSModal, isGSConnected }) {
@@ -526,7 +527,7 @@ export default function AuthView({ users = [], onLoginSuccess, onRegisterUser, o
                   >
                     <option value="">-- Pilih Atasan Langsung --</option>
                     {users && users.length > 0 ? (
-                      users.map((u, idx) => (
+                      users.filter(u => getRankLevel(u) > 1).map((u, idx) => (
                         <option key={idx} value={u.name}>
                           {u.name} ({u.jabatan})
                         </option>

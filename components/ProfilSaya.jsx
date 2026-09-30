@@ -5,6 +5,7 @@ import {
   User, Camera, Save, CheckCircle, Lock, Mail, Phone, 
   Building, Award, ShieldCheck, KeyRound, Image as ImageIcon, Trash2, Edit3, X, EyeOff, Eye
 } from 'lucide-react';
+import { getRankLevel } from '../lib/hierarchyHelper';
 import { hashPasswordSHA256 } from '../lib/googleSheets';
 
 export default function ProfilSaya({ currentUser, onUpdateProfile, users = [] }) {
