@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageSquare, Send, Phone, User, CheckCircle2, Copy } from 'lucide-react';
 
 export default function PengingatWA({ pegawaiList }) {
@@ -11,6 +11,12 @@ export default function PengingatWA({ pegawaiList }) {
   const [copied, setCopied] = useState(false);
 
   const selectedPegawai = pegawaiList.find(p => p.id === selectedPegawaiId) || pegawaiList[0];
+
+  useEffect(() => {
+    if (selectedPegawai && (selectedPegawai.noWa || selectedPegawai.noWhatsApp)) {
+      setPhoneNumber(selectedPegawai.noWa || selectedPegawai.noWhatsApp || "");
+    }
+  }, [selectedPegawaiId, selectedPegawai]);
 
   const getTemplateMessage = () => {
     const today = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
