@@ -228,6 +228,7 @@ export default function InputKegiatan({
     const detailItem = {
       jamMulai: formData.jamMulai,
       jamSelesai: formData.jamSelesai,
+      skpId: formData.skpId,
       kategori: formData.kategori,
       deskripsi: formData.deskripsi,
       durasiJam: durasi,

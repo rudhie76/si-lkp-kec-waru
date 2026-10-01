@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  LayoutDashboard, FilePlus, ShieldCheck, Printer, BarChart3, MessageSquare, 
+import { Target, LayoutDashboard, FilePlus, ShieldCheck, Printer, BarChart3, MessageSquare, 
   Database, Menu, X, User, CheckCircle, Clock, Calendar, RefreshCw, LogOut, Users, KeyRound, UserCheck 
 } from 'lucide-react';
 
@@ -16,6 +15,7 @@ import GoogleSheetsModal from '../components/GoogleSheetsModal';
 import AuthView from '../components/AuthView';
 import ManajemenPegawai from '../components/ManajemenPegawai';
 import ProfilSaya from '../components/ProfilSaya';
+import TargetSKPSaya from '../components/TargetSKPSaya';
 
 import { 
   getReportsFromLocal, saveReportsToLocal, getUsersFromLocal, saveUsersToLocal, 
@@ -430,7 +430,15 @@ export default function Page() {
                 <span>📊 Dashboard Statistik</span>
               </button>
 
+              
               <button
+                onClick={() => { setActiveTab('skp'); setIsMobileMenuOpen(false); }}
+                className={`w-full flex items-center gap-3 px-6 py-3.5 transition-all duration-200 ${activeTab === 'skp' ? 'bg-blue-50 text-blue-700 border-r-4 border-blue-600' : 'text-slate-600 hover:bg-slate-50 hover:text-blue-600'}`}
+              >
+                <Target className={`w-5 h-5 ${activeTab === 'skp' ? 'text-blue-600' : 'text-slate-400'}`} />
+                <span className="font-semibold text-sm">Target SKP Saya</span>
+              </button>
+<button
                 onClick={() => { setActiveTab('profil'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'profil'
