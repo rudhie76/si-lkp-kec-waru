@@ -28,6 +28,7 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [reports, setReports] = useState([]);
   const [users, setUsers] = useState(INITIAL_PEGAWAI);
+  const [skpTargets, setSkpTargets] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -52,6 +53,16 @@ export default function Page() {
     return () => clearInterval(timer);
   }, []);
 
+  // Save SKP Targets to LocalStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('si_lkp_skp', JSON.stringify(skpTargets));
+    } catch (e) {
+      console.error('Error saving SKP targets:', e);
+    }
+  }, [skpTargets]);
+
+
   // Initial Data Load & Auth Session Check
   useEffect(() => {
     const localReports = getReportsFromLocal();
@@ -59,6 +70,17 @@ export default function Page() {
 
     const localUsers = getUsersFromLocal();
     setUsers(localUsers);
+    try {
+      const localSkp = localStorage.getItem('si_lkp_skp');
+      if (localSkp) {
+        const parsed = JSON.parse(localSkp);
+        if (Array.isArray(parsed)) {
+          setSkpTargets(parsed);
+        }
+      }
+    } catch (e) {
+      console.error('Error loading SKP targets:', e);
+    }
 
     const session = getAuthUserFromLocal();
     if (session) {
@@ -646,6 +668,7 @@ export default function Page() {
               pegawaiList={users}
               activeUser={currentUser}
               reports={reports}
+              skpTargets={skpTargets}
             />
           )}
 

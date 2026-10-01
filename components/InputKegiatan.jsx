@@ -26,7 +26,8 @@ export default function InputKegiatan({
   onDeleteReport,
   activeUser = null,
   reports = [],
-  pegawaiList = []
+  pegawaiList = [],
+  skpTargets = []
 }) {
   const getLocalYYYYMMDD = () => {
     const d = new Date();
@@ -41,6 +42,7 @@ export default function InputKegiatan({
     tanggal: today,
     jamMulai: '08:00',
     jamSelesai: '10:00',
+    skpId: '',
     kategori: 'Pelayanan Publik',
     deskripsi: '',
     volume: 1,
@@ -183,6 +185,7 @@ export default function InputKegiatan({
       tanggal: formatToYYYYMMDD(report.tanggal),
       jamMulai: firstKeg.jamMulai || '08:00',
       jamSelesai: firstKeg.jamSelesai || '10:00',
+      skpId: firstKeg.skpId || '',
       kategori: firstKeg.kategori || report.deskripsi?.split(':')[0] || 'Pelayanan Publik',
       deskripsi: firstKeg.deskripsi || report.deskripsi || '',
       volume: firstKeg.volume || 1,
@@ -200,6 +203,7 @@ export default function InputKegiatan({
       tanggal: today,
       jamMulai: '08:00',
       jamSelesai: '10:00',
+      skpId: '',
       kategori: 'Pelayanan Publik',
       deskripsi: '',
       volume: 1,
@@ -420,6 +424,31 @@ export default function InputKegiatan({
                 </div>
               </div>
             </div>
+
+            
+            {/* LINK KE TARGET SKP TAHUNAN */}
+            {Array.isArray(skpTargets) && skpTargets.filter(skp => skp && skp.pegawaiId === activeUser?.id).length > 0 && (
+              <div className="bg-blue-50/70 border border-blue-200/80 p-4 rounded-2xl space-y-2">
+                <label className="block text-blue-800 font-bold uppercase text-[10px] tracking-wider flex items-center gap-1.5">
+                  <Target className="w-3.5 h-3.5 text-blue-600" /> Kaitan dengan Target SKP Tahunan (Opsional)
+                </label>
+                <select
+                  value={formData.skpId || ''}
+                  onChange={(e) => setFormData({ ...formData, skpId: e.target.value })}
+                  className="w-full bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-blue-600 font-medium cursor-pointer shadow-sm"
+                >
+                  <option value="">-- Tidak Terkait / Kegiatan Rutin Di Luar SKP --</option>
+                  {skpTargets.filter(skp => skp && skp.pegawaiId === activeUser?.id).map((skp, idx) => (
+                    <option key={skp.id || idx} value={skp.id}>
+                      Target {idx + 1}: {skp.rencanaHasil} ({skp.targetTahun} {skp.satuan})
+                    </option>
+                  ))}
+                </select>
+                <p className="text-[10px] text-blue-600/80">
+                  Pilih target SKP jika laporan kegiatan harian ini merupakan bagian dari realisasi target tahunan Anda.
+                </p>
+              </div>
+            )}
 
             {/* KATEGORI TUGAS */}
             <div>

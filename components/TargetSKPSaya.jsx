@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Target, Plus, Edit2, Trash2, Save, X, Briefcase, FileText } from 'lucide-react';
 
-export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets }) {
+export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkpTargets = () => {} }) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentId, setCurrentId] = useState(null);
   
@@ -15,9 +15,9 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
     waktuBulan: '12'
   });
 
-  // Filter only my targets
+  // Filter only my targets safely
   const safeSkpTargets = Array.isArray(skpTargets) ? skpTargets : [];
-  const myTargets = safeSkpTargets.filter(skp => skp?.pegawaiId === activeUser?.id);
+  const myTargets = safeSkpTargets.filter(skp => skp && activeUser && skp.pegawaiId === activeUser.id);
 
   const resetForm = () => {
     setFormData({
@@ -32,12 +32,13 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
   };
 
   const handleEdit = (skp) => {
+    if (!skp) return;
     setFormData({
-      rencanaHasil: skp.rencanaHasil,
-      indikator: skp.indikator,
-      targetTahun: skp.targetTahun,
-      satuan: skp.satuan,
-      waktuBulan: skp.waktuBulan
+      rencanaHasil: skp.rencanaHasil || '',
+      indikator: skp.indikator || '',
+      targetTahun: skp.targetTahun || '',
+      satuan: skp.satuan || 'Dokumen',
+      waktuBulan: skp.waktuBulan || '12'
     });
     setCurrentId(skp.id);
     setIsEditing(true);
@@ -45,7 +46,7 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
 
   const handleDelete = (id) => {
     if (confirm('Apakah Anda yakin ingin menghapus target SKP ini?')) {
-      setSkpTargets(prev => prev.filter(skp => skp.id !== id));
+      setSkpTargets(prev => (Array.isArray(prev) ? prev : []).filter(skp => skp.id !== id));
     }
   };
 
@@ -58,15 +59,15 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
 
     if (currentId) {
       // Update
-      setSkpTargets(prev => prev.map(skp => skp.id === currentId ? { ...skp, ...formData } : skp));
+      setSkpTargets(prev => (Array.isArray(prev) ? prev : []).map(skp => skp.id === currentId ? { ...skp, ...formData } : skp));
     } else {
       // Add
       const newSkp = {
         id: `SKP-${Date.now()}`,
-        pegawaiId: activeUser.id,
+        pegawaiId: activeUser?.id || '',
         ...formData
       };
-      setSkpTargets(prev => [...prev, newSkp]);
+      setSkpTargets(prev => [...(Array.isArray(prev) ? prev : []), newSkp]);
     }
     resetForm();
   };
@@ -82,7 +83,7 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
             <Target className="w-6 h-6" /> Target SKP Tahunan Saya
           </h2>
           <p className="text-blue-100 opacity-90 max-w-2xl">
-            Masukkan daftar Rencana Hasil Kerja (SKP) Bapak/Ibu untuk tahun ini. Data ini akan muncul saat Anda mengisi Laporan Kinerja Harian untuk memudahkan penyusunan realisasi dan pengumpulan bukti dukung.
+            Masukkan daftar Rencana Hasil Kerja (SKP) Anda untuk tahun ini. Setiap target yang ditambahkan akan otomatis muncul di form Input Laporan Kinerja Harian agar realisasi dan bukti dukung tercatat rapi.
           </p>
         </div>
       </div>
@@ -195,7 +196,7 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
           ) : (
             <div className="grid grid-cols-1 gap-4">
               {myTargets.map((skp, index) => (
-                <div key={skp.id} className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-center gap-4">
+                <div key={skp.id || index} className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col sm:flex-row sm:items-center gap-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-black text-lg">
                     {index + 1}
                   </div>
