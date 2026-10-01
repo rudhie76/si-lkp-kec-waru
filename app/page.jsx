@@ -631,6 +631,14 @@ export default function Page() {
             />
           )}
 
+          {activeTab === 'skp' && (
+            <TargetSKPSaya 
+              activeUser={currentUser}
+              skpTargets={skpTargets}
+              setSkpTargets={setSkpTargets}
+            />
+          )}
+
           {activeTab === 'input' && (
             <InputKegiatan 
               onSaveReport={handleSaveReport}
