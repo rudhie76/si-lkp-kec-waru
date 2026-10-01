@@ -20,7 +20,7 @@ import TargetSKPSaya from '../components/TargetSKPSaya';
 import { 
   getReportsFromLocal, saveReportsToLocal, getUsersFromLocal, saveUsersToLocal, 
   getAuthUserFromLocal, setAuthUserToLocal, getGoogleSheetsUrl, 
-  fetchFromGoogleSheets, fetchUsersFromGoogleSheets, pushToGoogleSheets, clearReportsInLocal, INITIAL_PEGAWAI 
+  fetchFromGoogleSheets, fetchUsersFromGoogleSheets, fetchSkpFromGoogleSheets, pushToGoogleSheets, clearReportsInLocal, INITIAL_PEGAWAI 
 } from '../lib/googleSheets';
 import { getVisibleReports } from '../lib/hierarchyHelper';
 
@@ -121,6 +121,18 @@ export default function Page() {
           } 
         })
         .catch(err => console.log('Auto-fetch users failed:', err));
+
+      fetchSkpFromGoogleSheets(gsUrl)
+        .then(skpData => {
+          if (Array.isArray(skpData) && skpData.length > 0) {
+            setSkpTargets(skpData);
+            try {
+              localStorage.setItem('si_lkp_skp', JSON.stringify(skpData));
+            } catch (e) {}
+          }
+        })
+        .catch(err => console.log('Auto-fetch SKP failed:', err));
+
     }
   }, []);
 

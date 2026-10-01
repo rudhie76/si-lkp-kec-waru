@@ -5,6 +5,7 @@
 
 const SHEET_LKH = 'Laporan';
 const SHEET_USERS = 'Users';
+const SHEET_SKP = 'SKP';
 
 function hashSha256(text) {
   if (!text) return '';
@@ -50,6 +51,24 @@ function setupSheet() {
       .setFontColor('#ffffff');
     sheetLKH.setFrozenRows(1);
   }
+
+  // 3. Setup Sheet SKP (ID_SKP, Pegawai_ID, NIP, Nama_Pegawai, No_Target, Rencana_Hasil_Kerja, Indikator, Target_Kuantitas, Satuan, Waktu_Bulan, Waktu_Input)
+  let sheetSKP = ss.getSheetByName(SHEET_SKP);
+  if (!sheetSKP) {
+    sheetSKP = ss.insertSheet(SHEET_SKP);
+    const skpHeaders = [
+      'ID_SKP', 'Pegawai_ID', 'NIP', 'Nama_Pegawai', 
+      'No_Target', 'Rencana_Hasil_Kerja', 'Indikator', 
+      'Target_Kuantitas', 'Satuan', 'Waktu_Bulan', 'Waktu_Input'
+    ];
+    sheetSKP.getRange(1, 1, 1, skpHeaders.length).setValues([skpHeaders]);
+    sheetSKP.getRange(1, 1, 1, skpHeaders.length)
+      .setFontWeight('bold')
+      .setBackground('#1b4d36')
+      .setFontColor('#ffffff');
+    sheetSKP.setFrozenRows(1);
+  }
+
 }
 
 // GET Request
@@ -57,6 +76,32 @@ function doGet(e) {
   setupSheet();
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const action = e.parameter.action || 'getReports';
+
+  
+  if (action === 'getSKP') {
+    const sheetSKP = ss.getSheetByName(SHEET_SKP);
+    if (!sheetSKP) return createJsonResponse({ status: 'success', data: [] });
+    const dataSKP = sheetSKP.getDataRange().getValues();
+    const skpList = [];
+    for (let i = 1; i < dataSKP.length; i++) {
+      const row = dataSKP[i];
+      if (!row[0]) continue;
+      skpList.push({
+        id: String(row[0]),
+        pegawaiId: String(row[1]),
+        nip: String(row[2] || ''),
+        namaPegawai: String(row[3] || ''),
+        noUrut: Number(row[4] || i),
+        rencanaHasil: String(row[5] || ''),
+        indikator: String(row[6] || ''),
+        targetTahun: String(row[7] || ''),
+        satuan: String(row[8] || 'Dokumen'),
+        waktuBulan: String(row[9] || '12'),
+        waktuInput: String(row[10] || '')
+      });
+    }
+    return createJsonResponse({ status: 'success', data: skpList });
+  }
 
   if (action === 'getUsers') {
     const sheetUsers = ss.getSheetByName(SHEET_USERS);
@@ -157,6 +202,45 @@ function doPost(e) {
     const payload = JSON.parse(e.postData.contents);
     const action = payload.action || 'saveReport';
     const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+    
+    // 5. SAVE SKP BATCH (Bulk save or replace employee targets)
+    if (action === 'saveSKPBatch') {
+      const sheetSKP = ss.getSheetByName(SHEET_SKP);
+      const batchData = payload.data;
+      const targetPegawaiId = String(batchData.pegawaiId || batchData.nip).trim().replace(/\s+/g, '');
+
+      // Delete existing targets for this employee
+      const dataSKP = sheetSKP.getDataRange().getValues();
+      for (let i = dataSKP.length - 1; i >= 1; i--) {
+        const rowPegId = String(dataSKP[i][1] || '').trim().replace(/\s+/g, '');
+        const rowNip = String(dataSKP[i][2] || '').trim().replace(/\s+/g, '');
+        if (rowPegId === targetPegawaiId || rowNip === targetPegawaiId) {
+          sheetSKP.deleteRow(i + 1);
+        }
+      }
+
+      // Append all new targets
+      if (Array.isArray(batchData.targets)) {
+        batchData.targets.forEach((t, idx) => {
+          sheetSKP.appendRow([
+            t.id || ('SKP-' + new Date().getTime() + '-' + idx),
+            batchData.pegawaiId || '',
+            batchData.nip || '',
+            batchData.namaPegawai || '',
+            idx + 1,
+            t.rencanaHasil || '',
+            t.indikator || '',
+            t.targetTahun || '',
+            t.satuan || 'Dokumen',
+            t.waktuBulan || '12',
+            new Date().toISOString()
+          ]);
+        });
+      }
+
+      return createJsonResponse({ status: 'success', message: 'Target SKP berhasil disimpan ke Sheet SKP' });
+    }
 
     // 1. SAVE USER (Register / Insert / Update User)
     if (action === 'saveUser' || action === 'editUser') {
