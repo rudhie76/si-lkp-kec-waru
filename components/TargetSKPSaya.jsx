@@ -16,7 +16,8 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
   });
 
   // Filter only my targets
-  const myTargets = skpTargets.filter(skp => skp.pegawaiId === activeUser.id);
+  const safeSkpTargets = Array.isArray(skpTargets) ? skpTargets : [];
+  const myTargets = safeSkpTargets.filter(skp => skp?.pegawaiId === activeUser?.id);
 
   const resetForm = () => {
     setFormData({
@@ -181,7 +182,7 @@ export default function TargetSKPSaya({ activeUser, skpTargets, setSkpTargets })
 
         {/* List of Targets */}
         <div className="lg:col-span-2">
-          {myTargets.length === 0 ? (
+          {(!myTargets || myTargets.length === 0) ? (
             <div className="bg-white rounded-3xl p-12 border border-slate-200/60 shadow-xl text-center">
               <div className="bg-slate-50 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="w-12 h-12 text-slate-300" />
