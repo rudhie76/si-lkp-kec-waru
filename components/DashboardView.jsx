@@ -80,9 +80,23 @@ export default function DashboardView({
   const totalReports = reports.length;
   const approvedReports = reports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;
   const pendingReports = reports.filter(r => r.status === 'PENDING' || r.status === 'Menunggu Verifikasi').length;
-  const userNip = currentUser?.nip || '';
-  const myReports = reports.filter(r => r.nip === userNip || r.pegawaiId === currentUser?.id);
-  const subordinateReports = reports.filter(r => r.nip !== userNip && r.pegawaiId !== currentUser?.id);
+  const uId = String(currentUser?.id || '').replace(/\s+/g, '');
+  const uNip = String(currentUser?.nip || '').replace(/\s+/g, '');
+  const uName = String(currentUser?.name || '').trim().toLowerCase();
+
+  const isMyReport = (r) => {
+    const rId = String(r.pegawaiId || '').replace(/\s+/g, '');
+    const rNip = String(r.nip || '').replace(/\s+/g, '');
+    const rName = String(r.namaPegawai || '').trim().toLowerCase();
+
+    const matchId = uId && (rId === uId || rNip === uId);
+    const matchNip = uNip && (rId === uNip || rNip === uNip);
+    const matchName = uName && rName && (uName.includes(rName) || rName.includes(uName));
+    return matchId || matchNip || matchName;
+  };
+
+  const myReports = reports.filter(isMyReport);
+  const subordinateReports = reports.filter(r => !isMyReport(r));
   const hasSubordinates = (currentUser?.role && !['Staf', 'Pegawai', 'ASN / Staf'].includes(currentUser.role)) || subordinateReports.length > 0;
   const myApproved = myReports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;
   const subApproved = subordinateReports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;

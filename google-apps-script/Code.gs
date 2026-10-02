@@ -73,95 +73,119 @@ function setupSheet() {
 
 // GET Request
 function doGet(e) {
-  setupSheet();
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const action = e.parameter.action || 'getReports';
+  try {
+    setupSheet();
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const action = (e && e.parameter && e.parameter.action) ? e.parameter.action : 'getReports';
 
-  
-  if (action === 'getSKP') {
-    const sheetSKP = ss.getSheetByName(SHEET_SKP);
-    if (!sheetSKP) return createJsonResponse({ status: 'success', data: [] });
-    const dataSKP = sheetSKP.getDataRange().getValues();
-    const skpList = [];
-    for (let i = 1; i < dataSKP.length; i++) {
-      const row = dataSKP[i];
+    if (action === 'getSKP') {
+      const sheetSKP = ss.getSheetByName(SHEET_SKP);
+      if (!sheetSKP) return createJsonResponse({ status: 'success', data: [] });
+      const dataSKP = sheetSKP.getDataRange().getValues();
+      const skpList = [];
+      for (let i = 1; i < dataSKP.length; i++) {
+        const row = dataSKP[i];
+        if (!row[0]) continue;
+        skpList.push({
+          id: String(row[0]),
+          pegawaiId: String(row[1]),
+          nip: String(row[2] || ''),
+          namaPegawai: String(row[3] || ''),
+          noUrut: Number(row[4] || i),
+          rencanaHasil: String(row[5] || ''),
+          indikator: String(row[6] || ''),
+          targetTahun: String(row[7] || ''),
+          satuan: String(row[8] || 'Dokumen'),
+          waktuBulan: String(row[9] || '12'),
+          waktuInput: String(row[10] || '')
+        });
+      }
+      return createJsonResponse({ status: 'success', data: skpList });
+    }
+
+    if (action === 'getUsers') {
+      const sheetUsers = ss.getSheetByName(SHEET_USERS);
+      if (!sheetUsers) return createJsonResponse({ status: 'success', data: [] });
+      const dataUsers = sheetUsers.getDataRange().getValues();
+      const users = [];
+      for (let i = 1; i < dataUsers.length; i++) {
+        const row = dataUsers[i];
+        if (!row[0]) continue;
+        users.push({
+          id: String(row[0]),
+          name: String(row[1] || ''),
+          nip: String(row[2] || row[0]),
+          noWa: String(row[3] || ''),
+          email: String(row[4] || ''),
+          passwordHash: String(row[5] || ''),
+          jabatan: String(row[6] || 'ASN'),
+          pangkatGolongan: String(row[7] || ''),
+          unitKerja: String(row[8] || ''),
+          peranStruktur: String(row[9] || ''),
+          atasanValidasi: String(row[10] || ''),
+          role: String(row[11] || 'ASN / Staf'),
+          fotoProfil: String(row[12] || '')
+        });
+      }
+      return createJsonResponse({ status: 'success', data: users });
+    }
+
+    // Default: getReports
+    const sheet = ss.getSheetByName(SHEET_LKH);
+    if (!sheet) return createJsonResponse({ status: 'success', data: [] });
+    const data = sheet.getDataRange().getValues();
+    if (data.length <= 1) return createJsonResponse({ status: 'success', data: [] });
+
+    const reports = [];
+    for (let i = 1; i < data.length; i++) {
+      const row = data[i];
       if (!row[0]) continue;
-      skpList.push({
+      let detailKegiatan = [];
+      try {
+        detailKegiatan = typeof row[3] === 'string' ? JSON.parse(row[3]) : row[3];
+      } catch(err) {
+        detailKegiatan = [{ deskripsi: String(row[3] || ''), volume: 1, satuan: 'Berkas' }];
+      }
+
+      // Safe date formatting (handle Google Sheets Date object)
+      let tanggalStr = '';
+      if (row[2] instanceof Date) {
+        const d = row[2];
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        tanggalStr = year + '-' + month + '-' + day;
+      } else {
+        tanggalStr = String(row[2] || '');
+      }
+
+      // Sanitize oversized base64 to avoid ContentService memory crash
+      let lampiran = String(row[4] || '');
+      if (lampiran.length > 200000) {
+        lampiran = '';
+      }
+
+      reports.push({
         id: String(row[0]),
-        pegawaiId: String(row[1]),
-        nip: String(row[2] || ''),
-        namaPegawai: String(row[3] || ''),
-        noUrut: Number(row[4] || i),
-        rencanaHasil: String(row[5] || ''),
-        indikator: String(row[6] || ''),
-        targetTahun: String(row[7] || ''),
-        satuan: String(row[8] || 'Dokumen'),
-        waktuBulan: String(row[9] || '12'),
+        pegawaiId: String(row[1] || ''),
+        nip: String(row[1] || ''),
+        tanggal: tanggalStr,
+        detailKegiatan: detailKegiatan,
+        deskripsi: Array.isArray(detailKegiatan) ? detailKegiatan.map(function(k){ return k.deskripsi || ''; }).join('; ') : String(row[3] || ''),
+        lampiranUrl: lampiran,
+        status: String(row[5] || 'PENDING'),
+        diverifikasiOleh: String(row[6] || ''),
+        namaPegawai: String(row[7] || ''),
+        jabatan: String(row[8] || ''),
+        catatanAtasan: String(row[9] || ''),
         waktuInput: String(row[10] || '')
       });
     }
-    return createJsonResponse({ status: 'success', data: skpList });
+
+    return createJsonResponse({ status: 'success', data: reports });
+  } catch (err) {
+    return createJsonResponse({ status: 'error', message: err.toString() });
   }
-
-  if (action === 'getUsers') {
-    const sheetUsers = ss.getSheetByName(SHEET_USERS);
-    const dataUsers = sheetUsers.getDataRange().getValues();
-    const users = [];
-    for (let i = 1; i < dataUsers.length; i++) {
-      const row = dataUsers[i];
-      if (!row[0]) continue;
-      users.push({
-        id: String(row[0]),
-        name: String(row[1] || ''),
-        nip: String(row[2] || row[0]),
-        noWa: String(row[3] || ''),
-        email: String(row[4] || ''),
-        passwordHash: String(row[5] || ''),
-        jabatan: String(row[6] || 'ASN'),
-        pangkatGolongan: String(row[7] || ''),
-        unitKerja: String(row[8] || ''),
-        peranStruktur: String(row[9] || ''),
-        atasanValidasi: String(row[10] || ''),
-        role: String(row[11] || 'ASN / Staf'),
-        fotoProfil: String(row[12] || '')
-      });
-    }
-    return createJsonResponse({ status: 'success', data: users });
-  }
-
-  const sheet = ss.getSheetByName(SHEET_LKH);
-  const data = sheet.getDataRange().getValues();
-  if (data.length <= 1) return createJsonResponse({ status: 'success', data: [] });
-
-  const reports = [];
-  for (let i = 1; i < data.length; i++) {
-    const row = data[i];
-    if (!row[0]) continue;
-    let detailKegiatan = [];
-    try {
-      detailKegiatan = JSON.parse(row[3]);
-    } catch(err) {
-      detailKegiatan = [{ deskripsi: String(row[3]), volume: 1, satuan: 'Berkas' }];
-    }
-
-    reports.push({
-      id: String(row[0]),
-      pegawaiId: String(row[1]),
-      nip: String(row[1]),
-      tanggal: String(row[2]),
-      detailKegiatan: detailKegiatan,
-      deskripsi: detailKegiatan.map(k => k.deskripsi).join('; '),
-      lampiranUrl: String(row[4] || ''),
-      status: String(row[5] || 'PENDING'),
-      diverifikasiOleh: String(row[6] || ''),
-      namaPegawai: String(row[7] || ''),
-      jabatan: String(row[8] || ''),
-      catatanAtasan: String(row[9] || ''),
-      waktuInput: String(row[10] || '')
-    });
-  }
-
-  return createJsonResponse({ status: 'success', data: reports });
 }
 
 // Helper: Upload Base64 to Google Drive

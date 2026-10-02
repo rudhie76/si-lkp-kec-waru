@@ -287,12 +287,21 @@ export default function InputKegiatan({
     setTimeout(() => setIsSuccess(false), 4000);
   };
 
-  // User's Own Submitted Reports Filter
+  // User's Own Submitted Reports Filter (Robust Matching: ID, NIP, or Name)
   const userOwnReports = reports.filter(r => {
     if (!activeUser) return true;
-    const isIdMatch = r.pegawaiId && String(r.pegawaiId) === String(activeUser.id);
-    const isNipMatch = r.nip && activeUser.nip && r.nip.replace(/\s+/g, '') === activeUser.nip.replace(/\s+/g, '');
-    return isIdMatch || isNipMatch;
+    const uId = String(activeUser.id || '').replace(/\s+/g, '');
+    const uNip = String(activeUser.nip || '').replace(/\s+/g, '');
+    const uName = String(activeUser.name || '').trim().toLowerCase();
+
+    const rPegId = String(r.pegawaiId || '').replace(/\s+/g, '');
+    const rNip = String(r.nip || '').replace(/\s+/g, '');
+    const rName = String(r.namaPegawai || '').trim().toLowerCase();
+
+    const isIdMatch = uId && (rPegId === uId || rNip === uId);
+    const isNipMatch = uNip && (rPegId === uNip || rNip === uNip);
+    const isNameMatch = uName && rName && (uName.includes(rName) || rName.includes(uName));
+    return isIdMatch || isNipMatch || isNameMatch;
   });
 
   const filteredUserReports = userOwnReports.filter(r => {
