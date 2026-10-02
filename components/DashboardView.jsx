@@ -29,7 +29,8 @@ export default function DashboardView({
   currentUser = null,
   users = [],
   onDeleteReport,
-  onSaveReport
+  onSaveReport,
+  skpTargets = []
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('ALL');
@@ -734,8 +735,22 @@ export default function DashboardView({
                         {item.detailKegiatan && Array.isArray(item.detailKegiatan) ? (
                           <ul className="list-disc list-inside space-y-1 text-slate-600 text-[11px]">
                             {item.detailKegiatan.map((keg, idx) => (
-                              <li key={idx}>
-                                <span className="font-bold text-blue-600">[{keg.kategori}]</span> {keg.deskripsi} ({keg.volume} {keg.satuan})
+                              <li key={idx} className="space-y-0.5">
+                                <div>
+                                  <span className="font-bold text-blue-600">[{keg.kategori}]</span> {keg.deskripsi} ({keg.volume} {keg.satuan})
+                                </div>
+                                {keg.skpId && (
+                                  <div>
+                                    {(() => {
+                                      const target = (skpTargets || []).find(s => s.id === keg.skpId);
+                                      return target ? (
+                                        <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded text-[9px] font-bold border border-blue-200" title={target.rencanaHasil}>
+                                          <span>🎯 SKP: {target.rencanaHasil.length > 35 ? target.rencanaHasil.substring(0, 35) + '...' : target.rencanaHasil}</span>
+                                        </span>
+                                      ) : null;
+                                    })()}
+                                  </div>
+                                )}
                               </li>
                             ))}
                           </ul>

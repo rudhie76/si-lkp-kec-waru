@@ -654,6 +654,7 @@ export default function Page() {
               users={users}
               onDeleteReport={handleDeleteReport}
               onSaveReport={handleSaveReport}
+              skpTargets={skpTargets}
             />
           )}
 
@@ -670,6 +671,7 @@ export default function Page() {
               activeUser={currentUser}
               skpTargets={skpTargets}
               setSkpTargets={setSkpTargets}
+              reports={reports}
             />
           )}
 

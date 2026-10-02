@@ -3,16 +3,17 @@
 import { useState, useRef } from 'react';
 import { 
   Target, Plus, Edit2, Trash2, Save, X, Briefcase, FileText, 
-  Upload, Download, FileSpreadsheet, CheckCircle2, AlertCircle, RefreshCw 
+  Upload, Download, FileSpreadsheet, CheckCircle2, AlertCircle, RefreshCw, TrendingUp 
 } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import { getGoogleSheetsUrl, pushToGoogleSheets } from '../lib/googleSheets';
 
-export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkpTargets = () => {} }) {
+export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkpTargets = () => {}, reports = [] }) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentId, setCurrentId] = useState(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncNotice, setSyncNotice] = useState('');
+  const [expandedSkpId, setExpandedSkpId] = useState(null);
   
   // State for Import Preview Modal
   const [previewTargets, setPreviewTargets] = useState(null);
@@ -504,11 +505,11 @@ export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkp
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-slate-800 text-sm leading-snug mb-1">{skp.rencanaHasil}</h4>
                     {skp.indikator && (
-                      <p className="text-xs text-slate-500 mb-2.5 line-clamp-2">
+                      <p className="text-xs text-slate-500 mb-2 line-clamp-2">
                         <span className="font-semibold text-slate-600">Indikator:</span> {skp.indikator}
                       </p>
                     )}
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-2.5">
                       <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg text-[10px] font-bold border border-amber-200/60">
                         <FileText className="w-3 h-3 text-amber-600" /> Target: {skp.targetTahun} {skp.satuan}
                       </span>
@@ -516,6 +517,99 @@ export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkp
                         <Briefcase className="w-3 h-3 text-emerald-600" /> Waktu: {skp.waktuBulan} Bulan
                       </span>
                     </div>
+
+                    {/* REALISASI & PROGRES DARI LAPORAN HARIAN */}
+                    {(() => {
+                      const myReports = (reports || []).filter(r => 
+                        (r.pegawaiId === activeUser?.id || r.nip === activeUser?.nip)
+                      );
+                      const linkedActivities = [];
+                      myReports.forEach(r => {
+                        (r.detailKegiatan || []).forEach(k => {
+                          if (k.skpId === skp.id) {
+                            linkedActivities.push({
+                              tanggal: r.tanggal,
+                              deskripsi: k.deskripsi,
+                              volume: Number(k.volume) || 1,
+                              satuan: k.satuan || skp.satuan,
+                              status: r.status
+                            });
+                          }
+                        });
+                      });
+
+                      const totalRealisasi = linkedActivities.reduce((acc, a) => acc + a.volume, 0);
+                      const targetVal = Number(skp.targetTahun) || 1;
+                      const pct = Math.min(100, Math.round((totalRealisasi / targetVal) * 100));
+                      const isExpanded = expandedSkpId === skp.id;
+
+                      return (
+                        <div className="mt-2 pt-2 border-t border-slate-100">
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="font-bold text-slate-700 flex items-center gap-1 text-[11px]">
+                              <TrendingUp className="w-3.5 h-3.5 text-blue-600" />
+                              Realisasi Saat Ini: <strong className="text-blue-700">{totalRealisasi}</strong> / {skp.targetTahun} {skp.satuan}
+                            </span>
+                            <span className={`font-black text-[11px] ${pct >= 100 ? 'text-emerald-600' : pct > 0 ? 'text-blue-600' : 'text-slate-400'}`}>
+                              {pct}%
+                            </span>
+                          </div>
+
+                          {/* Progress Track */}
+                          <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                            <div 
+                              className={`h-full rounded-full transition-all duration-500 ${
+                                pct >= 100 ? 'bg-emerald-500' : pct > 50 ? 'bg-blue-600' : 'bg-amber-500'
+                              }`}
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+
+                          {/* Toggle Link to View Connected Activities */}
+                          <div className="mt-1.5 flex items-center justify-between">
+                            <button
+                              type="button"
+                              onClick={() => setExpandedSkpId(isExpanded ? null : skp.id)}
+                              className="text-[10px] font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
+                            >
+                              <CheckCircle2 className="w-3 h-3" />
+                              <span>
+                                {linkedActivities.length > 0 
+                                  ? `${linkedActivities.length} Laporan Harian Terhubung ${isExpanded ? '▲' : '▼'}`
+                                  : 'Belum ada inputan harian yang terhubung'
+                                }
+                              </span>
+                            </button>
+                          </div>
+
+                          {/* List of Connected Daily Reports */}
+                          {isExpanded && linkedActivities.length > 0 && (
+                            <div className="mt-2 p-2.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5 text-xs animate-in fade-in duration-150">
+                              <div className="font-bold text-[9px] text-slate-500 uppercase tracking-wider">
+                                Laporan Harian yang Menyumbang Target Ini:
+                              </div>
+                              <div className="divide-y divide-slate-200/60 max-h-36 overflow-y-auto pr-1">
+                                {linkedActivities.map((act, aIdx) => (
+                                  <div key={aIdx} className="py-1.5 flex items-start justify-between gap-2">
+                                    <div className="min-w-0">
+                                      <div className="font-semibold text-slate-800 text-[11px] truncate">{act.deskripsi}</div>
+                                      <div className="text-[10px] text-slate-400">
+                                        📅 {act.tanggal} • Output: <strong className="text-slate-600">{act.volume} {act.satuan}</strong>
+                                      </div>
+                                    </div>
+                                    <span className={`text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+                                      act.status === 'DIVALIDASI' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
+                                    }`}>
+                                      {act.status || 'PENDING'}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </div>
                   <div className="flex flex-row sm:flex-col gap-2 flex-shrink-0 mt-3 sm:mt-0 border-t sm:border-t-0 sm:border-l border-slate-100 pt-3 sm:pt-0 sm:pl-3">
                     <button 

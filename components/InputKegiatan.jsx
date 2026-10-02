@@ -851,6 +851,19 @@ export default function InputKegiatan({
                       </td>
                       <td className="py-4 px-4 max-w-sm">
                         <p className="line-clamp-2" title={firstKeg.deskripsi || item.deskripsi}>{firstKeg.deskripsi || item.deskripsi}</p>
+                        {firstKeg.skpId && (
+                          <div className="mt-1.5">
+                            {(() => {
+                              const target = (skpTargets || []).find(s => s.id === firstKeg.skpId);
+                              return target ? (
+                                <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-2 py-0.5 rounded-md text-[10px] font-bold border border-blue-200 shadow-sm" title={target.rencanaHasil}>
+                                  <Target className="w-3 h-3 text-blue-600 flex-shrink-0" />
+                                  <span className="truncate max-w-[220px]">SKP: {target.rencanaHasil}</span>
+                                </span>
+                              ) : null;
+                            })()}
+                          </div>
+                        )}
                         
                         {/* Expandable links if photos exist */}
                         <div className="mt-2 flex flex-wrap gap-2">
