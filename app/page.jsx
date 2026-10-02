@@ -700,6 +700,7 @@ export default function Page() {
               reports={reports}
               pegawaiList={users}
               activeUser={currentUser}
+              skpTargets={skpTargets}
             />
           )}
 
@@ -708,6 +709,7 @@ export default function Page() {
               reports={reports}
               pegawaiList={users}
               activeUser={currentUser}
+              skpTargets={skpTargets}
             />
           )}
 
