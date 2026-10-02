@@ -66,7 +66,7 @@ export default function InputKegiatan({
   };
 
   // Compression helper
-  const compressImageFile = (file, maxWidth = 800, maxHeight = 800, quality = 0.75) => {
+  const compressImageFile = (file, maxWidth = 640, maxHeight = 640, quality = 0.65) => {
     return new Promise((resolve, reject) => {
       if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
         const reader = new FileReader();
