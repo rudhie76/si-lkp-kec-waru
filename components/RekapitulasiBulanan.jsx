@@ -12,6 +12,41 @@ export default function RekapitulasiBulanan({
   const [selectedPegawai, setSelectedPegawai] = useState(activeUser?.id || '');
   const [selectedSkpId, setSelectedSkpId] = useState('ALL');
   const [includePending, setIncludePending] = useState(false);
+  const defaultToday = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const [printDate, setPrintDate] = useState(defaultToday);
+
+  const handleSetEndOfMonth = () => {
+    if (!selectedMonth) return;
+    const [y, m] = selectedMonth.split('-').map(Number);
+    const lastDay = new Date(y, m, 0).getDate();
+    setPrintDate(`${y}-${String(m).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`);
+  };
+
+  const handleSetToday = () => {
+    setPrintDate(defaultToday);
+  };
+
+  const formatSignatureDate = (dateStr) => {
+    if (!dateStr) return '';
+    try {
+      let dateObj;
+      if (dateStr.includes('-')) {
+        const [y, m, d] = dateStr.split('-').map(Number);
+        dateObj = new Date(y, m - 1, d);
+      } else {
+        dateObj = new Date(dateStr);
+      }
+      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      const dayName = days[dateObj.getDay()];
+      const dateNum = String(dateObj.getDate()).padStart(2, '0');
+      const monthName = months[dateObj.getMonth()];
+      const yearNum = dateObj.getFullYear();
+      return `Waru, ${dayName}, ${dateNum} ${monthName} ${yearNum}`;
+    } catch (e) {
+      return `Waru, ${dateStr}`;
+    }
+  };
 
   const targetPegawai = pegawaiList.find(p => String(p.id) === String(selectedPegawai)) || activeUser;
   const MONTHLY_TARGET_HOURS = 165; // Target standar
@@ -211,6 +246,34 @@ export default function RekapitulasiBulanan({
                 </option>
               ))}
             </select>
+
+            {/* Pengaturan Tanggal Tanda Tangan */}
+            <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5">
+              <span className="text-[11px] font-bold text-slate-500 whitespace-nowrap">📅 Tgl TTD:</span>
+              <input 
+                type="date"
+                value={printDate}
+                onChange={e => setPrintDate(e.target.value)}
+                className="bg-white border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-800 font-medium focus:outline-none focus:border-blue-600"
+                title="Atur tanggal tanda tangan pada lembar cetak"
+              />
+              <button
+                type="button"
+                onClick={handleSetEndOfMonth}
+                className="px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg text-[10px] font-bold whitespace-nowrap transition-colors"
+                title="Atur tanggal ke hari terakhir bulan terpilih"
+              >
+                Akhir Bulan
+              </button>
+              <button
+                type="button"
+                onClick={handleSetToday}
+                className="px-2 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg text-[10px] font-bold whitespace-nowrap transition-colors"
+                title="Atur tanggal ke hari ini"
+              >
+                Hari Ini
+              </button>
+            </div>
 
             {/* Print Button */}
             <button 
@@ -562,7 +625,7 @@ export default function RekapitulasiBulanan({
             
             <div className="text-center w-72 flex flex-col justify-between" style={{ minHeight: '180px' }}>
               <div>
-                <p className="mb-1">Waru, {formatToCustomDate(new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10))}</p>
+                <p className="mb-1 font-medium">{formatSignatureDate(printDate)}</p>
                 <p className="font-bold uppercase">PEGAWAI NEGERI SIPIL YANG DINILAI</p>
                 <p className="mt-0.5">{targetPegawai?.jabatan}</p>
               </div>

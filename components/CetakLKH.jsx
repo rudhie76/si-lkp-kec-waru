@@ -8,6 +8,30 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
 
   const targetPegawai = pegawaiList.find(p => String(p.id) === String(selectedPegawai)) || activeUser;
   const [includePending, setIncludePending] = useState(false);
+  const defaultToday = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const [printDate, setPrintDate] = useState(filterDate || defaultToday);
+
+  const formatSignatureDate = (dateStr) => {
+    if (!dateStr) return '';
+    try {
+      let dateObj;
+      if (dateStr.includes('-')) {
+        const [y, m, d] = dateStr.split('-').map(Number);
+        dateObj = new Date(y, m - 1, d);
+      } else {
+        dateObj = new Date(dateStr);
+      }
+      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      const dayName = days[dateObj.getDay()];
+      const dateNum = String(dateObj.getDate()).padStart(2, '0');
+      const monthName = months[dateObj.getMonth()];
+      const yearNum = dateObj.getFullYear();
+      return `Waru, ${dayName}, ${dateNum} ${monthName} ${yearNum}`;
+    } catch (e) {
+      return `Waru, ${dateStr}`;
+    }
+  };
 
   // Normalize date function
   const normalizeDate = (d) => {
@@ -392,7 +416,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
             {/* KANAN */}
             <div className="text-center w-72 flex flex-col justify-between" style={{ minHeight: '180px' }}>
               <div>
-                <p className="mb-1">Waru, {formatToCustomDate(new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10))}</p>
+                <p className="mb-1 font-medium">{formatSignatureDate(printDate)}</p>
                 <p className="font-bold">PEGAWAI NEGERI SIPIL YANG DINILAI</p>
                 <p>{targetPegawai?.jabatan}</p>
               </div>
