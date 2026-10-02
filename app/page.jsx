@@ -460,19 +460,23 @@ export default function Page() {
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <BarChart3 className="w-4 h-4 text-blue-600" />
-                <span>📊 Dashboard Statistik</span>
+                <BarChart3 className={`w-4 h-4 ${activeTab === 'dashboard' ? 'text-white' : 'text-blue-600'}`} />
+                <span>Dashboard Statistik</span>
               </button>
 
-              
               <button
                 onClick={() => { setActiveTab('skp'); setIsMobileMenuOpen(false); }}
-                className={`w-full flex items-center gap-3 px-6 py-3.5 transition-all duration-200 ${activeTab === 'skp' ? 'bg-blue-50 text-blue-700 border-r-4 border-blue-600' : 'text-slate-600 hover:bg-slate-50 hover:text-blue-600'}`}
+                className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
+                  activeTab === 'skp'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
+                    : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
+                }`}
               >
-                <Target className={`w-5 h-5 ${activeTab === 'skp' ? 'text-blue-600' : 'text-slate-400'}`} />
-                <span className="font-semibold text-sm">Target SKP Saya</span>
+                <Target className={`w-4 h-4 ${activeTab === 'skp' ? 'text-white' : 'text-blue-600'}`} />
+                <span>Target SKP Saya</span>
               </button>
-<button
+
+              <button
                 onClick={() => { setActiveTab('profil'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   activeTab === 'profil'
@@ -480,8 +484,8 @@ export default function Page() {
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <User className="w-4 h-4 text-blue-600" />
-                <span>👤 Profil Saya & Foto Diri</span>
+                <User className={`w-4 h-4 ${activeTab === 'profil' ? 'text-white' : 'text-blue-600'}`} />
+                <span>Profil Saya & Foto Diri</span>
               </button>
 
               <button
@@ -492,8 +496,8 @@ export default function Page() {
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <FilePlus className="w-4 h-4 text-blue-600" />
-                <span>📝 Input Kegiatan (LKH)</span>
+                <FilePlus className={`w-4 h-4 ${activeTab === 'input' ? 'text-white' : 'text-blue-600'}`} />
+                <span>Input Kegiatan (LKH)</span>
               </button>
             </div>
 
@@ -511,8 +515,8 @@ export default function Page() {
                       : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
-                  <ShieldCheck className="w-4 h-4 text-amber-700" />
-                  <span>⏳ Verifikasi Atasan</span>
+                  <ShieldCheck className={`w-4 h-4 ${activeTab === 'verify' ? 'text-white' : 'text-amber-600'}`} />
+                  <span>Verifikasi Atasan</span>
                 </button>
               )}
 
@@ -524,8 +528,8 @@ export default function Page() {
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <Printer className="w-4 h-4 text-slate-600" />
-                <span>🖨️ Cetak LKH Harian</span>
+                <Printer className={`w-4 h-4 ${activeTab === 'cetak' ? 'text-white' : 'text-blue-600'}`} />
+                <span>Cetak LKH Harian</span>
               </button>
 
               <button
@@ -536,8 +540,8 @@ export default function Page() {
                     : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                 }`}
               >
-                <LayoutDashboard className="w-4 h-4 text-blue-600" />
-                <span>📈 Rekapitulasi Bulanan</span>
+                <LayoutDashboard className={`w-4 h-4 ${activeTab === 'rekap' ? 'text-white' : 'text-blue-600'}`} />
+                <span>Rekapitulasi Bulanan</span>
               </button>
             </div>
 
@@ -554,19 +558,19 @@ export default function Page() {
                       : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
-                  <MessageSquare className="w-4 h-4 text-blue-600" />
-                  <span>💬 Pengingat WA</span>
+                  <MessageSquare className={`w-4 h-4 ${activeTab === 'wa' ? 'text-white' : 'text-blue-600'}`} />
+                  <span>Pengingat WA</span>
                 </button>
               )}
 
               {isAdmin && (
-<button
-                onClick={() => { setIsGSModalOpen(true); setIsMobileMenuOpen(false); }}
-                className="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100/60 hover:text-slate-800 transition-all"
-              >
-                <Database className="w-4 h-4 text-blue-600" />
-                <span>⚙️ Pengaturan Sheets API</span>
-              </button>
+                <button
+                  onClick={() => { setIsGSModalOpen(true); setIsMobileMenuOpen(false); }}
+                  className="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100/60 hover:text-slate-800 transition-all"
+                >
+                  <Database className="w-4 h-4 text-blue-600" />
+                  <span>Pengaturan Sheets API</span>
+                </button>
               )}
 
               {/* ADMIN ONLY MENU: MANAJEMEN PEGAWAI */}
@@ -579,8 +583,8 @@ export default function Page() {
                       : 'text-slate-600 hover:bg-slate-100/60 hover:text-slate-800'
                   }`}
                 >
-                  <Users className="w-4 h-4 text-amber-700" />
-                  <span>👥 Manajemen Pegawai</span>
+                  <Users className={`w-4 h-4 ${activeTab === 'pegawai' ? 'text-white' : 'text-blue-600'}`} />
+                  <span>Manajemen Pegawai</span>
                 </button>
               )}
             </div>
