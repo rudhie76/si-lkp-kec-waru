@@ -289,6 +289,7 @@ export default function InputKegiatan({
 
   // User's Own Submitted Reports Filter (Robust Matching: ID, NIP, or Name)
   const userOwnReports = reports.filter(r => {
+    if (!r) return false;
     if (!activeUser) return true;
     const uId = String(activeUser.id || '').replace(/\s+/g, '');
     const uNip = String(activeUser.nip || '').replace(/\s+/g, '');
@@ -301,7 +302,7 @@ export default function InputKegiatan({
     const isIdMatch = uId && (rPegId === uId || rNip === uId);
     const isNipMatch = uNip && (rPegId === uNip || rNip === uNip);
     const isNameMatch = uName && rName && (uName.includes(rName) || rName.includes(uName));
-    return isIdMatch || isNipMatch || isNameMatch;
+    return Boolean(isIdMatch || isNipMatch || isNameMatch);
   });
 
   const filteredUserReports = userOwnReports.filter(r => {

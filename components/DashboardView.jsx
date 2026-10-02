@@ -80,11 +80,13 @@ export default function DashboardView({
   const totalReports = reports.length;
   const approvedReports = reports.filter(r => r.status === 'DIVALIDASI' || r.status === 'Disetujui').length;
   const pendingReports = reports.filter(r => r.status === 'PENDING' || r.status === 'Menunggu Verifikasi').length;
+  const userNip = currentUser?.nip || '';
   const uId = String(currentUser?.id || '').replace(/\s+/g, '');
   const uNip = String(currentUser?.nip || '').replace(/\s+/g, '');
   const uName = String(currentUser?.name || '').trim().toLowerCase();
 
   const isMyReport = (r) => {
+    if (!r) return false;
     const rId = String(r.pegawaiId || '').replace(/\s+/g, '');
     const rNip = String(r.nip || '').replace(/\s+/g, '');
     const rName = String(r.namaPegawai || '').trim().toLowerCase();
@@ -92,7 +94,7 @@ export default function DashboardView({
     const matchId = uId && (rId === uId || rNip === uId);
     const matchNip = uNip && (rId === uNip || rNip === uNip);
     const matchName = uName && rName && (uName.includes(rName) || rName.includes(uName));
-    return matchId || matchNip || matchName;
+    return Boolean(matchId || matchNip || matchName);
   };
 
   const myReports = reports.filter(isMyReport);
@@ -106,12 +108,12 @@ export default function DashboardView({
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
   
-  const validReports = reports.filter(r => r.status === 'DIVALIDASI' || r.status === 'PENDING' || r.status === 'Disetujui' || r.status === 'Menunggu Verifikasi');
+  const validReports = reports.filter(r => r && (r.status === 'DIVALIDASI' || r.status === 'PENDING' || r.status === 'Disetujui' || r.status === 'Menunggu Verifikasi'));
   
   const totalDuration = validReports.reduce((acc, curr) => acc + getDurasiFallback(curr), 0);
   
   const totalDurationThisMonth = validReports.reduce((acc, curr) => {
-    if (!curr.tanggal) return acc;
+    if (!curr || !curr.tanggal) return acc;
     const d = new Date(curr.tanggal);
     if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
       return acc + getDurasiFallback(curr);
@@ -120,7 +122,7 @@ export default function DashboardView({
   }, 0);
 
   const totalDurationThisYear = validReports.reduce((acc, curr) => {
-    if (!curr.tanggal) return acc;
+    if (!curr || !curr.tanggal) return acc;
     const d = new Date(curr.tanggal);
     if (d.getFullYear() === currentYear) {
       return acc + getDurasiFallback(curr);
@@ -128,8 +130,8 @@ export default function DashboardView({
     return acc;
   }, 0);
 
-  const myDurationThisMonth = validReports.filter(r => r.nip === userNip || r.pegawaiId === currentUser?.id).reduce((acc, curr) => {
-    if (!curr.tanggal) return acc;
+  const myDurationThisMonth = validReports.filter(isMyReport).reduce((acc, curr) => {
+    if (!curr || !curr.tanggal) return acc;
     const d = new Date(curr.tanggal);
     if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
       return acc + getDurasiFallback(curr);
@@ -137,8 +139,8 @@ export default function DashboardView({
     return acc;
   }, 0);
 
-  const subDurationThisMonth = validReports.filter(r => r.nip !== userNip && r.pegawaiId !== currentUser?.id).reduce((acc, curr) => {
-    if (!curr.tanggal) return acc;
+  const subDurationThisMonth = validReports.filter(r => !isMyReport(r)).reduce((acc, curr) => {
+    if (!curr || !curr.tanggal) return acc;
     const d = new Date(curr.tanggal);
     if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
       return acc + getDurasiFallback(curr);

@@ -110,11 +110,17 @@ export default function Page() {
               setCurrentUser(null);
               setAuthUserToLocal(null);
             } else if (session) {
-              const sessionNip = session.nip ? session.nip.replace(/\s+/g, '') : '';
-              const stillExists = uData.some(u => 
-                String(u.id) === String(session.id) ||
-                (u.nip && u.nip.replace(/\s+/g, '') === sessionNip)
-              );
+              const sessionNip = session.nip ? String(session.nip).replace(/\s+/g, '') : '';
+              const sessionName = session.name ? String(session.name).trim().toLowerCase() : '';
+              const sessionId = String(session.id || '').replace(/\s+/g, '');
+              const stillExists = uData.some(u => {
+                const uId = String(u.id || '').replace(/\s+/g, '');
+                const uNip = String(u.nip || '').replace(/\s+/g, '');
+                const uName = String(u.name || '').trim().toLowerCase();
+                return (sessionId && (uId === sessionId || uNip === sessionId)) ||
+                       (sessionNip && (uId === sessionNip || uNip === sessionNip)) ||
+                       (sessionName && uName && (uName.includes(sessionName) || sessionName.includes(uName)));
+              });
               if (!stillExists) {
                 setCurrentUser(null);
                 setAuthUserToLocal(null);
