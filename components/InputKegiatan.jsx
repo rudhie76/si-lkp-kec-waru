@@ -534,6 +534,7 @@ export default function InputKegiatan({
                   <option value="Laporan">Laporan</option>
                   <option value="Dokumen">Dokumen</option>
                   <option value="Surat">Surat</option>
+                  <option value="Lembar">Lembar</option>
                   <option value="Gobi / Folder">Gobi / Folder</option>
                 </select>
               </div>
