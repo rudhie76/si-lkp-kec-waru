@@ -69,56 +69,70 @@ export default function VerifikasiAtasan({
   });
 
   const handleApprove = (report) => {
-    const subObj = {
-      id: report.pegawaiId || report.nip,
-      nip: report.nip,
-      name: report.namaPegawai,
-      jabatan: report.jabatan
-    };
+    if (!report) return;
 
-    // RULE #6 Strict check
-    if (!canValidate(activeUser, subObj)) {
-      alert('Akses Ditolak: Bawahan tidak dapat memvalidasi atasan atau pejabat setingkat.');
+    // Rule: Cegah memvalidasi laporan sendiri
+    const subNip = String(report.nip || report.pegawaiId || '').replace(/\s+/g, '');
+    const myNip = String(activeUser?.nip || activeUser?.id || '').replace(/\s+/g, '');
+    if (subNip && myNip && subNip === myNip) {
+      alert('Akses Ditolak: Anda tidak dapat memvalidasi laporan kinerja Anda sendiri.');
       return;
     }
 
-    onUpdateStatus(
-      report.id, 
-      'DIVALIDASI', 
-      catatanText || 'Laporan telah disetujui & divalidasi oleh Atasan Langsung.', 
-      activeUser?.name || 'Atasan Langsung'
-    );
+    const note = catatanText.trim() || 'Laporan telah disetujui & divalidasi oleh Atasan Langsung.';
+    const verifikator = activeUser?.name ? `${activeUser.name} (${activeUser.jabatan || 'Atasan Langsung'})` : 'Atasan Langsung';
+
+    // 1. Tutup modal langsung dan bersihkan catatan
     setSelectedReport(null);
     setCatatanText('');
+
+    // 2. Jalankan update status
+    try {
+      onUpdateStatus(
+        report.id, 
+        'DIVALIDASI', 
+        note, 
+        verifikator
+      );
+    } catch (err) {
+      console.error('Error onUpdateStatus:', err);
+    }
   };
 
   const handleReject = (report) => {
+    if (!report) return;
+
     if (!catatanText.trim()) {
       alert('Mohon isi alasan / catatan perbaikan jika menolak laporan.');
       return;
     }
 
-    const subObj = {
-      id: report.pegawaiId || report.nip,
-      nip: report.nip,
-      name: report.namaPegawai,
-      jabatan: report.jabatan
-    };
-
-    // RULE #6 Strict check
-    if (!canValidate(activeUser, subObj)) {
-      alert('Akses Ditolak: Bawahan tidak dapat memvalidasi atasan atau pejabat setingkat.');
+    // Rule: Cegah memvalidasi laporan sendiri
+    const subNip = String(report.nip || report.pegawaiId || '').replace(/\s+/g, '');
+    const myNip = String(activeUser?.nip || activeUser?.id || '').replace(/\s+/g, '');
+    if (subNip && myNip && subNip === myNip) {
+      alert('Akses Ditolak: Anda tidak dapat memvalidasi laporan kinerja Anda sendiri.');
       return;
     }
 
-    onUpdateStatus(
-      report.id, 
-      'DITOLAK', 
-      catatanText, 
-      activeUser?.name || 'Atasan Langsung'
-    );
+    const note = catatanText.trim();
+    const verifikator = activeUser?.name ? `${activeUser.name} (${activeUser.jabatan || 'Atasan Langsung'})` : 'Atasan Langsung';
+
+    // 1. Tutup modal langsung dan bersihkan catatan
     setSelectedReport(null);
     setCatatanText('');
+
+    // 2. Jalankan update status
+    try {
+      onUpdateStatus(
+        report.id, 
+        'DITOLAK', 
+        note, 
+        verifikator
+      );
+    } catch (err) {
+      console.error('Error onUpdateStatus:', err);
+    }
   };
 
   return (
@@ -266,7 +280,7 @@ export default function VerifikasiAtasan({
 
       {/* DETAIL & VALIDASI MODAL */}
       {selectedReport && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" onClick={(e) => { if (e.target === e.currentTarget) setSelectedReport(null); }}>
           <div className="bg-white border border-slate-200/60 rounded-3xl p-6 max-w-2xl w-full space-y-4 max-h-[90vh] overflow-y-auto">
             
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">

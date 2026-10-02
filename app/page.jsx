@@ -173,7 +173,7 @@ export default function Page() {
   // Update Status Action
   const handleUpdateStatus = (id, newStatus, catatan, verifikator) => {
     const updated = reports.map(r => {
-      if (r.id === id) {
+      if (String(r.id) === String(id)) {
         return {
           ...r,
           status: newStatus,
@@ -185,7 +185,11 @@ export default function Page() {
     });
 
     setReports(updated);
-    saveReportsToLocal(updated);
+    try {
+      saveReportsToLocal(updated);
+    } catch (e) {
+      console.warn('saveReportsToLocal error:', e);
+    }
 
     const gsUrl = getGoogleSheetsUrl();
     if (gsUrl) {
