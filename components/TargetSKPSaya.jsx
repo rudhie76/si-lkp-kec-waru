@@ -28,9 +28,25 @@ export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkp
     waktuBulan: '12'
   });
 
+  // Helper to match target SKP with active user robustly
+  const isMySkp = (skp) => {
+    if (!skp || !activeUser) return false;
+    const uId = String(activeUser.id || '').replace(/\s+/g, '');
+    const uNip = String(activeUser.nip || '').replace(/\s+/g, '');
+    const uName = String(activeUser.name || '').trim().toLowerCase();
+
+    const skpPegId = String(skp.pegawaiId || '').replace(/\s+/g, '');
+    const skpNip = String(skp.nip || '').replace(/\s+/g, '');
+    const skpName = String(skp.namaPegawai || '').trim().toLowerCase();
+
+    return (uId && (skpPegId === uId || skpNip === uId)) ||
+           (uNip && (skpPegId === uNip || skpNip === uNip)) ||
+           (uName && skpName && uName === skpName);
+  };
+
   // Filter only my targets safely
   const safeSkpTargets = Array.isArray(skpTargets) ? skpTargets : [];
-  const myTargets = safeSkpTargets.filter(skp => skp && activeUser && skp.pegawaiId === activeUser.id);
+  const myTargets = safeSkpTargets.filter(isMySkp);
 
   // Sync to Google Sheets Helper
   const syncBatchToGoogleSheets = async (targetsList) => {
@@ -86,7 +102,7 @@ export default function TargetSKPSaya({ activeUser = {}, skpTargets = [], setSkp
     if (confirm('Apakah Anda yakin ingin menghapus target SKP ini?')) {
       const updatedAll = safeSkpTargets.filter(skp => skp.id !== id);
       setSkpTargets(updatedAll);
-      const myNewTargets = updatedAll.filter(skp => skp.pegawaiId === activeUser.id);
+      const myNewTargets = updatedAll.filter(isMySkp);
       syncBatchToGoogleSheets(myNewTargets);
     }
   };

@@ -55,10 +55,12 @@ export default function Page() {
 
   // Save SKP Targets to LocalStorage
   useEffect(() => {
-    try {
-      localStorage.setItem('si_lkp_skp', JSON.stringify(skpTargets));
-    } catch (e) {
-      console.error('Error saving SKP targets:', e);
+    if (Array.isArray(skpTargets) && skpTargets.length > 0) {
+      try {
+        localStorage.setItem('si_lkp_skp', JSON.stringify(skpTargets));
+      } catch (e) {
+        console.error('Error saving SKP targets:', e);
+      }
     }
   }, [skpTargets]);
 
