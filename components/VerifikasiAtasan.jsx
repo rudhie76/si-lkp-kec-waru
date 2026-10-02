@@ -45,7 +45,7 @@ export default function VerifikasiAtasan({
   const [catatanText, setCatatanText] = useState('');
 
   // RULE #7: Only filter reports from eligible subordinates (Excluding self for validation list)
-  const visibleReports = getVisibleReports(activeUser, reports).filter(r => {
+  const visibleReports = getVisibleReports(activeUser, reports, users).filter(r => {
     const rId = String(r.pegawaiId || r.nip || '').replace(/\s+/g, '');
     const uId = String(activeUser?.id || activeUser?.nip || '').replace(/\s+/g, '');
     return rId !== uId; // Validation tab is for subordinates' reports

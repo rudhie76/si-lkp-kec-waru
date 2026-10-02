@@ -654,7 +654,7 @@ export default function Page() {
           
           {activeTab === 'dashboard' && (
             <DashboardView 
-              reports={getVisibleReports(currentUser, reports)}
+              reports={getVisibleReports(currentUser, reports, users)}
               onUpdateStatus={handleUpdateStatus}
               onNavigateToInput={() => setActiveTab('input')}
               onNavigateToVerify={() => setActiveTab('verify')}
