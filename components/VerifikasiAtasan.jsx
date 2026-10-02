@@ -329,15 +329,51 @@ export default function VerifikasiAtasan({
                     </div>
                     <p className="text-slate-700 leading-relaxed whitespace-pre-wrap">{keg.deskripsi}</p>
                     
-                    {(keg.fotoUrl || keg.fotoUrl2) && (
+                    {((keg.fotoUrl || selectedReport.lampiranUrl) || keg.fotoUrl2) && (
                       <div className="pt-2">
-                        <span className="text-[10px] text-slate-500 block mb-1">Foto Dokumentasi Kegiatan:</span>
-                        <div className="flex gap-2 overflow-x-auto pb-1">
-                          {keg.fotoUrl && (
-                            <a href={getDriveViewUrl(keg.fotoUrl)} onClick={(e) => handleMediaClick(e, keg.fotoUrl)} target="_blank" rel="noopener noreferrer"><img src={keg.fotoUrl} alt="Dokumentasi 1" className="h-32 rounded-xl border border-slate-200 object-cover" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} /></a>
+                        <span className="text-[10px] text-slate-500 block mb-1">Bukti Fisik / Dokumentasi Kegiatan:</span>
+                        <div className="flex gap-2 overflow-x-auto pb-1 items-center">
+                          {(keg.fotoUrl || selectedReport.lampiranUrl) && (
+                            ((keg.fotoUrl || selectedReport.lampiranUrl).startsWith('data:application/pdf') || (keg.fotoUrl || selectedReport.lampiranUrl).toLowerCase().includes('.pdf')) ? (
+                              <a 
+                                href={getDriveViewUrl(keg.fotoUrl || selectedReport.lampiranUrl)} 
+                                onClick={(e) => handleMediaClick(e, keg.fotoUrl || selectedReport.lampiranUrl)} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 px-3 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer"
+                              >
+                                <span className="text-xl">📄</span>
+                                <div className="text-left">
+                                  <div className="font-bold leading-tight">Buka Dokumen PDF</div>
+                                  <div className="text-[10px] text-red-500 font-normal">Klik untuk Membaca Dokumen</div>
+                                </div>
+                              </a>
+                            ) : (
+                              <a href={getDriveViewUrl(keg.fotoUrl || selectedReport.lampiranUrl)} onClick={(e) => handleMediaClick(e, keg.fotoUrl || selectedReport.lampiranUrl)} target="_blank" rel="noopener noreferrer">
+                                <img src={keg.fotoUrl || selectedReport.lampiranUrl} alt="Dokumentasi 1" className="h-32 rounded-xl border border-slate-200 object-cover shadow-sm hover:opacity-90 cursor-pointer" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} />
+                              </a>
+                            )
                           )}
                           {keg.fotoUrl2 && (
-                            <a href={getDriveViewUrl(keg.fotoUrl2)} onClick={(e) => handleMediaClick(e, keg.fotoUrl2)} target="_blank" rel="noopener noreferrer"><img src={keg.fotoUrl2} alt="Dokumentasi 2" className="h-32 rounded-xl border border-slate-200 object-cover" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} /></a>
+                            (keg.fotoUrl2.startsWith('data:application/pdf') || keg.fotoUrl2.toLowerCase().includes('.pdf')) ? (
+                              <a 
+                                href={getDriveViewUrl(keg.fotoUrl2)} 
+                                onClick={(e) => handleMediaClick(e, keg.fotoUrl2)} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 px-3 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer"
+                              >
+                                <span className="text-xl">📄</span>
+                                <div className="text-left">
+                                  <div className="font-bold leading-tight">Buka Dokumen PDF 2</div>
+                                  <div className="text-[10px] text-red-500 font-normal">Klik untuk Membaca Dokumen</div>
+                                </div>
+                              </a>
+                            ) : (
+                              <a href={getDriveViewUrl(keg.fotoUrl2)} onClick={(e) => handleMediaClick(e, keg.fotoUrl2)} target="_blank" rel="noopener noreferrer">
+                                <img src={keg.fotoUrl2} alt="Dokumentasi 2" className="h-32 rounded-xl border border-slate-200 object-cover shadow-sm hover:opacity-90 cursor-pointer" onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E"; }} />
+                              </a>
+                            )
                           )}
                         </div>
                       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { handleMediaClick } from '../lib/urlHelper';
 import { 
   Target, Calendar, Clock, User, AlignLeft, Send, CheckCircle, FileText, 
   Camera, Upload, X, Trash2, Image as ImageIcon, Briefcase, 
@@ -880,13 +881,25 @@ export default function InputKegiatan({
                         {/* Expandable links if photos exist */}
                         <div className="mt-2 flex flex-wrap gap-2">
                           {(firstKeg.fotoUrl || item.lampiranUrl) && (
-                            <a href={firstKeg.fotoUrl || item.lampiranUrl} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-blue-600 hover:text-blue-600 flex items-center space-x-1">
-                              <ImageIcon className="w-3 h-3" /> <span>Bukti Dukung 1</span>
+                            <a 
+                              href={firstKeg.fotoUrl || item.lampiranUrl} 
+                              onClick={(e) => handleMediaClick(e, firstKeg.fotoUrl || item.lampiranUrl)}
+                              target="_blank" 
+                              rel="noreferrer" 
+                              className="text-[10px] font-bold text-blue-600 hover:underline flex items-center space-x-1 cursor-pointer bg-blue-50 px-2 py-1 rounded-md border border-blue-200"
+                            >
+                              <span>{(firstKeg.fotoUrl || item.lampiranUrl).startsWith('data:application/pdf') || (firstKeg.fotoUrl || item.lampiranUrl).toLowerCase().includes('.pdf') ? '📄 Dokumen PDF 1' : '📎 Bukti Foto 1'}</span>
                             </a>
                           )}
                           {firstKeg.fotoUrl2 && (
-                            <a href={firstKeg.fotoUrl2} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-blue-600 hover:text-blue-600 flex items-center space-x-1">
-                              <ImageIcon className="w-3 h-3" /> <span>Bukti Dukung 2</span>
+                            <a 
+                              href={firstKeg.fotoUrl2} 
+                              onClick={(e) => handleMediaClick(e, firstKeg.fotoUrl2)}
+                              target="_blank" 
+                              rel="noreferrer" 
+                              className="text-[10px] font-bold text-blue-600 hover:underline flex items-center space-x-1 cursor-pointer bg-blue-50 px-2 py-1 rounded-md border border-blue-200"
+                            >
+                              <span>{firstKeg.fotoUrl2.startsWith('data:application/pdf') || firstKeg.fotoUrl2.toLowerCase().includes('.pdf') ? '📄 Dokumen PDF 2' : '📎 Bukti Foto 2'}</span>
                             </a>
                           )}
                         </div>

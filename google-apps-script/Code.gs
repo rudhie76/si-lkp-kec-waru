@@ -159,10 +159,10 @@ function doGet(e) {
         tanggalStr = String(row[2] || '');
       }
 
-      // Sanitize oversized base64 to avoid ContentService memory crash
+      // Preserve lampiranUrl and fallback to detailKegiatan photo
       let lampiran = String(row[4] || '');
-      if (lampiran.length > 200000) {
-        lampiran = '';
+      if (!lampiran && Array.isArray(detailKegiatan) && detailKegiatan.length > 0) {
+        lampiran = String(detailKegiatan[0].fotoUrl || detailKegiatan[0].fotoUrl2 || '');
       }
 
       reports.push({
