@@ -145,22 +145,62 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-600 mb-1">Pilih Tanggal</label>
+            <label className="block text-xs font-semibold text-slate-600 mb-1">📅 Tanggal Kegiatan</label>
             <div className="relative">
               <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-600 pointer-events-none" />
               <input 
                 type="date" 
                 value={filterDate}
-                onChange={e => setFilterDate(e.target.value)}
-                style={{ colorScheme: 'dark' }}
+                onChange={e => {
+                  setFilterDate(e.target.value);
+                  setPrintDate(e.target.value);
+                }}
                 className="w-full bg-white border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-blue-600 focus:outline-none cursor-pointer"
               />
             </div>
+            <span className="text-[10px] text-slate-400 mt-1 block">Laporan harian yang dimuat</span>
           </div>
+
           <div>
-            <label className="block text-xs font-semibold text-slate-600 mb-1">Pilih Pegawai (Admin/Atasan)</label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-xs font-semibold text-slate-600">✍️ Tanggal Cetak / TTD</label>
+              <div className="flex items-center space-x-1">
+                <button
+                  type="button"
+                  onClick={() => setPrintDate(filterDate)}
+                  className="text-[10px] px-1.5 py-0.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold rounded border border-blue-200 transition-colors"
+                  title="Samakan dengan tanggal kegiatan"
+                >
+                  Tgl Kegiatan
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPrintDate(defaultToday)}
+                  className="text-[10px] px-1.5 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded border border-slate-300 transition-colors"
+                  title="Gunakan tanggal hari ini"
+                >
+                  Hari Ini
+                </button>
+              </div>
+            </div>
+            <div className="relative">
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-emerald-600 pointer-events-none" />
+              <input 
+                type="date" 
+                value={printDate}
+                onChange={e => setPrintDate(e.target.value)}
+                className="w-full bg-white border border-slate-200/60 rounded-xl pl-10 pr-3 py-2.5 text-slate-800 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none cursor-pointer"
+              />
+            </div>
+            <span className="text-[10px] text-slate-400 mt-1 block">
+              Format TTD: <strong className="text-slate-600">{formatSignatureDate(printDate) || 'Waru, ...'}</strong>
+            </span>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-600 mb-1">👤 Pilih Pegawai (Admin/Atasan)</label>
             <select 
               value={selectedPegawai}
               onChange={e => setSelectedPegawai(e.target.value)}
@@ -175,6 +215,7 @@ export default function CetakLKH({ reports, pegawaiList, activeUser }) {
                 ))
               )}
             </select>
+            <span className="text-[10px] text-slate-400 mt-1 block">Pegawai yang dinilai</span>
           </div>
         </div>
 
